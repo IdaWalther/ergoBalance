@@ -4,8 +4,11 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <section>
-    <RouterView />
+
+  <section class="wrapper">
+      <section>
+        <RouterView />
+      </section>
   </section>
 </template>
 
