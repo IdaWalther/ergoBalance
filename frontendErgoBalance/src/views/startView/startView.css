@@ -1,0 +1,22 @@
+.startView__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0B5850;
+}
+
+.startView__title {
+  font-size: 2rem;
+  color: #F4F4F4;
+  margin: 1rem;
+}
+
+.startView__logo {
+  width: 50vw;
+  max-width: 200px;
+  margin: 2rem;
+  background-color: #F4F4F4;
+  border-radius: 100%;
+}
