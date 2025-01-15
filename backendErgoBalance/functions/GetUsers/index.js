@@ -1,5 +1,9 @@
 const {db} = require('../../services/index.js');
-const {sendResponse, sendError } = require('../../responses/index');
+const {sendResponse, sendError } = require('../../responses/index.js');
+const middy = require('@middy/core')
+const { validateKey } = require('../../middlewares/validateKey.js');
+const {errorHandler} = require('../../middlewares/errorHandler.js')
+
 
 const getUsers = async (event) => {
   try {
@@ -12,4 +16,5 @@ const getUsers = async (event) => {
   }
 }
 
-exports.handler = getUsers
+const middyHandler = middy(getUsers)
+exports.handler = middyHandler.use(validateKey()).use(errorHandler())
