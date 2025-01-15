@@ -28,7 +28,7 @@ resources:
     UserTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: 'ergobalanceusers-db'
+        TableName: 'ergousers-db'
         AttributeDefinitions:
           - AttributeName: 'pk'
             AttributeType: 'S'
@@ -43,7 +43,7 @@ resources:
     ExcercisesTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: 'ergobalanceexcercises-db'
+        TableName: 'ergoexcercises-db'
         AttributeDefinitions:
           - AttributeName: 'pk'
             AttributeType: 'S'
