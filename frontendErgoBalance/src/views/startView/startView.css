@@ -33,6 +33,7 @@
   cursor: pointer;
   text-decoration: none;
   transition: ease-in-out 0.2s;
+  margin-bottom: 2rem;
 }
 
 .startView__button:hover {
@@ -43,4 +44,8 @@
 .startView__button:active {
   box-shadow: none;
   scale: 0.9;
+}
+
+.startView__button--register {
+  opacity: 70%;
 }
