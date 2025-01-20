@@ -13,6 +13,8 @@ import { RouterLink } from 'vue-router'
     <RouterLink class="startView__button" to="/login">
       <Button type="button" label="Logga in" />
     </RouterLink>
-    <!-- <Button type="button" class="startView__registerButton" label="Inte användare än? Registrera dig här!"  /> -->
+    <RouterLink class="startView__button startView__button--register" to="/register">
+      <Button type="button" label="Inte medlem ännu? Registrera dig här" />
+    </RouterLink>
   </section>
 </template>
