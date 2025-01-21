@@ -12,6 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "@middy/core": "^2.5.7",
+    "joi": "^17.13.3",
     "uuid": "^11.0.5"
   }
 }
