@@ -31,8 +31,8 @@ const sendResponseWithHeaders = (status, body) => {
         },
         body: JSON.stringify({
             data: body
-        })
-    }
+        }),
+    };
 }
 
 module.exports = {sendResponse, sendError, sendResponseWithHeaders};
