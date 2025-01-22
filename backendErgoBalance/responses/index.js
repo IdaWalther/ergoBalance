@@ -22,21 +22,17 @@ function sendError(status, data) {
     };
 }
 
-const sendResponseWithHeaders = (status, body, token) => {
-    console.log ('sätter headers', token);
-
+const sendResponseWithHeaders = (status, body) => {
     return {
         statusCode: status,
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': token,
             'Content-Security-Policy': cspHeader,
         },
         body: JSON.stringify({
-            data: body,
-            token: token,
-        })
-    }
+            data: body
+        }),
+    };
 }
 
 module.exports = {sendResponse, sendError, sendResponseWithHeaders};
