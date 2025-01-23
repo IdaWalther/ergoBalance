@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import './startView.css'
+import './startView.scss'
 import Button from 'primevue/button'
 import { RouterLink } from 'vue-router'
 </script>
@@ -8,7 +8,7 @@ import { RouterLink } from 'vue-router'
   <section class="startView__wrapper">
     <h1 class="startView__title">ErgoBalance</h1>
     <figure>
-      <img class="startView__logo" src="../../assets/ergoBalanceLogo.png" alt="logo" />
+      <img class="startView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="logo" />
     </figure>
     <RouterLink class="startView__button" to="/login">
       <Button type="button" label="Logga in" />
