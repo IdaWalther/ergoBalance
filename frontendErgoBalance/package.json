@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "vue-tsc -b && vite build && style-dictionary build --config ./config.js",
+    "buildbefore": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
@@ -16,6 +17,7 @@
     "@primevue/themes": "^4.2.5",
     "pinia": "^2.3.0",
     "primevue": "^4.2.5",
+    "sass": "^1.83.4",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
@@ -30,6 +32,7 @@
     "eslint-plugin-vue": "^9.30.0",
     "npm-run-all2": "^7.0.2",
     "prettier": "^3.3.3",
+    "style-dictionary": "^4.3.2",
     "typescript": "~5.6.3",
     "vite": "^6.0.5",
     "vite-plugin-vue-devtools": "^7.6.8",
