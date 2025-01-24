@@ -22,11 +22,12 @@ function sendError(status, data) {
     };
 }
 
-const sendResponseWithHeaders = (status, body) => {
+const sendResponseWithHeaders = (status, body, token) => {
     return {
         statusCode: status,
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': token,
             'Content-Security-Policy': cspHeader,
         },
         body: JSON.stringify({
