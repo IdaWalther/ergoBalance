@@ -1,18 +1,18 @@
-import StyleDictionary from "style-dictionary";
+import StyleDictionary from 'style-dictionary'
 
 const sd = new StyleDictionary({
-  source: ["tokens/**/*.json"],
+  source: ['tokens/**/*.json'],
   platforms: {
     scss: {
-      transformGroup: "scss",
-      buildPath: "build/scss/",
+      transformGroup: 'scss',
+      buildPath: 'build/scss/',
       files: [
         {
-          destination: "_variables.scss",
-          format: "scss/variables",
+          destination: '_variables.scss',
+          format: 'scss/variables',
         },
       ],
     },
   },
-});
-await sd.buildAllPlatforms();
+})
+await sd.buildAllPlatforms()
