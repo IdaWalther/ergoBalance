@@ -7,12 +7,19 @@
 
 .registerView__container {
     @include centering;
+    justify-content: space-around;
     background-color: var(--color-white);
     height: 80vh;
     width: 80vw;
     border-radius: #{$borders-radius-sm};
+    padding: 3rem;
 }
 
 .registerView__button {
     @include button-base;
+}
+
+.registerView__input {
+    @include input-base;
+    min-width: 15rem !important;
 }
