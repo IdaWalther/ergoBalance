@@ -1,19 +1,18 @@
 @import '../../build/scss/variables';
 
 * {
-  max-width: 1280px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 :root {
-  --color-background: #{$colors-primary-dark};
   --color-white: #{$colors-neutral-white};
+  --color-green: #{$colors-primary-dark};
   --color-yellow: #{$colors-accent-yellow};
   --color-black: #{$colors-neutral-black};
 
-  --box-shadow-md: #{$shadows-md};
+  --font-primary: #{$typography-font-family-primary};
 }
 
 @mixin wrapper {
@@ -22,24 +21,34 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: var(--color-background);
+  width: 100vw;
+  background-color: var(--color-white);
+}
+
+@mixin centering {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin button-base {
-  padding: 0.5rem;
+  padding: #{$spacing-md};
   min-width: 10rem;
   text-align: center;
-  font-size: 1rem;
-  color: var(--color-black);
-  background-color: var(--color-white);
-  border-radius: 10px;
-  cursor: pointer;
-  text-decoration: none;
+  font-size: #{$typography-font-size-md};
   transition: ease-in-out 0.2s;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  // --p-button-bg: var(--color-green);
+  background-color: var(--color-green) !important;
+  --p-button-border: none;
+  --p-button-text-color: var(--color-white);
+  // --p-button-padding: 10px 20px;
+  --p-button-border-radius: #{$borders-radius-md};
 
   &:hover {
-    box-shadow: var(--box-shadow-md);
+    box-shadow: #{$shadows-md};
     scale: 1.1;
   }
 

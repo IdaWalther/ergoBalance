@@ -1,0 +1,18 @@
+@use '../../assets/app.scss' as *;
+
+.registerView__wrapper {
+    @include wrapper;
+    background-color: var(--color-green);
+}
+
+.registerView__container {
+    @include centering;
+    background-color: var(--color-white);
+    height: 80vh;
+    width: 80vw;
+    border-radius: #{$borders-radius-sm};
+}
+
+.registerView__button {
+    @include button-base;
+}
