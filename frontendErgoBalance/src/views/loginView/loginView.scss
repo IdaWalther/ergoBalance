@@ -1,28 +1,22 @@
 @use '../../assets/app.scss' as *;
 
-.registerView__wrapper {
+.loginView__wrapper {
     @include wrapper;
     background-color: var(--color-green);
 }
 
-.registerView__container {
+.loginView__container {
     @include centering;
     background-color: var(--color-white);
     border-radius: #{$borders-radius-sm};
     padding: 3rem;
 }
 
-form {
-    div {
-        padding: 1rem
-    }
-}
-
-.registerView__button {
+.loginView__button {
     @include button-base;
 }
 
-.registerView__input {
+.loginView__input {
     @include input-base;
     min-width: 15rem !important;
 }
