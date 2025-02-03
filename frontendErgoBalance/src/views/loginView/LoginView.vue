@@ -22,29 +22,28 @@ const onFormSubmit = () => {
     router.push('/main')
   }
 }
-
 </script>
 
 <template>
   <section class="loginView__wrapper">
     <section>
-      <Form class="loginView__container" @submit="onFormSubmit">
-        <div>
+      <form class="loginView__container" @submit="onFormSubmit">
+        <article>
           <h4>Användarnamn eller Email</h4>
           <InputText class="loginView__input" v-model="identifier" type="text" placeholder="Skriv Användarnamn eller email här..." />
           <Message v-if="identifierError" severity="error" size="small" variant="simple">
             {{ identifierError }}
           </Message>
-        </div>
-        <div>
+        </article>
+        <article>
           <h4>Lösenord</h4>
           <InputText class="loginView__input" v-model="password" type="password" placeholder="Skriv Lösenord här..." />
           <Message v-if="passwordError" severity="error" size="small" variant="simple">
             {{ passwordError }}
           </Message>
-        </div>
+        </article>
         <Button class="loginView__button" type="submit" label="Logga in" />
-      </Form>
+      </form>
     </section>
   </section>
 </template>
