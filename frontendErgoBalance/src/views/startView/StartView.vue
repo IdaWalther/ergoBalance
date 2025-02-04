@@ -10,11 +10,12 @@ import { RouterLink } from 'vue-router'
     <figure>
       <img class="startView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="logo" />
     </figure>
-    <RouterLink class="startView__button" to="/login">
-      <Button type="button" label="Logga in" />
+    <RouterLink to="/login">
+      <Button class="startView__button" type="button" label="Logga in" />
     </RouterLink>
-    <RouterLink class="startView__button startView__button--register" to="/register">
-      <Button type="button" label="Inte medlem ännu? Registrera dig här" />
+    <RouterLink to="/register">
+      <Button class="startView__button startView__button--register" type="button"
+        label="Inte medlem ännu? Registrera dig här" />
     </RouterLink>
   </section>
 </template>

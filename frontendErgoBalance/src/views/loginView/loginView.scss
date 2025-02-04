@@ -1,0 +1,22 @@
+@use '../../assets/app.scss' as *;
+
+.loginView__wrapper {
+    @include wrapper;
+    background-color: var(--color-green);
+}
+
+.loginView__container {
+    @include centering;
+    background-color: var(--color-white);
+    border-radius: #{$borders-radius-sm};
+    padding: 3rem;
+}
+
+.loginView__button {
+    @include button-base;
+}
+
+.loginView__input {
+    @include input-base;
+    min-width: 15rem !important;
+}
