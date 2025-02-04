@@ -30,7 +30,7 @@ const onFormSubmit = handleSubmit(async (values: RegisterFormValues) => {
     });
     if (response.body.success) {
       console.log('success registration!', response)
-      router.push('/main');
+      router.push('/login');
     } else {
       console.error('Error:', response.body.message);
     }
