@@ -2,7 +2,7 @@
 
 .registerView__wrapper {
     @include wrapper;
-    background-color: var(--color-green);
+    background-color: var(--color-green) !important;
 }
 
 .registerView__container {

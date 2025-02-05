@@ -11,7 +11,7 @@
   --color-green: #{$colors-primary-dark};
   --color-yellow: #{$colors-accent-yellow};
   --color-black: #{$colors-neutral-black};
-
+  --color-darkBlue: #{$colors-neutral-dark-blue};
   --font-primary: #{$typography-font-family-primary};
 }
 
@@ -66,7 +66,7 @@
 }
 
 body {
-  min-height: 100vh;
+  // min-height: 100vh;
   transition:
     color 0.5s,
     background-color 0.5s;

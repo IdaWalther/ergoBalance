@@ -1,0 +1,33 @@
+@use '../../assets/app.scss' as *;
+
+.mainView__wrapper {
+    @include wrapper;
+    height: 80vh;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: relative
+}
+
+.mainView__button {
+    @include button-base;
+    --p-button-border-radius: #{$borders-radius-sm};
+    padding: #{$spacing-lg} !important;
+    background-color: var(--color-darkBlue) !important;
+}
+
+.mainView__logo {
+    z-index: 10;
+    height: 3rem;
+    position: relative;
+    top: 1.5rem;
+    left: 1.5rem;
+    cursor: pointer;
+    &:hover {
+        scale: 1.1;
+      }
+    
+      &:active {
+        scale: 0.9;
+      }
+}

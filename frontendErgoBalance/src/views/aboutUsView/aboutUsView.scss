@@ -1,0 +1,22 @@
+@use '../../assets/app.scss' as *;
+
+.aboutUsView__wrapper {
+    @include wrapper;
+    height: 90vh;
+}
+
+.aboutUsView__logo {
+    z-index: 10;
+    height: 3rem;
+    position: relative;
+    top: 1.5rem;
+    left: 1.5rem;
+    cursor: pointer;
+    &:hover {
+        scale: 1.1;
+      }
+    
+      &:active {
+        scale: 0.9;
+      }
+}
