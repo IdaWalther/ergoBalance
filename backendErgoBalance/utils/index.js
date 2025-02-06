@@ -9,6 +9,7 @@ const hashPassword = async (password) => {
 }
 
 const comparePasswords = async (password, storedPassword )=> {
+    console.log('Inne i comparePasswords')
     const isEqual = await bcrypt.compare(password, storedPassword)
     return isEqual
 }
@@ -20,8 +21,15 @@ const generateJWT = async (user) => {
         username: user.username
     }
 
+    console.log('Payload', payload)
+
     const token = jwt.sign(payload, process.env.SECRET_ACCESS_KEY)
+    console.log(token)
     return token
 }
+
+
+
+
 
 module.exports = {hashPassword, comparePasswords, generateJWT}

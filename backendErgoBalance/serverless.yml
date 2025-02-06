@@ -28,6 +28,12 @@ functions:
       - httpApi:
           path: /user/register
           method: post
+  PostLogin:
+    handler: functions/PostLogin/index.handler
+    events:
+      - httpApi:
+          path: /user/login
+          method: post
 
 resources:
   Resources:

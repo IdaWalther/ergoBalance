@@ -4,29 +4,30 @@ const middy = require('@middy/core')
 const {errorHandler} = require('../../middlewares/errorHandler.js')
 const {validateLogin} = require('../../middlewares/validateLogin.js')
 const {validateKey} = require('../../middlewares/validateKey.js')
-const {comparePassword, generateJWT} = require('../../utils/index.js')
+const {comparePasswords, generateJWT} = require('../../utils/index.js')
 
 const login = async (event) => {
     let body = JSON.parse(event.body)
-    let {userdetails, password} = body
+    let {usernameOrEmail, password} = body
 
-    userdetails = userdetails.toLowerCase();
+    usernameOrEmail = usernameOrEmail.toLowerCase();
 
     try {
         const {Items} = await db.scan({
             TableName: 'ergousers-db',
             FilterExpression: 'username = :username OR mail = :mail',
             ExpressionAttributeValues: {
-                ':username': userdetails,
-                ':mail': userdetails
+                ':username': usernameOrEmail,
+                ':mail': usernameOrEmail
             }
         })
+
         if (Items.length === 0) {
-            return sendError(400, 'Användare existerar inte')
+            return sendError(400, 'Användaren existerar inte')
         }
 
         const user = Items[0]
-        const isValid = await comparePassword(password, user.password)
+        const isValid = await comparePasswords(password, user.password)
         if(!isValid) {
             return sendError(400, 'Användarnamnet och lösenordet stämmer inte överens')
         }
@@ -37,7 +38,7 @@ const login = async (event) => {
             200,
             {
                 success: true,
-                message: 'Använder inloggad',
+                message: 'Användare inloggad',
                 data: {
                     sk: user.sk,
                     username: user.username,
@@ -52,4 +53,4 @@ const login = async (event) => {
 }  
 
 const middyHandler = middy(login)
-exports.handler = middyHandler.use(validateKey()).use(validateLogin).use(errorHandler())
+exports.handler = middyHandler.use(validateKey()).use(validateLogin()).use(errorHandler())
