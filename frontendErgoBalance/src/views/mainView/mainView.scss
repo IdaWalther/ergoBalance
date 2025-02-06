@@ -1,0 +1,40 @@
+@use '../../assets/app.scss' as *;
+
+.mainView__wrapper {
+    @include wrapper;
+    background: rgb(162,208,193) !important;
+    background: linear-gradient(144deg, rgba(162,208,193,1) 0%, rgba(11,88,80,1) 60%) !important; 
+}
+
+.mainView__container {
+  @include centering; 
+    height: 90vh;
+    width: 90vw;
+    justify-content: space-around;
+    padding: 2rem;
+    position: relative;
+    background-color: var(--color-white) !important;
+}
+
+.mainView__button {
+    @include button-base;
+    --p-button-border-radius: #{$borders-radius-sm};
+    padding: #{$spacing-lg} !important;
+    background-color: var(--color-darkBlue) !important;
+}
+
+.mainView__logo {
+    z-index: 10;
+    height: 3rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    cursor: pointer;
+    &:hover {
+        scale: 1.1;
+      }
+    
+      &:active {
+        scale: 0.9;
+      }
+}
