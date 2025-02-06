@@ -2,7 +2,8 @@
 
 .loginView__wrapper {
     @include wrapper;
-    background-color: var(--color-green);
+    background: rgb(162,208,193) !important;
+    background: linear-gradient(144deg, rgba(162,208,193,1) 0%, rgba(11,88,80,1) 60%) !important; 
 }
 
 .loginView__container {

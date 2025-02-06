@@ -26,10 +26,12 @@
 }
 
 @mixin centering {
+  border-radius: #{$borders-radius-sm};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: var(--);
 }
 
 @mixin button-base {
@@ -40,6 +42,7 @@
   transition: ease-in-out 0.2s;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  border: none !important;
   // --p-button-bg: var(--color-green);
   background-color: var(--color-green) !important;
   --p-button-border: none;
