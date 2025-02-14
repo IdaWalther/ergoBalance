@@ -18,13 +18,15 @@ function resetAndStart() {
   <section class="mainView__container">
     <img class="mainView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
     <RouterLink v-if="intervalTimer.isRunning" to="/interval">
-        <button class="mainView__button--light">Återuppta intervaller</button>
+        <Button class="mainView__button--light">
+          Tillbaka till intervaller
+        </Button>
       </RouterLink>
       <RouterLink to="/interval">
-      <button class="mainView__button"
+      <Button class="mainView__button"
       @click="resetAndStart">
       Nya intervaller
-    </button>
+    </Button>
     </RouterLink>
     <RouterLink to="/setupInterval">
       <Button class="mainView__button" type="button" label="Inställningar för intervaller" />

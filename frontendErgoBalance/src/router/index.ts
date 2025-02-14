@@ -6,6 +6,7 @@ import MainView from '@/views/mainView/MainView.vue'
 import AboutUsView from '@/views/aboutUsView/AboutUsView.vue'
 import IntervalView from '@/views/intervalView/IntervalView.vue'
 import SetupIntervalView from '@/views/setupIntervalView/SetupIntervalView.vue'
+import SetupExercisesView from '@/views/setupExercisesView/SetupExercisesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,11 @@ const router = createRouter({
       path: '/setupInterval',
       name: 'setupInterval',
       component: SetupIntervalView,
+    },
+    {
+      path: '/setupExercises',
+      name: 'setupExercises',
+      component: SetupExercisesView,
     },
   ],
 })

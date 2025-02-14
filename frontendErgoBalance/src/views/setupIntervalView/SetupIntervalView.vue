@@ -1,8 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import './setupIntervalView.scss'
 import { ref } from 'vue'
+import { Button } from 'primevue';
 import { RouterLink } from 'vue-router'
 import { useIntervalTimer } from '../../stores/intervalStore.js'
+import InputNumber from 'primevue/inputnumber';
 
 const intervalTimer = useIntervalTimer()
 
@@ -17,39 +19,49 @@ function update() {
     localBreakDuration.value * 60
   )
   saveMessage.value = 'Inställningar sparade!'
-  isFadingOut.value = false
 
   setTimeout(() => {
-    isFadingOut.value = true  
-  }, 2500)
+    isFadingOut.value = true
+  },2500)
 
   setTimeout(() => {
-    saveMessage.value = '' 
+    saveMessage.value = ''
     isFadingOut.value = false
-  }, 3500) 
+  }, 3500)
 }
 </script>
 
 <template>
   <section class="setupIntervalView__wrapper">
     <form class="setupIntervalView__container" @submit.prevent="update">
-      <div>
+      <article>
         <label>
           Tid för arbete (i minuter):
-          <input type="number" v-model.number="localWorkInterval" />
+          <InputNumber v-model.number="localWorkInterval" :min="0" :max="100" showButtons buttonLayout="horizontal" fluid />
         </label>
-      </div>
-      <div>
+      </article>
+      <article>
         <label>
          Tid för paus (i minuter):
-          <input type="number" v-model.number="localBreakDuration" />
+          <InputNumber v-model.number="localBreakDuration" :min="0" :max="100" showButtons buttonLayout="horizontal" fluid />
         </label>
-      </div>
-      <button type="submit">Spara</button>
+      </article>
+      <article>
+        <label>
+         Övergripande tid för alla intervaller:
+          <!-- <InputNumber v-model.number="localBreakDuration" :min="0" :max="1000" showButtons buttonLayout="horizontal" /> -->
+        </label>
+      </article>
+      <article>
+        <RouterLink to="/setupExercises">
+      <Button>Val av övningar</Button>
+        </RouterLink>
+      </article>
+      <Button type="submit">Spara</Button>
       <p v-if="saveMessage" :class="{'fade-out': isFadingOut}" class="save-message">{{ saveMessage }}</p>
     </form>
      <router-link to="/main">
-      <button>Tillbaka</button> 
-    </router-link>  
+      <Button>Tillbaka</Button>
+    </router-link>
   </section>
 </template>

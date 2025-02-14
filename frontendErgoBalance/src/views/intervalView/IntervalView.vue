@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import './intervalView.scss'
+import { Button } from 'primevue';
 import { computed } from 'vue'
 import { useIntervalTimer } from '../../stores/intervalStore.js'
 
@@ -13,12 +14,12 @@ const formattedRemainingTime = computed(() => {
     .padStart(2, '0')}`
 })
 
-// function start() {
-//   intervalTimer.start()
-// }
-
 function stop() {
   intervalTimer.stop()
+}
+
+function togglePause() {
+  intervalTimer.pauseToggle()
 }
 
 </script>
@@ -35,16 +36,16 @@ function stop() {
       Tid kvar:
       <strong>{{ formattedRemainingTime }}</strong>
     </p>
-    <!-- <button @click="start" :disabled="intervalTimer.isRunning">
-      Start Intervals
-    </button> -->
-    <button @click="stop" :disabled="!intervalTimer.isRunning">
-      Stoppa intervaller
-    </button>
-    <br /><br />
+     <Button v-if="intervalTimer.isRunning" @click="togglePause">
+      {{ intervalTimer.isPaused ? 'starta intervaller igen' : 'pausa intervaller' }}
+    </Button>
+    <Button @click="stop" :disabled="!intervalTimer.isRunning">
+      Stoppa Intervaller
+    </Button>
     <router-link to="/main">
-      <button>Gå tillbaka</button>
+      <Button>Tillbaka till Main View</Button>
     </router-link>
   </section>
   </section>
 </template>
+
