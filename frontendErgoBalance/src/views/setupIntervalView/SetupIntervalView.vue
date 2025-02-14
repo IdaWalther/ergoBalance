@@ -3,7 +3,7 @@ import './setupIntervalView.scss'
 import { ref } from 'vue'
 import { Button } from 'primevue';
 import { RouterLink } from 'vue-router'
-import { useIntervalTimer } from '../../stores/intervalStore.js'
+import { useIntervalTimer } from '../../stores/intervalStore.ts'
 import InputNumber from 'primevue/inputnumber';
 
 const intervalTimer = useIntervalTimer()
@@ -46,12 +46,12 @@ function update() {
           <InputNumber v-model.number="localBreakDuration" :min="0" :max="100" showButtons buttonLayout="horizontal" fluid />
         </label>
       </article>
-      <article>
+      <!-- <article>
         <label>
          Övergripande tid för alla intervaller:
-          <!-- <InputNumber v-model.number="localBreakDuration" :min="0" :max="1000" showButtons buttonLayout="horizontal" /> -->
+          <InputNumber v-model.number="localBreakDuration" :min="0" :max="1000" showButtons buttonLayout="horizontal" />
         </label>
-      </article>
+      </article> -->
       <article>
         <RouterLink to="/setupExercises">
       <Button>Val av övningar</Button>

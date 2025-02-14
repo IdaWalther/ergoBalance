@@ -2,7 +2,7 @@
 import './mainView.scss'
 import { Button } from 'primevue';
 import { RouterLink } from 'vue-router';
-import { useIntervalTimer } from '../../stores/intervalStore.js'
+import { useIntervalTimer } from '../../stores/intervalStore.ts'
 
 const intervalTimer = useIntervalTimer()
 

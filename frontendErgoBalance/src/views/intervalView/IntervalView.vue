@@ -2,7 +2,7 @@
 import './intervalView.scss'
 import { Button } from 'primevue';
 import { computed } from 'vue'
-import { useIntervalTimer } from '../../stores/intervalStore.js'
+import { useIntervalTimer } from '../../stores/intervalStore.ts'
 
 const intervalTimer = useIntervalTimer()
 
@@ -18,9 +18,9 @@ function stop() {
   intervalTimer.stop()
 }
 
-function togglePause() {
-  intervalTimer.pauseToggle()
-}
+// function togglePause() {
+//   intervalTimer.pauseToggle()
+// }
 
 </script>
 
@@ -36,9 +36,9 @@ function togglePause() {
       Tid kvar:
       <strong>{{ formattedRemainingTime }}</strong>
     </p>
-     <Button v-if="intervalTimer.isRunning" @click="togglePause">
+     <!-- <Button v-if="intervalTimer.isRunning" @click="togglePause">
       {{ intervalTimer.isPaused ? 'starta intervaller igen' : 'pausa intervaller' }}
-    </Button>
+    </Button> -->
     <Button @click="stop" :disabled="!intervalTimer.isRunning">
       Stoppa Intervaller
     </Button>
