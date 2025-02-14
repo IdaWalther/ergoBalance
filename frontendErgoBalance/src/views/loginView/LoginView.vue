@@ -13,12 +13,15 @@ const passwordError = ref('')
 
 const router = useRouter()
 
-const onFormSubmit = () => {
-  identifierError.value = identifier.value ? '' : 'Användarnamn eller Email är obligatoriskt'
+const onFormSubmit = (event) => {
+  event.preventDefault()
+  identifierError.value = identifier.value ? '' : 'Användarnamn eller email är obligatoriskt'
   passwordError.value = password.value ? '' : 'Lösenord är obligatoriskt'
 
   if (!identifierError.value && !passwordError.value) {
+
     console.log('Login Submitted:', { identifier: identifier.value, password: password.value })
+
     router.push('/main')
   }
 }
@@ -28,17 +31,17 @@ const onFormSubmit = () => {
   <section class="loginView__wrapper">
     <section>
       <form class="loginView__container" @submit="onFormSubmit">
-        <article>
-          <h4>Användarnamn eller Email</h4>
+        <article class="loginView__article">
+          <h4>Användarnamn eller email</h4>
           <InputText class="loginView__input" v-model="identifier" type="text" placeholder="Skriv Användarnamn eller email här..." />
-          <Message v-if="identifierError" severity="error" size="small" variant="simple">
+          <Message v-if="identifierError" severity="error" size="small" variant="simple" class="loginView__error">
             {{ identifierError }}
           </Message>
         </article>
-        <article>
+        <article class="loginView__article">
           <h4>Lösenord</h4>
           <InputText class="loginView__input" v-model="password" type="password" placeholder="Skriv Lösenord här..." />
-          <Message v-if="passwordError" severity="error" size="small" variant="simple">
+          <Message v-if="passwordError" severity="error" size="small" variant="simple" class="loginView__error">
             {{ passwordError }}
           </Message>
         </article>

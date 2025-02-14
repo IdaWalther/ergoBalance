@@ -21,3 +21,13 @@
     @include input-base;
     min-width: 15rem !important;
 }
+
+.loginView__article {
+    position: relative;
+    margin: #{$spacing-xs};
+}
+
+.loginView__error {
+    position: absolute;
+    top: 6rem;
+}
