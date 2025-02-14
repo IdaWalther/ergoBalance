@@ -49,6 +49,7 @@
   --p-button-text-color: var(--color-white);
   // --p-button-padding: 10px 20px;
   --p-button-border-radius: #{$borders-radius-md};
+  color: var(--color-white) !important;
 
   &:hover {
     box-shadow: #{$shadows-md};
