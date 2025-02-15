@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import InputText from 'primevue/inputtext'
 import Message from 'primevue/message'
 import { ref } from 'vue'
+import { postUser } from '../../services/postUser'
 
 const identifier = ref('')
 const password = ref('')
@@ -13,16 +14,27 @@ const passwordError = ref('')
 
 const router = useRouter()
 
-const onFormSubmit = (event) => {
+const onFormSubmit = async (event : Event) => {
   event.preventDefault()
   identifierError.value = identifier.value ? '' : 'Användarnamn eller email är obligatoriskt'
   passwordError.value = password.value ? '' : 'Lösenord är obligatoriskt'
 
   if (!identifierError.value && !passwordError.value) {
+    try {
+      const response =  await postUser('https://nivexrr755.execute-api.eu-north-1.amazonaws.com/user/login', {
+        usernameOrEmail: identifier.value,
+        password: password.value 
+      })
+      if (response.data.success) {
+        console.log(response)
+        console.log('Login Submitted:', { identifier: identifier.value, password: password.value })
+      }
+    } catch(error) {
+      console.error('Error:', error);
+      passwordError.value = 'Fel användarnamn eller lösenord';
+    }
 
-    console.log('Login Submitted:', { identifier: identifier.value, password: password.value })
-
-    router.push('/main')
+    //router.push('/main')
   }
 }
 </script>
