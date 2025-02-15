@@ -1,4 +1,4 @@
-const cspHeader = "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; object-src 'none';";
+const cspHeader = "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; object-src 'none'; img-src 'self' https://myuploaded-images-api.s3.eu-north-1.amazonaws.com;";
 
 function sendResponse(status, data) {
     return {
