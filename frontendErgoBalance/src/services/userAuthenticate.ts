@@ -20,7 +20,7 @@ export const userAuthenticate = () => {
 
             const responseData = await response.json()
             token.value = responseData.data.token
-            localStorage.setItem('token', responseData.data.token)
+            localStorage.setItem('token', responseData.data.data.token)
             return responseData
         } catch (error) {
             console.error('Error', error)

@@ -27,7 +27,7 @@ const onFormSubmit = async (event : Event) => {
         usernameOrEmail: identifier.value,
         password: password.value 
       })
-      if (response.data.success) {
+      if (response.data.data.token) {
         console.log(response)
         console.log('Login Submitted:', { identifier: identifier.value, password: password.value })
 

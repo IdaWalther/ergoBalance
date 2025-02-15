@@ -15,6 +15,13 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "module": "ESNext",  // Använd ES-moduler
+    "target": "ESNext",  // Kompilera till modern JavaScript
+    "esModuleInterop": true,  // Aktivera för att hantera ES-moduler korrekt
+    "moduleResolution": "node",  // Hantera modulupplösning som i Node.js
+    "strict": true,  // För striktare typkontroll
+    "skipLibCheck": true,  // För att hoppa över kontroll av typdefinitioner från bibliotek
+    "allowSyntheticDefaultImports": true  // Tillåt användning av default-importer även om modulen inte explicit har en "default" export
   }
 }
