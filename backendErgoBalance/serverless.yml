@@ -34,6 +34,12 @@ functions:
       - httpApi:
           path: /user/login
           method: post
+  PostExercises:
+    handler: functions/PostExercises/index.handler
+    events:
+      - httpApi:
+          path: /exercises
+          method: post
 
 resources:
   Resources:
