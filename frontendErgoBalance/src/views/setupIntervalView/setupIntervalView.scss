@@ -1,0 +1,26 @@
+@use '../../assets/app.scss' as *;
+
+.setupIntervalView__wrapper {
+    @include wrapper;
+    background: rgb(162, 208, 193) !important;
+    background: linear-gradient(144deg, rgba(162, 208, 193, 1) 0%, rgba(11, 88, 80, 1) 60%) !important;
+}
+
+
+.setupIntervalView__container {
+    @include centering;
+    background-color: var(--color-white);
+    border-radius: #{$borders-radius-sm};
+    padding: 3rem;
+}
+
+.save-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
