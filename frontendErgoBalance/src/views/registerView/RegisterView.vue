@@ -22,7 +22,7 @@ const router = useRouter()
 
 const onFormSubmit = handleSubmit(async (values: RegisterFormValues) => {
   try {
-    const response = await postFetch('https://62ljpn5xi8.execute-api.eu-north-1.amazonaws.com/user/register', {
+    const response = await postFetch('registersUrl', {
       username: values.username,
       email: values.email,
       password: values.password,
@@ -77,7 +77,7 @@ const onFormSubmit = handleSubmit(async (values: RegisterFormValues) => {
           </Message>
         </article>
         <Button class="registerView__button" type="submit" label="Registrera mig" />
-      </form>
+    </form>
     </section>
   </section>
 </template>

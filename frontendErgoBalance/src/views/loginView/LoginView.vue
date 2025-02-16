@@ -23,7 +23,7 @@ const onFormSubmit = async (event : Event) => {
 
   if (!identifierError.value && !passwordError.value) {
     try {
-      const response =  await loginUser('https://nivexrr755.execute-api.eu-north-1.amazonaws.com/user/login', {
+      const response =  await loginUser('loginsUrl', {
         usernameOrEmail: identifier.value,
         password: password.value 
       })

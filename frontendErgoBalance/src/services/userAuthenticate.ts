@@ -1,9 +1,11 @@
-import {ref} from 'vue'
+import { ref } from 'vue'
 const token = ref(localStorage.getItem('token') || '')
+import { urls } from "../../url";
 
 export const userAuthenticate = () => {
-    const loginUser = async (url: string, userInfo: {usernameOrEmail: string, password:string}) => {
+    const loginUser = async (urlKey: string, userInfo: { usernameOrEmail: string, password: string }) => {
         try {
+            const url = urls[urlKey];
             const response = await fetch(`${url}?key=key74hTy7`, {
                 method: 'POST',
                 headers: {
@@ -27,5 +29,5 @@ export const userAuthenticate = () => {
             throw error
         }
     }
-    return {loginUser}
+    return { loginUser }
 }

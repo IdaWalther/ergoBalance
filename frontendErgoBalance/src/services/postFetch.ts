@@ -1,4 +1,7 @@
-export const postFetch = async (url: string, data: any) => {
+import { urls } from "../../url";
+
+export const postFetch = async (urlKey: string, data: any) => {
+    const url = urls[urlKey];
     const response = await fetch(`${url}?key=key74hTy7`, {
         method: 'POST',
         headers: {
