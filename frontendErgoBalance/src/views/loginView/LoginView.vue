@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import InputText from 'primevue/inputtext'
 import Message from 'primevue/message'
 import { ref } from 'vue'
+import { userAuthenticate } from '../../services/userAuthenticate'
 
 const identifier = ref('')
 const password = ref('')
@@ -12,14 +13,33 @@ const identifierError = ref('')
 const passwordError = ref('')
 
 const router = useRouter()
+const {loginUser} = userAuthenticate()
 
-const onFormSubmit = () => {
-  identifierError.value = identifier.value ? '' : 'Användarnamn eller Email är obligatoriskt'
+
+const onFormSubmit = async (event : Event) => {
+  event.preventDefault()
+  identifierError.value = identifier.value ? '' : 'Användarnamn eller email är obligatoriskt'
   passwordError.value = password.value ? '' : 'Lösenord är obligatoriskt'
 
   if (!identifierError.value && !passwordError.value) {
-    console.log('Login Submitted:', { identifier: identifier.value, password: password.value })
-    router.push('/main')
+    try {
+      const response =  await loginUser('https://nivexrr755.execute-api.eu-north-1.amazonaws.com/user/login', {
+        usernameOrEmail: identifier.value,
+        password: password.value 
+      })
+      if (response.data.data.token) {
+        console.log(response)
+        console.log('Login Submitted:', { identifier: identifier.value, password: password.value })
+
+        router.push('/main')
+
+      } else {
+        console.log('Something went wrong')
+      }
+    } catch(error) {
+      console.error('Error:', error);
+      passwordError.value = 'Fel användarnamn eller lösenord';
+    }
   }
 }
 </script>
@@ -28,17 +48,17 @@ const onFormSubmit = () => {
   <section class="loginView__wrapper">
     <section>
       <form class="loginView__container" @submit="onFormSubmit">
-        <article>
-          <h4>Användarnamn eller Email</h4>
+        <article class="loginView__article">
+          <h4>Användarnamn eller email</h4>
           <InputText class="loginView__input" v-model="identifier" type="text" placeholder="Skriv Användarnamn eller email här..." />
-          <Message v-if="identifierError" severity="error" size="small" variant="simple">
+          <Message v-if="identifierError" severity="error" size="small" variant="simple" class="loginView__error">
             {{ identifierError }}
           </Message>
         </article>
-        <article>
+        <article class="loginView__article">
           <h4>Lösenord</h4>
           <InputText class="loginView__input" v-model="password" type="password" placeholder="Skriv Lösenord här..." />
-          <Message v-if="passwordError" severity="error" size="small" variant="simple">
+          <Message v-if="passwordError" severity="error" size="small" variant="simple" class="loginView__error">
             {{ passwordError }}
           </Message>
         </article>

@@ -16,6 +16,7 @@
   "dependencies": {
     "@primevue/forms": "^4.2.5",
     "@primevue/themes": "^4.2.5",
+    "jwt-decode": "^4.0.0",
     "pinia": "^2.3.0",
     "primevue": "^4.2.5",
     "sass": "^1.83.4",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
+    "@types/jwt-decode": "^2.2.1",
     "@types/node": "^22.10.2",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/eslint-config-prettier": "^10.1.0",

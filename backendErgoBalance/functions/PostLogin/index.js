@@ -42,10 +42,10 @@ const login = async (event) => {
                 data: {
                     sk: user.sk,
                     username: user.username,
-                    mail: user.mail
-                }
+                    mail: user.mail,
+                    token
+                },
             },
-            token
         )
     } catch (error) {
         return sendError(500, error)

@@ -31,6 +31,23 @@
 }
 
 .mainView__logo {
+    z-index: 10;
+    height: 3rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    cursor: pointer;
+    &:hover {
+        scale: 1.1;
+      }
+    
+      &:active {
+        scale: 0.9;
+      }
+}
+
+.mainView__header {
+  text-transform: uppercase;
   z-index: 10;
   height: 3rem;
   position: absolute;
