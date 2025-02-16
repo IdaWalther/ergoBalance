@@ -40,6 +40,12 @@ functions:
       - httpApi:
           path: /exercises
           method: post
+  GetExercises:
+    handler: functions/GetExercises/index.handler
+    events:
+      - httpApi:
+          path: /exercises
+          method: get
 
 resources:
   Resources:
