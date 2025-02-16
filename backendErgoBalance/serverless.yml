@@ -53,7 +53,7 @@ functions:
           path: /exercises/{pk}/{sk}
           method: put
   DeleteExercise:
-    handler: functions/PutExercise/index.handler
+    handler: functions/DeleteExercise/index.handler
     events:
       - httpApi:
           path: /exercises/{pk}/{sk}
