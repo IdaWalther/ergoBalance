@@ -27,5 +27,13 @@ export const userAuthenticate = () => {
             throw error
         }
     }
-    return {loginUser}
+
+    const logoutUser = () => {
+        token.value = '';
+        localStorage.removeItem('token')
+    }
+
+    const isAuthenticated = () => !!token.value;
+
+    return {loginUser, logoutUser, isAuthenticated}
 }

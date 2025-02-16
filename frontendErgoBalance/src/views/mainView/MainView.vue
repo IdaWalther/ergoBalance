@@ -5,9 +5,14 @@ import { RouterLink } from 'vue-router';
 import {ref, onMounted, defineComponent} from 'vue'
 import { jwtDecode } from 'jwt-decode';
 import { useIntervalTimer } from '../../stores/intervalStore.ts'
+import { userAuthenticate } from '../../services/userAuthenticate'
+import { useRouter } from 'vue-router'
+
 
 const token = localStorage.getItem('token')
 const username = ref('Gäst')
+const router = useRouter()
+const {logoutUser} = userAuthenticate()
 
 const getUsername = () => {
   if(token) {
@@ -23,6 +28,11 @@ const getUsername = () => {
 onMounted(() => {
     getUsername();
 });
+
+const logout = () => {
+  logoutUser()
+  router.push('/')
+}
 
 const intervalTimer = useIntervalTimer()
 
@@ -57,7 +67,7 @@ function resetAndStart() {
     <RouterLink to="/about">
       <Button class="mainView__button" type="button" label="Om Appen" />
     </RouterLink>
-    <Button class="mainView__button" type="button" label="Logga ut" />
+    <Button @click="logout" class="mainView__button" type="button" label="Logga ut" />
   </section>
 </section>
 </template>

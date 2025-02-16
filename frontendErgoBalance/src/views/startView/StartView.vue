@@ -2,6 +2,21 @@
 import './startView.scss'
 import Button from 'primevue/button'
 import { RouterLink } from 'vue-router'
+import { userAuthenticate } from '../../services/userAuthenticate'
+import { onMounted} from 'vue'
+import { useRouter } from 'vue-router'
+
+const {isAuthenticated} = userAuthenticate()
+const router = useRouter()
+
+const loggedIn = () => {
+  if(isAuthenticated()) {
+    router.push('/main')
+  }
+}
+onMounted(() => {
+  loggedIn();
+});
 </script>
 
 <template>
