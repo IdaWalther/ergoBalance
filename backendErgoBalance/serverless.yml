@@ -46,6 +46,18 @@ functions:
       - httpApi:
           path: /exercises
           method: get
+  PutExercise:
+    handler: functions/PutExercise/index.handler
+    events:
+      - httpApi:
+          path: /exercises/{pk}/{sk}
+          method: put
+  DeleteExercise:
+    handler: functions/PutExercise/index.handler
+    events:
+      - httpApi:
+          path: /exercises/{pk}/{sk}
+          method: delete
 
 resources:
   Resources:
