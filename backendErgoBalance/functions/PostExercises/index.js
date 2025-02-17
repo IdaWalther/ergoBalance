@@ -1,6 +1,6 @@
 const { errorHandler } = require('../../middlewares/errorHandler')
 const { validateKey } = require('../../middlewares/validateKey')
-const { validateExercises } = require('../../middlewares/validateExcercises')
+const { validateExercises } = require('../../middlewares/validateExercises')
 const { sendError, sendResponse } = require('../../responses/index')
 const middy = require('@middy/core')
 const { db } = require('../../services/index')
