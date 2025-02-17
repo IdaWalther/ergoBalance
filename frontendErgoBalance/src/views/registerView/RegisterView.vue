@@ -22,7 +22,7 @@ const router = useRouter()
 
 const onFormSubmit = handleSubmit(async (values: RegisterFormValues) => {
   try {
-    const response = await postFetch('https://62ljpn5xi8.execute-api.eu-north-1.amazonaws.com/user/register', {
+    const response = await postFetch('userUrl', {
       username: values.username,
       email: values.email,
       password: values.password,
