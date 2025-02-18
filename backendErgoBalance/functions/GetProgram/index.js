@@ -15,7 +15,7 @@ const getUsers = async (event) => {
 
     try {
         const data = await db.get({
-            TableName: 'ergousers-db',
+            TableName: 'ergoprogram-db',
             Key: {
                 pk: pk,
                 sk: sk
@@ -23,10 +23,10 @@ const getUsers = async (event) => {
         })
 
         if(!data.Item) {
-            return sendError(404, {message: 'Användaren hittades inte'})
+            return sendError(404, {message: 'Programmet hittades inte'})
         }
 
-        return sendResponse(200, {success: true, data: data})
+        return sendResponse(200, {success: true, data: data.Item})
     } catch(error) {
         return sendError(500, {message: error.message})
     }

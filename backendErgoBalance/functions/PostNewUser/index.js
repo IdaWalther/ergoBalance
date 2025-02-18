@@ -20,13 +20,8 @@ const postNewUser = async (event) => {
 
     const hashedPassword = await hashPassword(password)
     const id = uuid()
-    const programId = uuid()
+    const programSk = uuid()
     const program = [
-        {
-            "pk": programId,
-            "name": "Startprogram",
-            "desc": "Ett första progam för att få in aktivitet vid för mycket stillasittande",
-            "exercises": [
                 {
                     "sk": "07b2f5e3-e1ce-4be8-b54e-015ddc6e92d9",
                     "pk": "active",
@@ -70,9 +65,7 @@ const postNewUser = async (event) => {
                     "desc": "Lyft axlarna upp mot öronen, rulla dem bakåt och neråt i en cirkulär rörelse, och upprepa sedan rörelsen framåt. Fortsätt att rulla axlarna i båda riktningarna för att lindra spänningar och förbättra rörligheten i axelleden."
                 }
             ]
-        }
-    ]
-    
+
     try {
         const {Items} = await db.scan({
             TableName: 'ergousers-db',
@@ -94,10 +87,21 @@ const postNewUser = async (event) => {
                 sk: id,
                 username: username,
                 password: hashedPassword,
-                mail: email,
-                program: program
+                mail: email
             }
         })
+
+        const userProgram = await db.put({
+            TableName: 'ergoprogram-db',
+            Item: {
+                pk: id,
+                sk: programSk,
+                name: 'Startprogram',
+                desc: 'Ett första program för att få in aktivitet vid för mycket stillasittande',
+                exercises: program
+            }
+        })
+
         return sendResponse(200, {
             body: {
                 success: true,
@@ -107,7 +111,7 @@ const postNewUser = async (event) => {
                     sk: id,
                     username: username,
                     mail: email,
-                    program: program
+                    userProgram
                 }
             }
         })

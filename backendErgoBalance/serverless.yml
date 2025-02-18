@@ -22,17 +22,23 @@ functions:
       - httpApi:
           path: /
           method: get
-  GetUser:
-    handler: functions/GetUser/index.handler
+  GetPrograms:
+    handler: functions/GetPrograms/index.handler
     events:
       - httpApi:
-          path: /user/{pk}/{sk}
+          path: /user/program/{pk}
           method: get
-  PutUser:
-    handler: functions/PutUser/index.handler
+  GetProgram:
+    handler: functions/GetProgram/index.handler
     events:
       - httpApi:
-          path: /user/{pk}/{sk}
+          path: /user/program/{pk}/{sk}
+          method: get
+  PutProgram:
+    handler: functions/PutProgram/index.handler
+    events:
+      - httpApi:
+          path: /user/program/{pk}/{sk}
           method: put
   PostNewUser:
     handler: functions/PostNewUser/index.handler
@@ -92,6 +98,21 @@ resources:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: 'ergoexcercises-db'
+        AttributeDefinitions:
+          - AttributeName: 'pk'
+            AttributeType: 'S'
+          - AttributeName: 'sk'
+            AttributeType: 'S'
+        KeySchema:
+          - AttributeName: 'pk'
+            KeyType: 'HASH'
+          - AttributeName: 'sk'
+            KeyType: 'RANGE'
+        BillingMode: PAY_PER_REQUEST
+    ProgramTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: 'ergoprogram-db'
         AttributeDefinitions:
           - AttributeName: 'pk'
             AttributeType: 'S'
