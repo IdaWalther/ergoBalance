@@ -22,6 +22,18 @@ functions:
       - httpApi:
           path: /
           method: get
+  GetUser:
+    handler: functions/GetUser/index.handler
+    events:
+      - httpApi:
+          path: /user/{pk}/{sk}
+          method: get
+  PutUser:
+    handler: functions/PutUser/index.handler
+    events:
+      - httpApi:
+          path: /user/{pk}/{sk}
+          method: put
   PostNewUser:
     handler: functions/PostNewUser/index.handler
     events:
