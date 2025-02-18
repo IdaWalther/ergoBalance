@@ -23,7 +23,7 @@ const onFormSubmit = async (event : Event) => {
 
   if (!identifierError.value && !passwordError.value) {
     try {
-      const response =  await loginUser('loginsUrl', {
+      const response =  await loginUser('userUrl', {
         usernameOrEmail: identifier.value,
         password: password.value 
       })

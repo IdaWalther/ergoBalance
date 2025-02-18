@@ -1,8 +1,8 @@
-import { urls } from "../../url";
+import { urls } from '../../url'
 
 export const postFetch = async (urlKey: string, data: any) => {
-    const url = urls[urlKey];
-    const response = await fetch(`${url}?key=key74hTy7`, {
+    const url = urls[urlKey]
+    const response = await fetch(`${url}/register?key=key74hTy7`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -4,9 +4,9 @@ import { urls } from "../../url";
 
 export const userAuthenticate = () => {
     const loginUser = async (urlKey: string, userInfo: { usernameOrEmail: string, password: string }) => {
+        const url = urls[urlKey]
         try {
-            const url = urls[urlKey];
-            const response = await fetch(`${url}?key=key74hTy7`, {
+            const response = await fetch(`${url}/login?key=key74hTy7`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ export const userAuthenticate = () => {
             }
 
             const responseData = await response.json()
-            token.value = responseData.data.token
+            token.value = responseData.data.data.token
             localStorage.setItem('token', responseData.data.data.token)
             return responseData
         } catch (error) {
@@ -29,5 +29,13 @@ export const userAuthenticate = () => {
             throw error
         }
     }
-    return { loginUser }
+
+    const logoutUser = () => {
+        token.value = '';
+        localStorage.removeItem('token')
+    }
+
+    const isAuthenticated = () => !!token.value;
+
+    return { loginUser, logoutUser, isAuthenticated }
 }
