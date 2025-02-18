@@ -10,7 +10,14 @@ const userSchema = Joi.object({
             pk: Joi.string().required(),
             name: Joi.string().required(),
             desc: Joi.string().required(),
-            image: Joi.string().required() 
+            exercises: Joi.array().items(
+                Joi.object({
+                    pk: Joi.string().required(),
+                    name: Joi.string().required(),
+                    desc: Joi.string().required(),
+                    image: Joi.string().required() 
+                })
+            ).min(1)
         })
     )
 })
