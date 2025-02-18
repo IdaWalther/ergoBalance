@@ -1,4 +1,4 @@
-import {urls} from '../../url'
+import { urls } from '../../url'
 
 export const postFetch = async (urlKey: string, data: any) => {
     const url = urls[urlKey]

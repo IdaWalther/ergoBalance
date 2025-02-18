@@ -77,7 +77,7 @@ const onFormSubmit = handleSubmit(async (values: RegisterFormValues) => {
           </Message>
         </article>
         <Button class="registerView__button" type="submit" label="Registrera mig" />
-      </form>
+    </form>
     </section>
   </section>
 </template>
