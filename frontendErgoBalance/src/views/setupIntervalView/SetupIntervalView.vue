@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import './setupIntervalView.scss'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { Button } from 'primevue';
 import { RouterLink } from 'vue-router'
 import { useIntervalTimer } from '../../stores/intervalStore.ts'
@@ -10,13 +10,15 @@ const intervalTimer = useIntervalTimer()
 
 const localWorkInterval = ref(intervalTimer.workInterval / 60)
 const localBreakDuration = ref(intervalTimer.breakDuration / 60)
+const localOverallDuration = ref(intervalTimer.overallTime / 60)
 const saveMessage = ref('')
 const isFadingOut = ref(false)
 
 function update() {
   intervalTimer.updateSettings(
     localWorkInterval.value * 60,
-    localBreakDuration.value * 60
+    localBreakDuration.value * 60,
+    localOverallDuration.value * 60
   )
   saveMessage.value = 'Inställningar sparade!'
 
@@ -46,22 +48,23 @@ function update() {
           <InputNumber v-model.number="localBreakDuration" :min="0" :max="100" showButtons buttonLayout="horizontal" fluid />
         </label>
       </article>
-      <!-- <article>
+      <article>
         <label>
          Övergripande tid för alla intervaller:
-          <InputNumber v-model.number="localBreakDuration" :min="0" :max="1000" showButtons buttonLayout="horizontal" />
+          <InputNumber v-model.number="localOverallDuration" :min="0" :max="1000" showButtons buttonLayout="horizontal" fluid />
         </label>
-      </article> -->
+      </article>
       <article>
         <RouterLink to="/setupExercises">
-      <Button>Val av övningar</Button>
+      <Button class="setupInterval__btn">Val av övningar</Button>
         </RouterLink>
       </article>
-      <Button type="submit">Spara</Button>
+      <Button class="setupInterval__btn" type="submit">Spara</Button>
       <p v-if="saveMessage" :class="{'fade-out': isFadingOut}" class="save-message">{{ saveMessage }}</p>
-    </form>
-     <router-link to="/main">
-      <Button>Tillbaka</Button>
+      <router-link to="/main">
+      <Button class="setupInterval__btn">Tillbaka</Button>
     </router-link>
+  </form>
+  
   </section>
 </template>

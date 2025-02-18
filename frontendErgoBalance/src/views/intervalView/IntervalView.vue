@@ -27,6 +27,13 @@ function stop() {
 <template>
   <section class="intervalView__wrapper">
     <section class="intervalView__container">
+      <section v-if="!intervalTimer.isRunning">
+     <h1>nu är det slut!</h1>
+     <router-link to="/main">
+      <Button class="interval__btn">Tillbaka till Main View</Button>
+    </router-link>
+      </section>
+      <section v-else>
     <h1>Timer</h1>
     <p>
       Fas:
@@ -39,12 +46,13 @@ function stop() {
      <!-- <Button v-if="intervalTimer.isRunning" @click="togglePause">
       {{ intervalTimer.isPaused ? 'starta intervaller igen' : 'pausa intervaller' }}
     </Button> -->
-    <Button @click="stop" :disabled="!intervalTimer.isRunning">
+    <Button class="interval__btn" @click="stop" :disabled="!intervalTimer.isRunning">
       Stoppa Intervaller
     </Button>
     <router-link to="/main">
-      <Button>Tillbaka till Main View</Button>
+      <Button class="interval__btn">Tillbaka till Main View</Button>
     </router-link>
+  </section>
   </section>
   </section>
 </template>
