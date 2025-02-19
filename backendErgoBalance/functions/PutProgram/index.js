@@ -15,7 +15,7 @@ const putProgram = async (event) => {
     }
 
     try {
-        const { name, desc, exercises  } = JSON.parse(event.body)
+        const { addExercises = [], removeExercises = []  } = JSON.parse(event.body)
         const response = await db.get({
             TableName: 'ergoprogram-db',
             Key: {
@@ -23,30 +23,24 @@ const putProgram = async (event) => {
                 sk: sk
             }
         })
-
+        
         if(!response.Item) {
             return sendError(404, {message: 'Programmet hittades inte'})
         }
 
         const oldProgram = response.Item
-        const oldExercises = oldProgram.exercises
+        const oldExercises = oldProgram.exercises || []
 
-        const updatedExercies = oldExercises.map((exercise) => {
-            const updatedExercie = exercises.find(e => e.sk === exercise.sk)
-            if(updatedExercie) {
-                return {
-                    ...exercise,
-                    ...updatedExercie
-                }
-            }
-            return exercise
-        })
+        const updatedExercies = [
+            ...oldExercises,
+            ...addExercises.filter(exercise => !oldExercises.some( ex => ex.sk === exercise.sk ))
+        ]
+
+        const finalExercises = updatedExercies.filter(ex => !removeExercises.includes(ex.sk))
 
         const newProgram = {
             ...oldProgram,
-            ...(name !== undefined && {name}),
-            ...(desc !== undefined && {desc}),
-            exercises: updatedExercies
+            exercises: finalExercises
         }
         
         await db.put({
@@ -60,7 +54,7 @@ const putProgram = async (event) => {
         });
 
 
-        return sendResponse(200, {message: 'Programmet är uppdaterat:', updatedProgram: updatedResponse.Item})
+        return sendResponse(200, {message: 'Programmet är uppdaterat:', updatedProgram: updatedResponse})
     } catch(error) {
         return sendError(500, {message: error.message})
     }

@@ -20,7 +20,7 @@ const postNewUser = async (event) => {
 
     const hashedPassword = await hashPassword(password)
     const id = uuid()
-    const programSk = uuid()
+    const programSk = 'startprogram'
     const program = [
                 {
                     "sk": "07b2f5e3-e1ce-4be8-b54e-015ddc6e92d9",
@@ -94,7 +94,7 @@ const postNewUser = async (event) => {
         const userProgram = await db.put({
             TableName: 'ergoprogram-db',
             Item: {
-                pk: id,
+                pk: username,
                 sk: programSk,
                 name: 'Startprogram',
                 desc: 'Ett första program för att få in aktivitet vid för mycket stillasittande',
