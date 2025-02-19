@@ -1,10 +1,59 @@
 <script setup lang="ts">
 import './intervalView.scss'
+import { jwtDecode, type JwtPayload } from 'jwt-decode';
 import { Button } from 'primevue';
-import { computed } from 'vue'
+import { computed, ref, onMounted, watch } from 'vue'
 import { useIntervalTimer } from '../../stores/intervalStore.ts'
+import { getProgram } from '@/services/getProgram.ts';
+
+interface CustomJwtPayload extends JwtPayload {
+  username?: string
+}
 
 const intervalTimer = useIntervalTimer()
+const program = ref<any>(null)
+const currentExerciseIndex = ref(0);
+
+const token = localStorage.getItem('token')
+const username = ref<string | null>(null)
+
+const getUsername = () => {
+  if(token) {
+    try {
+      const decoded = jwtDecode<CustomJwtPayload>(token)
+      console.log('decoded token:', decoded)
+      username.value = decoded.username ?? null
+    } catch(error) {
+      console.log('Kunde inte dekoda token:', error)
+    }
+  }
+}
+
+const fetchProgram = async () => {
+  if (!username.value) return
+  try {
+    const response = await getProgram('userUrl', username.value)
+    if (response.success) {
+      program.value = response.data
+      console.log('hämtat program:', program.value)
+
+    } else {
+      console.error('Error:', response.message);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
+onMounted(() => {
+    getUsername();
+});
+
+watch([username], ([newUsername]) => {
+  if (newUsername) {
+    fetchProgram()
+  }
+})
 
 const formattedRemainingTime = computed(() => {
   const minutes = Math.floor(intervalTimer.remainingTime / 60)
@@ -14,6 +63,20 @@ const formattedRemainingTime = computed(() => {
     .padStart(2, '0')}`
 })
 
+const currentExercise = computed(() => {
+  if (!program.value || !program.value.exercises) return null;
+  const exercises = program.value.exercises; 
+  if (exercises.length === 0) return null;
+  return exercises[currentExerciseIndex.value % exercises.length]; 
+});
+
+watch(() => intervalTimer.currentPhase, (newPhase) => {
+  if (newPhase === "break") {
+    currentExerciseIndex.value++; 
+  console.log('nuvarande övning:', currentExercise.value)
+  }
+});
+
 function stop() {
   intervalTimer.stop()
 }
@@ -21,7 +84,6 @@ function stop() {
 // function togglePause() {
 //   intervalTimer.pauseToggle()
 // }
-
 </script>
 
 <template>
@@ -46,6 +108,18 @@ function stop() {
      <!-- <Button v-if="intervalTimer.isRunning" @click="togglePause">
       {{ intervalTimer.isPaused ? 'starta intervaller igen' : 'pausa intervaller' }}
     </Button> -->
+    <section v-if="intervalTimer.currentPhase === 'work'">
+  <h1>Timer</h1>
+  <p>
+    Tid kvar: <strong>{{ formattedRemainingTime }}</strong>
+  </p>
+</section>
+
+<section v-if="intervalTimer.currentPhase === 'break' && currentExercise">
+  <h1>Break Time!</h1>
+  <h2>{{ currentExercise.name }}</h2>
+  <img :src="currentExercise.image" :alt="currentExercise.name" width="50" />
+</section>
     <Button class="interval__btn" @click="stop" :disabled="!intervalTimer.isRunning">
       Stoppa Intervaller
     </Button>
