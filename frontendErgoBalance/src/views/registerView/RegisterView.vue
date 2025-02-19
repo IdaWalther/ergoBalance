@@ -7,7 +7,7 @@ import { useForm, useField } from 'vee-validate'
 import validationSchema from '@/validation/registerSchema'
 import Message from 'primevue/message'
 import type { RegisterFormValues } from '@/types/types';
-import { postFetch } from '@/services/postFetch';
+import { userRegistration } from '@/services/userRegistration';
 
 const { handleSubmit } = useForm<RegisterFormValues>({
   validationSchema
@@ -22,7 +22,7 @@ const router = useRouter()
 
 const onFormSubmit = handleSubmit(async (values: RegisterFormValues) => {
   try {
-    const response = await postFetch('userUrl', {
+    const response = await userRegistration('userUrl', {
       username: values.username,
       email: values.email,
       password: values.password,
