@@ -2,6 +2,7 @@
 import './registerView.scss'
 import Button from 'primevue/button'
 import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 import InputText from 'primevue/inputtext';
 import { useForm, useField } from 'vee-validate'
 import validationSchema from '@/validation/registerSchema'
@@ -13,6 +14,7 @@ const { handleSubmit } = useForm<RegisterFormValues>({
   validationSchema
 })
 
+const registrationError = ref<string | null>(null);
 const { value: username, errorMessage: usernameError } = useField<string | null>('username')
 const { value: email, errorMessage: emailError, } = useField<string | null>('email')
 const { value: password, errorMessage: passwordError } = useField<string | null>('password')
@@ -32,10 +34,12 @@ const onFormSubmit = handleSubmit(async (values: RegisterFormValues) => {
       console.log('success registration!', response)
       router.push('/login');
     } else {
-      console.error('Error:', response.body.message);
-    }
-  } catch (error) {
-    console.error('Error:', error);
+      console.error('Error:', response.body.data.message);
+      registrationError.value = response.body.data.message;
+      }
+  } catch (error: any) {
+    console.error('Network Error:', error);
+    registrationError.value = error.message || 'Ett oväntat fel inträffade. Försök igen senare.';
   }
 });
 
@@ -76,6 +80,9 @@ const onFormSubmit = handleSubmit(async (values: RegisterFormValues) => {
             {{ passwordAgainError }}
           </Message>
         </article>
+        <Message v-if="registrationError" severity="error" size="small" variant="simple">
+          {{ registrationError }}
+        </Message>
         <Button class="registerView__button" type="submit" label="Registrera mig" />
     </form>
     </section>
