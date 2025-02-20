@@ -13,8 +13,7 @@ export const userRegistration = async (urlKey: string, data: any) => {
 
         if (!response.ok) {
             const errorData = await response.json();
-            console.error('Server Error:', errorData);
-            throw new Error(errorData.message || 'Det gick inte att registrera användare');
+            throw new Error(errorData.data?.message || 'Det gick inte att registrera användare');
         }
         const responseData = await response.json();
         return responseData;

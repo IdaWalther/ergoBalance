@@ -77,7 +77,7 @@ const postNewUser = async (event) => {
         })
 
         if (Items.length > 0) {
-            return sendError(400, { message: 'Användaren existerar redan' })
+            return sendError(409, { message: 'Användarnamn eller email existerar redan' })
         }
 
         await db.put({

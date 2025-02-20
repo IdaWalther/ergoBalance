@@ -119,6 +119,7 @@ function stop() {
   <h1>Break Time!</h1>
   <h2>{{ currentExercise.name }}</h2>
   <img :src="currentExercise.image" :alt="currentExercise.name" width="50" />
+<p>{{ currentExercise.desc }}</p>
 </section>
     <Button class="interval__btn" @click="stop" :disabled="!intervalTimer.isRunning">
       Stoppa Intervaller

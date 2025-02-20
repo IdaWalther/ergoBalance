@@ -2,7 +2,7 @@
 import './mainView.scss'
 import { Button } from 'primevue';
 import { RouterLink } from 'vue-router';
-import {ref, onMounted, defineComponent} from 'vue'
+import {ref, onMounted } from 'vue'
 import { jwtDecode } from 'jwt-decode';
 import { useIntervalTimer } from '../../stores/intervalStore.ts'
 import { userAuthenticate } from '../../services/userAuthenticate'
@@ -31,6 +31,7 @@ onMounted(() => {
 
 const logout = () => {
   logoutUser()
+  intervalTimer.stop()
   router.push('/')
 }
 

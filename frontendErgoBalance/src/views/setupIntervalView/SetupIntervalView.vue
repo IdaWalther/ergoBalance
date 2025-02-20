@@ -10,16 +10,23 @@ const intervalTimer = useIntervalTimer()
 
 const localWorkInterval = ref(intervalTimer.workInterval / 60)
 const localBreakDuration = ref(intervalTimer.breakDuration / 60)
-const localOverallDuration = ref(intervalTimer.overallTime / 60)
 const saveMessage = ref('')
 const isFadingOut = ref(false)
+
+const overallDurationHours = computed({
+  get: () => intervalTimer.overallTime / 3600,  
+  set: (val) => {
+    intervalTimer.overallTime = val * 3600;
+  },
+});
 
 function update() {
   intervalTimer.updateSettings(
     localWorkInterval.value * 60,
     localBreakDuration.value * 60,
-    localOverallDuration.value * 60
+    intervalTimer.overallTime
   )
+
   saveMessage.value = 'Inställningar sparade!'
 
   setTimeout(() => {
@@ -31,6 +38,7 @@ function update() {
     isFadingOut.value = false
   }, 3500)
 }
+
 </script>
 
 <template>
@@ -51,7 +59,7 @@ function update() {
       <article>
         <label>
          Övergripande tid för alla intervaller:
-          <InputNumber v-model.number="localOverallDuration" :min="0" :max="1000" showButtons buttonLayout="horizontal" fluid />
+          <InputNumber v-model.number="overallDurationHours" :min="0" :max="1000" showButtons suffix=" h" buttonLayout="horizontal" fluid />
         </label>
       </article>
       <article>
