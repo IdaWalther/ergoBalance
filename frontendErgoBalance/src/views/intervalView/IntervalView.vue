@@ -81,54 +81,46 @@ function stop() {
   intervalTimer.stop()
 }
 
-// function togglePause() {
-//   intervalTimer.pauseToggle()
-// }
+function togglePause() {
+  intervalTimer.pauseToggle()
+}
+
 </script>
 
 <template>
   <section class="intervalView__wrapper">
     <section class="intervalView__container">
       <section v-if="!intervalTimer.isRunning">
-     <h1>nu är det slut!</h1>
-     <router-link to="/main">
-      <Button class="interval__btn">Tillbaka till Main View</Button>
-    </router-link>
+        <h1>nu är det slut!</h1>
+        <router-link to="/main">
+          <Button class="interval__btn">Tillbaka till Main View</Button>
+        </router-link>
       </section>
       <section v-else>
-    <h1>Timer</h1>
-    <p>
-      Fas:
-      <strong>{{ intervalTimer.currentPhase }}</strong>
-    </p>
-    <p>
-      Tid kvar:
-      <strong>{{ formattedRemainingTime }}</strong>
-    </p>
-     <!-- <Button v-if="intervalTimer.isRunning" @click="togglePause">
-      {{ intervalTimer.isPaused ? 'starta intervaller igen' : 'pausa intervaller' }}
-    </Button> -->
-    <section v-if="intervalTimer.currentPhase === 'work'">
-  <h1>Timer</h1>
-  <p>
-    Tid kvar: <strong>{{ formattedRemainingTime }}</strong>
-  </p>
-</section>
-
-<section v-if="intervalTimer.currentPhase === 'break' && currentExercise">
-  <h1>Break Time!</h1>
-  <h2>{{ currentExercise.name }}</h2>
-  <img :src="currentExercise.image" :alt="currentExercise.name" width="50" />
-<p>{{ currentExercise.desc }}</p>
-</section>
-    <Button class="interval__btn" @click="stop" :disabled="!intervalTimer.isRunning">
-      Stoppa Intervaller
-    </Button>
-    <router-link to="/main">
-      <Button class="interval__btn">Tillbaka till Main View</Button>
-    </router-link>
-  </section>
-  </section>
+        <h1>Timer</h1>
+        <p> Fas: <strong>{{ intervalTimer.currentPhase }}</strong></p>
+        <p> Tid kvar: <strong>{{ formattedRemainingTime }}</strong></p>
+        <section v-if="intervalTimer.currentPhase === 'work'">
+          <h1>Timer</h1>
+          <p> Tid kvar: <strong>{{ formattedRemainingTime }}</strong></p>
+        </section>
+        <section v-if="intervalTimer.currentPhase === 'break' && currentExercise">
+          <h1>Break Time!</h1>
+          <h2>{{ currentExercise.name }}</h2>
+          <img :src="currentExercise.image" :alt="currentExercise.name" width="50" />
+          <p>{{ currentExercise.desc }}</p>
+        </section>
+        <Button v-if="intervalTimer.isRunning" @click="togglePause">
+          {{ intervalTimer.isPaused ? 'starta intervaller igen' : 'Pausa Intervaller' }}
+        </Button>
+        <Button class="interval__btn" @click="stop" :disabled="!intervalTimer.isRunning">
+          Stoppa Intervaller
+        </Button>
+        <router-link to="/main">
+          <Button class="interval__btn">Tillbaka till Main View</Button>
+        </router-link>
+      </section>
+    </section>
   </section>
 </template>
 
