@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import './setupExercisesView.scss'
 import Button from 'primevue/button'
 import { getProgram } from '../../services/getProgram';
 import { editProgram } from '../../services/editProgram';
@@ -83,19 +84,19 @@ const removeExercise = async (pk:string, sk:string) => {
 
 <template>
   <section class="setupExercisesView__wrapper">
-    <Button @click="myProgram">Mitt program</Button>
-    <Button @click="showAllExercises">Alla övningar</Button>
-    <section v-if="showMyProgram">
-      <p>Knappen mitt program är aktiv</p>
-      {{ program.name }}
-      <section v-for:="item in program.exercises">
-        <h2>{{ item.name }}</h2>
-        <Button @click="removeExercise(item.pk, item.sk)">Ta bort</Button>
-      </section>
+    <Button @click="myProgram" class="setupExercisesView__button">Mitt program</Button>
+    <Button @click="showAllExercises"  class="setupExercisesView__button">Alla övningar</Button>
+    <section v-if="showMyProgram" class="setupExercisesView__container">
+      <h2>{{ program.name }}</h2>
+      <ul v-for:="item in program.exercises" class="setupExercisesView__ul">
+        <li class="setupExercisesView__li">{{ item.name }}
+        <Button @click="removeExercise(item.pk, item.sk)"  class="setupExercisesView__button setupExercisesView__button--remove">X</Button>
+        </li>
+      </ul>
 
 
     </section>
-    <section v-if="showExercises">
+    <section v-if="showExercises" class="setupExercisesView__container">
       <p>Knappen Alla övningar är klickad på</p>
     </section>
   </section>
