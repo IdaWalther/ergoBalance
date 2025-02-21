@@ -6,6 +6,25 @@
     background: linear-gradient(144deg, rgba(162,208,193,1) 0%, rgba(11,88,80,1) 60%) !important; 
 }
 
+.setupExercisesView__logo {
+    z-index: 10;
+    height: 3rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    cursor: pointer;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    padding: .1rem;
+    &:hover {
+        scale: 1.1;
+    }
+    
+    &:active {
+        scale: 0.9;
+    }
+}
+
 .setupExercisesView__title {
     text-align: center;
 }
@@ -17,6 +36,7 @@
     padding: 1rem;
     min-height: 65vh;
     max-height: 65vh;
+    width: 75vw;
     overflow: auto;
 }
 
@@ -24,28 +44,54 @@
     list-style: none;
 }
 
-.setupExercisesView__li {
+.setupExercisesView__li, .setupExercisesView__ul .setupExercisesView__ul--inner {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .setupExercisesView__button {
     @include button-base;
     margin: 2rem .5rem;
 }
-.setupExercisesView__button.setupExercisesView__button--remove {
-    border-color: var(--color-black) !important;
-    min-width: 10px !important;
-    font-size: #{$spacing-sm};
-    margin: 16px 0 16px 14px;
-}
-
-.setupExercisesView__button.setupExercisesView__button--add {
+.setupExercisesView__button.setupExercisesView__button--remove, .setupExercisesView__button.setupExercisesView__button--add {
     border-color: var(--color-black) !important;
     min-width: 10px !important;
     font-size: #{$spacing-md};
     padding: 5px 12px;
     margin: 16px 0 16px 14px;
+}
+
+.setupExercisesView__modal {
+    @include centering;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: #{$spacing-xl};
+}
+
+.setupExercisesView__modal-title {
+    font-size: #{$sizing-xs};
+    padding: #{$spacing-md};
+}
+.setupExercisesView__modal-text {
+    font-size: 1rem;
+    padding: #{$spacing-md};
+}
+
+.setupExercisesView__modal-image {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.setupExercisesView__modal-button {
+    @include button-base;
+    position: absolute !important;
+    top: 1rem;
+    right: 1rem;
+    background-color: red !important;
 }
