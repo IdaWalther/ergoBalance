@@ -1,24 +1,26 @@
 <script setup lang="ts">
 import Button from 'primevue/button'
 import { getProgram } from '../../services/getProgram';
+import { editProgram } from '../../services/editProgram';
 import { jwtDecode, type JwtPayload } from 'jwt-decode';
 import { onMounted, ref } from 'vue'
+import { ErrorMessage } from 'vee-validate';
 
 const token = localStorage.getItem('token')
-const username = ref<string | null>(null)
+const username = ref('')
 const showExercises = ref(false)
 const showMyProgram = ref(false)
 const program = ref()
 
 interface CustomJwtPayload extends JwtPayload {
-  username?: string
+  username: string
 }
 
 const getUsername = () => {
   if(token) {
     try {
       const decoded = jwtDecode<CustomJwtPayload>(token)
-      username.value = decoded.username ?? null
+      username.value = decoded.username
     } catch(error) {
       console.log('Kunde inte dekoda token:', error)
     }
@@ -57,15 +59,30 @@ const showAllExercises = () => {
   showExercises.value = true
 }
 
-const removeExercise = (pk:string, sk:string) => {
+const removeExercise = async (pk:string, sk:string) => {
+  console.log(username.value)
+
+  const information = {
+    removeExercises : [
+      sk
+    ]
+  }
   console.log("pk:", pk)
   console.log("sk:", sk)
+  try {
+    await editProgram('userUrl', username.value, information)
+    myProgram()
+  } catch(error) {
+    console.log('error:', error)
+    throw error
+  }
+
+
 }
 </script>
 
 <template>
   <section class="setupExercisesView__wrapper">
-    <h1>SetupExercisesView</h1>
     <Button @click="myProgram">Mitt program</Button>
     <Button @click="showAllExercises">Alla övningar</Button>
     <section v-if="showMyProgram">
