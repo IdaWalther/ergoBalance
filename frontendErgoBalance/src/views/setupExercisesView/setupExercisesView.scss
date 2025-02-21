@@ -5,12 +5,19 @@
     background: rgb(162,208,193) !important;
     background: linear-gradient(144deg, rgba(162,208,193,1) 0%, rgba(11,88,80,1) 60%) !important; 
 }
+
+.setupExercisesView__title {
+    text-align: center;
+}
+
 .setupExercisesView__container {
-    min-height: 100%;
     background-color: rgba(255,255,255,.3);
     border-radius: #{$borders-radius-md};
     margin: 1rem;
     padding: 1rem;
+    min-height: 65vh;
+    max-height: 65vh;
+    overflow: auto;
 }
 
 .setupExercisesView__ul {
@@ -26,10 +33,19 @@
 
 .setupExercisesView__button {
     @include button-base;
+    margin: 2rem .5rem;
 }
-.setupExercisesView__button.setupExercisesView__button--remove, .setupExercisesView__button.setupExercisesView__button--add {
+.setupExercisesView__button.setupExercisesView__button--remove {
     border-color: var(--color-black) !important;
     min-width: 10px !important;
     font-size: #{$spacing-sm};
+    margin: 16px 0 16px 14px;
+}
+
+.setupExercisesView__button.setupExercisesView__button--add {
+    border-color: var(--color-black) !important;
+    min-width: 10px !important;
+    font-size: #{$spacing-md};
+    padding: 5px 12px;
     margin: 16px 0 16px 14px;
 }

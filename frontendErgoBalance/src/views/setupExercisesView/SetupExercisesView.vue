@@ -86,33 +86,55 @@ const removeExercise = async (pk:string, sk:string) => {
     console.log('error:', error)
     throw error
   }
+}
 
-
+const addExercise = async (pk: string, sk:string, name:string, desc: string, image: string) => {
+  const information = {
+    "addExercises": [
+      {
+        "pk": pk,
+        "sk": sk,
+        "name": name,
+        "image": image,
+        "desc": desc
+      }
+    ],
+  }
+  try {
+    await editProgram('userUrl', username.value, information)
+    myProgram()
+  } catch(error) {
+    console.log('error:', error)
+    throw error
+  }
 }
 </script>
 
 <template>
   <section class="setupExercisesView__wrapper">
-    <Button @click="myProgram" class="setupExercisesView__button">Mitt program</Button>
-    <Button @click="showAllExercises"  class="setupExercisesView__button">Alla övningar</Button>
-    <section v-if="showMyProgram" class="setupExercisesView__container">
-      <h2>{{ program.name }}</h2>
+    <section class="setupExercisesView__header">
+      <Button @click="myProgram" class="setupExercisesView__button">Mitt program</Button>
+      <Button @click="showAllExercises"  class="setupExercisesView__button">Alla övningar</Button>
+    </section>
+    <section v-if="showMyProgram">
+      <h2 class="setupExercisesView__title">Mitt {{ program.name }}</h2>
+      <section class="setupExercisesView__container">
       <ul v-for:="item in program.exercises" class="setupExercisesView__ul">
         <li class="setupExercisesView__li">{{ item.name }}
         <Button @click="removeExercise(item.pk, item.sk)"  class="setupExercisesView__button setupExercisesView__button--remove">X</Button>
         </li>
       </ul>
-
-
+      </section>
     </section>
-    <section v-if="showExercises" class="setupExercisesView__container">
-      <p>Knappen Alla övningar är klickad på</p>
-      <h2>{{ allExercises.name }}</h2>
-      <ul v-for:="item in allExercises" class="setupExercisesView__ul">
-        <li class="setupExercisesView__li">{{ item.name }}
-        <Button @click="removeExercise(item.pk, item.sk)"  class="setupExercisesView__button setupExercisesView__button--add">+</Button>
-        </li>
-      </ul>
+    <section v-if="showExercises">
+      <h2 class="setupExercisesView__title">Lägg till övningar</h2>
+      <section class="setupExercisesView__container">
+        <ul v-for:="item in allExercises" class="setupExercisesView__ul">
+          <li class="setupExercisesView__li">{{ item.name }}
+          <Button @click="addExercise(item.pk, item.sk, item.name, item.desc, item.image)"  class="setupExercisesView__button setupExercisesView__button--add">+</Button>
+          </li>
+        </ul>
+      </section>
     </section>
   </section>
 </template>
