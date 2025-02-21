@@ -6,10 +6,11 @@
     background: linear-gradient(144deg, rgba(162,208,193,1) 0%, rgba(11,88,80,1) 60%) !important; 
 }
 .setupExercisesView__container {
+    min-height: 100%;
     background-color: rgba(255,255,255,.3);
     border-radius: #{$borders-radius-md};
     margin: 1rem;
-    padding: .2rem;
+    padding: 1rem;
 }
 
 .setupExercisesView__ul {
@@ -26,9 +27,9 @@
 .setupExercisesView__button {
     @include button-base;
 }
-.setupExercisesView__button.setupExercisesView__button--remove {
+.setupExercisesView__button.setupExercisesView__button--remove, .setupExercisesView__button.setupExercisesView__button--add {
     border-color: var(--color-black) !important;
     min-width: 10px !important;
     font-size: #{$spacing-sm};
-    margin: 16px 14px;
+    margin: 16px 0 16px 14px;
 }
