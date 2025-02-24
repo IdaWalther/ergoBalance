@@ -69,9 +69,18 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: var(--color-black);
-    color: var(--color-white);
+    background: var(--color-black);
+    background: linear-gradient(144deg, rgba(162,208,193,1) 0%, rgba(11,88,80,1) 60%) !important; 
     padding: #{$spacing-xl};
+}
+
+.setupExercisesView__modal-section {
+    @include wrapper;
+    position: relative;
+    height: 100vh;
+    max-width: 400px;
+    color: var(--color-black);
+    border-radius: #{$borders-radius-md};
 }
 
 .setupExercisesView__modal-title {
@@ -84,14 +93,12 @@
 }
 
 .setupExercisesView__modal-image {
-    width: 100%;
-    border-radius: 50%;
+    width: 60%;
 }
 
 .setupExercisesView__modal-button {
     @include button-base;
     position: absolute !important;
-    top: 1rem;
+    top: 0;
     right: 1rem;
-    background-color: red !important;
 }

@@ -166,10 +166,12 @@ const dontShow = () => {
       </section>
     </section>
     <div v-if="showInfo" class="setupExercisesView__modal">
-      <Button class="setupExercisesView__modal-button" @click="dontShow">Tillbaka</Button>
-      <h1 class="setupExercisesView__modal-title">{{exname}}</h1>
-      <p class="setupExercisesView__modal-text">{{ exdesc }}</p>
-      <img :src="eximage" class="setupExercisesView__modal-image">
+      <section class="setupExercisesView__modal-section">
+        <Button class="setupExercisesView__modal-button" @click="dontShow">Tillbaka</Button>
+        <h1 class="setupExercisesView__modal-title">{{exname}}</h1>
+        <p class="setupExercisesView__modal-text">{{ exdesc }}</p>
+        <img :src="eximage" class="setupExercisesView__modal-image">
+      </section>
     </div>
   </section>
 </template>
