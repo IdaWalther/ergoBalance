@@ -142,8 +142,15 @@ const dontShow = () => {
       <h2 class="setupExercisesView__title">Ta bort övningar</h2>
       <section class="setupExercisesView__container">
       <ul v-for:="item in program.exercises" class="setupExercisesView__ul">
-        <li class="setupExercisesView__li">{{ item.name }}
-        <Button @click="removeExercise(item.pk, item.sk)"  class="setupExercisesView__button setupExercisesView__button--remove">-</Button>
+        <li>
+          <ul class="setupExercisesView__ul setupExercisesView__ul--inner">
+            <li @click="showMoreInfo(item.name, item.desc, item.image)">
+              {{ item.name }}
+            </li>
+            <li>
+              <Button @click="removeExercise(item.pk, item.sk)"  class="setupExercisesView__button setupExercisesView__button--remove">-</Button>
+            </li>
+          </ul>
         </li>
       </ul>
       </section>
