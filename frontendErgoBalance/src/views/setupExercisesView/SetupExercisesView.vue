@@ -119,7 +119,6 @@ const showMoreInfo = (name : string, desc : string, image : string) => {
   exname.value = name
   exdesc.value = desc
   eximage.value = image
-
 }
 
 const dontShow = () => {
@@ -137,14 +136,17 @@ const dontShow = () => {
     <section class="setupExercisesView__header">
       <Button @click="myProgram" class="setupExercisesView__button">Mitt program</Button>
       <Button @click="showAllExercises"  class="setupExercisesView__button">Alla övningar</Button>
+      
     </section>
     <section v-if="showMyProgram">
-      <h2 class="setupExercisesView__title">Ta bort övningar</h2>
+      <h2 class="setupExercisesView__title">Mina övningar</h2>
+      <p class="setupExercisesView__text">Klicka på knappen bredvid den övning du vill ta bort från ditt program. Klicka för mer information om övningen.</p>
+
       <section class="setupExercisesView__container">
       <ul v-for:="item in program.exercises" class="setupExercisesView__ul">
         <li>
           <ul class="setupExercisesView__ul setupExercisesView__ul--inner">
-            <li @click="showMoreInfo(item.name, item.desc, item.image)">
+            <li class="setupExercisesView__li--inner" @click="showMoreInfo(item.name, item.desc, item.image)">
               {{ item.name }}
             </li>
             <li>
@@ -156,12 +158,13 @@ const dontShow = () => {
       </section>
     </section>
     <section v-if="showExercises">
-      <h2 class="setupExercisesView__title">Lägg till övningar</h2>
+      <h2 class="setupExercisesView__title">Alla övningar</h2>
+      <p class="setupExercisesView__text">Klicka på knappen bredvid den övning du vill lägga till i ditt program. Klicka för mer information om övningen.</p>
       <section class="setupExercisesView__container">
         <ul v-for:="item in allExercises" class="setupExercisesView__ul">
           <li>
             <ul class="setupExercisesView__ul setupExercisesView__ul--inner">
-              <li @click="showMoreInfo(item.name, item.desc, item.image)">
+              <li class="setupExercisesView__li--inner" @click="showMoreInfo(item.name, item.desc, item.image)">
                 {{ item.name }}
               </li>
               <li>

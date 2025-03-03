@@ -30,14 +30,17 @@
 }
 
 .setupExercisesView__container {
+    @include centering;
     background-color: rgba(255,255,255,.3);
+    color: var(--color-white);
     border-radius: #{$borders-radius-md};
     margin: 1rem;
     padding: 1rem;
     min-height: 65vh;
     max-height: 65vh;
-    max-width: 400px;
     overflow: auto;
+    align-items: normal;
+    justify-content: flex-start;
 }
 
 .setupExercisesView__ul {
@@ -52,16 +55,24 @@
     justify-content: space-between;
 }
 
+.setupExercisesView__li--inner {
+    cursor: pointer;
+}
 .setupExercisesView__button {
     @include button-base;
     margin: 2rem .5rem;
 }
 .setupExercisesView__button.setupExercisesView__button--remove, .setupExercisesView__button.setupExercisesView__button--add {
     border-color: var(--color-black) !important;
-    min-width: 10px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
     font-size: #{$spacing-md};
     padding: 5px 12px;
     margin: 16px 0 16px 14px;
+}
+
+.setupExercisesView__text {
+    padding: 0.5rem 2rem;
 }
 
 .setupExercisesView__modal {

@@ -63,9 +63,6 @@ function update() {
         </label>
       </article>
       <article>
-        <RouterLink to="/setupExercises">
-      <Button class="setupInterval__btn">Val av övningar</Button>
-        </RouterLink>
       </article>
       <Button class="setupInterval__btn" type="submit">Spara</Button>
       <p v-if="saveMessage" :class="{'fade-out': isFadingOut}" class="save-message">{{ saveMessage }}</p>
