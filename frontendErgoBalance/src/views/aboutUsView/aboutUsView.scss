@@ -1,22 +1,76 @@
 @use '../../assets/app.scss' as *;
 
 .aboutUsView__wrapper {
-    @include wrapper;
-    height: 90vh;
+  @include wrapper;
+  background: rgb(162, 208, 193) !important;
+  background: linear-gradient(144deg, rgba(162, 208, 193, 1) 0%, rgba(11, 88, 80, 1) 60%) !important;
+}
+
+
+.aboutUsView__container {
+  @include centering;
+  height: 90vh;
+  width: 90vw;
+  justify-content: space-around;
+  overflow: scroll;
+  position: relative;
+  background-color: var(--color-white) !important;
 }
 
 .aboutUsView__logo {
-    z-index: 10;
-    height: 3rem;
-    position: relative;
-    top: 1.5rem;
-    left: 1.5rem;
-    cursor: pointer;
-    &:hover {
-        scale: 1.1;
-      }
-    
-      &:active {
-        scale: 0.9;
-      }
+  z-index: 99;
+  height: 3rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.1;
+  }
+
+  &:active {
+    scale: 0.9;
+  }
+}
+
+.aboutUsView__header {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-top: 2rem
+}
+
+.aboutUsView__section {
+  @include centering;
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 0;
+}
+
+.aboutUsView__section-backgroundcolor {
+  background-color: var(--color-green);
+  color: white;
+}
+
+.aboutUsView__section-header {
+  margin-bottom: 1rem;
+}
+
+.aboutUs__img-creators {
+  width: 90%;
+  margin-top: 2rem;
+}
+
+.aboutUsView__section-imgInfo {
+  font-style: italic;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.aboutUs__img {
+  width: 100%;
 }
