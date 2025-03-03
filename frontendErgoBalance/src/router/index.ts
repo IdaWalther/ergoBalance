@@ -30,28 +30,42 @@ const router = createRouter({
       path: '/main',
       name: 'main',
       component: MainView,
+      meta: { requiresAuth: true } 
     },
     {
       path: '/about',
       name: 'about',
       component: AboutUsView,
+      meta: { requiresAuth: true } 
     },
     {
       path: '/interval',
       name: 'interval',
       component: IntervalView,
+      meta: { requiresAuth: true } 
     },
     {
       path: '/setupInterval',
       name: 'setupInterval',
       component: SetupIntervalView,
+      meta: { requiresAuth: true } 
     },
     {
       path: '/setupExercises',
       name: 'setupExercises',
       component: SetupExercisesView,
+      meta: { requiresAuth: true } 
     },
   ],
+})
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  if(to.meta.requiresAuth && !token) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router
