@@ -1,0 +1,104 @@
+@use '../../assets/app.scss' as *;
+
+.setupExercisesView__wrapper {
+    @include wrapper;
+    background: rgb(162,208,193) !important;
+    background: linear-gradient(144deg, rgba(162,208,193,1) 0%, rgba(11,88,80,1) 60%) !important; 
+}
+
+.setupExercisesView__logo {
+    z-index: 10;
+    height: 3rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    cursor: pointer;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    padding: .1rem;
+    &:hover {
+        scale: 1.1;
+    }
+    
+    &:active {
+        scale: 0.9;
+    }
+}
+
+.setupExercisesView__title {
+    text-align: center;
+}
+
+.setupExercisesView__container {
+    background-color: rgba(255,255,255,.3);
+    border-radius: #{$borders-radius-md};
+    margin: 1rem;
+    padding: 1rem;
+    min-height: 65vh;
+    max-height: 65vh;
+    max-width: 400px;
+    overflow: auto;
+}
+
+.setupExercisesView__ul {
+    list-style: none;
+}
+
+.setupExercisesView__ul .setupExercisesView__ul--inner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.setupExercisesView__button {
+    @include button-base;
+    margin: 2rem .5rem;
+}
+.setupExercisesView__button.setupExercisesView__button--remove, .setupExercisesView__button.setupExercisesView__button--add {
+    border-color: var(--color-black) !important;
+    min-width: 10px !important;
+    font-size: #{$spacing-md};
+    padding: 5px 12px;
+    margin: 16px 0 16px 14px;
+}
+
+.setupExercisesView__modal {
+    @include centering;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-black);
+    background: linear-gradient(144deg, rgba(162,208,193,1) 0%, rgba(11,88,80,1) 60%) !important; 
+    padding: #{$spacing-xl};
+}
+
+.setupExercisesView__modal-section {
+    @include wrapper;
+    position: relative;
+    height: 100vh;
+    max-width: 400px;
+    color: var(--color-black);
+    border-radius: #{$borders-radius-md};
+}
+
+.setupExercisesView__modal-title {
+    font-size: #{$sizing-xs};
+    padding: #{$spacing-md};
+}
+.setupExercisesView__modal-text {
+    font-size: 1rem;
+    padding: #{$spacing-md};
+}
+
+.setupExercisesView__modal-image {
+    width: 60%;
+}
+
+.setupExercisesView__modal-button {
+    @include button-base;
+    position: absolute !important;
+    top: 0;
+    right: 1rem;
+}
