@@ -4,7 +4,7 @@ import { Button } from 'primevue';
 import { RouterLink } from 'vue-router';
 import {ref, onMounted } from 'vue'
 import { jwtDecode } from 'jwt-decode';
-import { useIntervalTimer } from '../../stores/intervalStore.ts'
+import { useIntervalTimer } from '../../stores/intervalStore'
 import { userAuthenticate } from '../../services/userAuthenticate'
 import { useRouter } from 'vue-router'
 
@@ -58,13 +58,16 @@ function resetAndStart() {
     </RouterLink>
     <RouterLink to="/interval">
       <Button class="mainView__button"
-       @click="resetAndStart">
-       Nya intervaller
+        @click="resetAndStart">
+        Nya intervaller
       </Button>
     </RouterLink>
     <RouterLink to="/setupInterval">
       <Button class="mainView__button" type="button" label="Inställningar för intervaller" />
     </RouterLink>
+    <RouterLink to="/setupExercises">
+      <Button class="mainView__button" type="button" label="Val av övningar" />
+        </RouterLink>
     <RouterLink to="/about">
       <Button class="mainView__button" type="button" label="Om Appen" />
     </RouterLink>
