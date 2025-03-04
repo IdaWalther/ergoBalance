@@ -18,11 +18,12 @@ import { RouterLink } from 'vue-router';
         Sagt och gjort! Som en del av vårt examensarbete på vår YH-utbildning skapade vi en ergonomiapp som inte låter dig förvandlas till en stel kontorsmumie.
       </p>
       <img class="aboutUs__img-creators" src="../../assets/images/IdaAndLisa.webp" alt="Ida And Lisa - creator of ErgoBalance">
-      <p class="aboutUsView__section-imgInfo">Ida och Lisa - Skapare av ErgoBalance</p>
+      <p class="aboutUsView__section-imgInfo" v-animateonscroll="{ enterClass: 'fade-slide-in', leaveClass: 'fadeout' }">Ida och Lisa - Skapare av ErgoBalance</p>
     </section>
-    <section class="aboutUsView__section aboutUsView__section-backgroundcolor">
-      <h3 class="aboutUsView__section-header">Vad gör appen?</h3>
-      <p>
+    <section class="aboutUsView__section aboutUsView__section-backgroundcolor"  v-animateonscroll="{ enterClass: 'fade-slide-in', leaveClass: 'fadeout' }">
+      <h3 class="aboutUsView__section-header" v-animateonscroll="{ enterClass: 'fade-slide-in', leaveClass: 'fadeout' }">
+        Vad gör appen?</h3>
+      <p  v-animateonscroll="{ enterClass: 'fade-slide-in', leaveClass: 'fadeout' }">
 📅 Timer som räknar ner till din nästa paus – För att du ska slippa glömma att röra på dig.
 <br>
 <br>
@@ -38,7 +39,9 @@ import { RouterLink } from 'vue-router';
 Vi skapade den här appen för att vi själva behövde den – och vi hoppas att den hjälper dig också!
       </p>
     </section>
+    <article v-animateonscroll="{ enterClass: 'fade-slide-in', leaveClass: 'fadeout' }" >
       <img class="aboutUs__img" src="../../assets/images/simpleErgonomics.webp" alt="person at desk stretching">
-    </section>
+    </article>
+  </section>
   </section>
 </template>
