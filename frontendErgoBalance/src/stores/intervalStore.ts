@@ -9,6 +9,7 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
   const breakDuration: Ref<number> = ref(5 * 60)
   const overallTime: Ref<number> = ref(240 * 60)
   const overallStartTime: Ref<number | null> = ref(null);
+  const elapsedOverallTime: Ref<number> = ref(0);
 
   //statusvariabler
   const isRunning: Ref<boolean> = ref(false)
@@ -23,7 +24,7 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
   let timeoutId: ReturnType<typeof setTimeout> | null = null
   let countdownIntervalId: ReturnType<typeof setInterval> | null = null
   let overallIntervalId: ReturnType<typeof setInterval> | null = null
-
+  let animationFrameId: number | null = null;
 
   function startOverallTimer(): void {
     overallStartTime.value = Date.now()
@@ -72,12 +73,15 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
 
   function start(): void {
     if (isRunning.value) return
+
     console.log('start körs!')
     isRunning.value = true
     isPaused.value = false
+    elapsedOverallTime.value = 0;
     startTime = Date.now()
     overallStartTime.value = Date.now();
     currentPhase.value = 'work'
+
     startOverallTimer()
     runCycle()
 
@@ -87,10 +91,15 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
     console.log('stopp!')
     isRunning.value = false
     isPaused.value = false
+
     if (timeoutId) clearTimeout(timeoutId)
     if (countdownIntervalId) clearInterval(countdownIntervalId)
     if (overallIntervalId) clearInterval(overallIntervalId)
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
     startTime = 0
+
+    progressPercentage.value = 0;
+    elapsedOverallTime.value = 0;
     overallStartTime.value = null;
   }
 
@@ -101,20 +110,38 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
     if (isPaused.value) {
       if (timeoutId) clearTimeout(timeoutId)
       if (countdownIntervalId) clearInterval(countdownIntervalId)
+      if (overallIntervalId) clearInterval(overallIntervalId);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+      elapsedOverallTime.value += Math.floor((Date.now() - overallStartTime.value!) / 1000);
     } else {
+      overallStartTime.value = Date.now();
+
+      setTimeout(() => {
+        requestAnimationFrame(updateProgress);
+      }, 100);
+
       phaseStart = Date.now() - (phaseDuration - remainingTime.value) * 1000;
+
       startCountdown()
       startTimeout()
     }
   }
-  function updateProgress() {
-    if (!isRunning.value) return
 
-    const elapsedTime = Math.floor((Date.now() - overallStartTime.value!) / 1000);
+  function updateProgress() {
+    if (!isRunning.value || isPaused.value) return
+
+    const elapsedTime = elapsedOverallTime.value + Math.floor((Date.now() - overallStartTime.value!) / 1000);
     const percentage = (elapsedTime / overallTime.value) * 100;
+
+    if (elapsedTime >= overallTime.value) {
+      stop();
+      progressPercentage.value = 100;
+      return;
+    }
     progressPercentage.value = Math.max(0, Math.min(100, Math.floor(percentage)))
 
-    requestAnimationFrame(updateProgress);
+    animationFrameId = requestAnimationFrame(updateProgress);
   };
 
   function updateSettings(newWorkInterval: number, newBreakDuration: number, newOverallTime: number): void {
