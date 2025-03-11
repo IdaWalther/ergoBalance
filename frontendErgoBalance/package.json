@@ -18,7 +18,7 @@
     "@primevue/themes": "^4.2.5",
     "jwt-decode": "^4.0.0",
     "pinia": "^2.3.0",
-    "primevue": "^4.2.5",
+    "primevue": "^4.3.1",
     "sass": "^1.83.4",
     "vee-validate": "^4.15.0",
     "vue": "^3.5.13",

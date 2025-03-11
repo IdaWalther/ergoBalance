@@ -5,6 +5,7 @@ import { Button } from 'primevue';
 import { computed, ref, onMounted, watch } from 'vue'
 import { useIntervalTimer } from '../../stores/intervalStore.ts'
 import { getProgram } from '@/services/getProgram.ts';
+import ProgressBar from 'primevue/progressbar';
 
 interface CustomJwtPayload extends JwtPayload {
   username?: string
@@ -97,6 +98,8 @@ function togglePause() {
         </router-link>
       </section>
       <section v-else>
+        <p>Overall time progress:</p>
+        <ProgressBar :value="intervalTimer.progressPercentage" class="intervalView__progressbar" />
         <h1>Timer</h1>
         <p> Fas: <strong>{{ intervalTimer.currentPhase }}</strong></p>
         <p> Tid kvar: <strong>{{ formattedRemainingTime }}</strong></p>
