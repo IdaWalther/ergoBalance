@@ -6,6 +6,7 @@ import { editProgram } from '../../services/editProgram';
 import { getExercises } from '../../services/getExercises';
 import { jwtDecode, type JwtPayload } from 'jwt-decode';
 import { onMounted, ref } from 'vue'
+import ProgressSpinner from 'primevue/progressspinner';
 
 const token = localStorage.getItem('token')
 const username = ref('')
@@ -17,6 +18,8 @@ const showMyProgram = ref(false)
 const showInfo = ref(false)
 const program = ref()
 const allExercises = ref()
+const loadingProgram = ref(false)
+const loadingExercises = ref(false)
 
 interface CustomJwtPayload extends JwtPayload {
   username: string
@@ -42,7 +45,9 @@ onMounted(() => {
 const myProgram = async () => {
   showExercises.value = false
   showMyProgram.value = true
-  program.value = await getYourProgram()  
+  loadingProgram.value = true
+  program.value = await getYourProgram()
+  loadingProgram.value = false  
 }
 
 const getYourProgram = async () => {
@@ -60,9 +65,9 @@ const getYourProgram = async () => {
   }
 }
 const showAllExercises = async () => {
-  console.log('Visa alla övningar')
   showMyProgram.value = false
   showExercises.value = true
+  loadingExercises.value = true
   try {
     const response = await getExercises('exercisesUrl')
     if (response.success) {
@@ -71,6 +76,7 @@ const showAllExercises = async () => {
   } catch (error) {
     console.error('error', error)
   }
+  loadingExercises.value = false
 }
 
 const removeExercise = async (pk:string, sk:string) => {
@@ -138,7 +144,18 @@ const dontShow = () => {
       <Button @click="showAllExercises"  class="setupExercisesView__button">Alla övningar</Button>
       
     </section>
-    <section v-if="showMyProgram">
+    <section v-if="loadingProgram || loadingExercises" class="setupExercisesView__loading">
+      <img class="loading__image" src="../../assets//images/loading.png" alt="Laddar..." />
+      <ProgressSpinner 
+        style="width: 40px; height: 40px" 
+        strokeWidth="8" 
+        fill="transparent"
+        animationDuration=".5s" 
+        aria-label="Loading" 
+      />
+      <h2>Laddar...</h2>
+    </section>
+    <section v-if="showMyProgram && !loadingProgram">
       <h2 class="setupExercisesView__title">Mina övningar</h2>
       <p class="setupExercisesView__text">Klicka på knappen bredvid den övning du vill ta bort från ditt program. Klicka för mer information om övningen.</p>
 
@@ -157,7 +174,7 @@ const dontShow = () => {
       </ul>
       </section>
     </section>
-    <section v-if="showExercises">
+    <section v-if="showExercises && !loadingExercises">
       <h2 class="setupExercisesView__title">Alla övningar</h2>
       <p class="setupExercisesView__text">Klicka på knappen bredvid den övning du vill lägga till i ditt program. Klicka för mer information om övningen.</p>
       <section class="setupExercisesView__container">
