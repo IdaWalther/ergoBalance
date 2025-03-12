@@ -11,14 +11,37 @@
     background-color: var(--color-white);
     border-radius: #{$borders-radius-sm};
     height: 95vh;
+    width: 90vw;
     padding: 0rem 3rem;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     overflow: scroll;
+    position: relative;
+}
+
+.intervalView__logo {
+    z-index: 10;
+    height: 3rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.1;
+    }
+
+    &:active {
+        scale: 0.9;
+    }
 }
 
 .active-view {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    height: 100%;
 }
 
 .progress__text {
@@ -42,6 +65,12 @@
     color: #555;
 }
 
+.progressSpinner {
+    // z-index: 99;
+    stroke: yellow;
+    scale: 1.5;
+}
+
 .exercise-image {
     // width: 70%;
     height: 12rem;
@@ -56,7 +85,7 @@
     padding: 1rem;
     border: 1px solid #d0cfcf86;
     box-shadow: 10px 5px 5px #555;
-    // border-radius: 5px;
+    border-radius: 5px;
 }
 
 .intervalView__alarmBtn {
@@ -68,4 +97,8 @@
 .interval__btn {
     margin: 0.5rem;
     width: 100%;
+}
+
+.interval__btn--phasechange {
+    margin-left: 2rem;
 }

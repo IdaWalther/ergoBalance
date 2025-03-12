@@ -7,6 +7,8 @@ import { useIntervalTimer } from '../../stores/intervalStore.ts'
 import { getProgram } from '@/services/getProgram.ts';
 import ProgressBar from 'primevue/progressbar';
 import Checkbox from 'primevue/checkbox';
+import { RouterLink } from 'vue-router';
+import ProgressSpinner from 'primevue/progressspinner';
 
 interface CustomJwtPayload extends JwtPayload {
   username?: string
@@ -49,9 +51,11 @@ const fetchProgram = async () => {
 
 onMounted(() => {
     getUsername();
+    if (!alarmSound.value) {
     alarmSound.value = new Audio('/beep-125033.mp3');
     alarmSound.value.volume = 0.5;
-    alarmSound.value.load(); 
+    alarmSound.value.load();
+  }
 });
 
 watch([username], ([newUsername]) => {
@@ -69,10 +73,7 @@ const formattedRemainingTime = computed(() => {
 })
 
 const currentExercise = computed(() => {
-  if (!program.value || !program.value.exercises) return null;
-  const exercises = program.value.exercises; 
-  if (exercises.length === 0) return null;
-  return exercises[currentExerciseIndex.value % exercises.length]; 
+  return program.value?.exercises?.[currentExerciseIndex.value % program.value.exercises.length] || null;
 });
 
 watch(() => intervalTimer.currentPhase, (newPhase) => {
@@ -91,19 +92,11 @@ function togglePause() {
   intervalTimer.pauseToggle()
 }
 
-function toggleAlarm() {
- intervalTimer.alarmEnabled = !intervalTimer.alarmEnabled;
-}
-
-const checked = ref(intervalTimer.alarmEnabled);
-watch(checked, (newValue) => {
-  intervalTimer.alarmEnabled = newValue;
-});
-
 function playAlarm() {
-  if (intervalTimer.alarmEnabled && alarmSound.value) {
+  if (!intervalTimer.alarmEnabled || !alarmSound.value) return;
+  if (alarmSound.value.readyState >= 2) { 
     alarmSound.value.currentTime = 0;
-    alarmSound.value.play().catch((err: any) => console.error('Autoplay blockerad:', err));
+    alarmSound.value.play().catch(err => console.error('Autoplay blockerad:', err));
   }
 }
 
@@ -112,6 +105,9 @@ function playAlarm() {
 <template>
   <section class="intervalView__wrapper">
     <section class="intervalView__container">
+      <RouterLink to="/main">
+        <img class="intervalView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
+      </RouterLink>
       <section v-if="!intervalTimer.isRunning" class="finished-view">
         <h1>Intervallerna tog slut</h1>
         <router-link to="/main">
@@ -119,29 +115,37 @@ function playAlarm() {
         </router-link>
       </section>
       <section v-else class="active-view">
+      <section class="one">
         <p class="progress__text">Tid kvar på intervallerna:</p>
         <ProgressBar :value="intervalTimer.progressPercentage" class="intervalView__progressbar" />
        
         <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Arbete' : 'Paus' }}</p>
         <p class="time-left">{{ formattedRemainingTime }}</p>
-        <section v-if="intervalTimer.currentPhase === 'break' && currentExercise">
+        </section>
+        <section class="two" v-if="intervalTimer.currentPhase === 'break' && currentExercise">
           <h2>{{ currentExercise.name }}</h2>
           <img :src="currentExercise.image" :alt="currentExercise.name" class="exercise-image" />
           <p class="intervalView__desc" >{{ currentExercise.desc }}</p>
         </section>
+        <section v-if="intervalTimer.currentPhase === 'work'">
+          <ProgressSpinner class="progressSpinner"/>
+        </section>
+        <section class="tre">
         <article class="intervalView__alarmBtn">    
-          <Checkbox v-model="checked" binary class="interval__btn" @change="toggleAlarm" />
+          <Checkbox v-model="intervalTimer.alarmEnabled" binary class="interval__btn"/>
         <span>{{ intervalTimer.alarmEnabled ? 'Alarm: På' : 'Alarm: Av' }}</span>
-      </article>
+      <Button class="interval__btn--phasechange" v-if="intervalTimer.isRunning" @click="intervalTimer.skipToNextPhase">Till nästa fas</Button>
+    </article>
       <Button class="interval__btn" v-if="intervalTimer.isRunning" @click="togglePause">
           {{ intervalTimer.isPaused ? 'Fortsätt' : 'Pausa' }}
         </Button>
         <Button class="interval__btn" @click="stop" :disabled="!intervalTimer.isRunning">
           Stoppa
         </Button>
-        <router-link to="/main">
+      </section>
+        <!-- <router-link to="/main">
           <Button class="interval__btn">Tillbaka</Button>
-        </router-link>
+        </router-link> -->
       </section>
     </section>
   </section>
