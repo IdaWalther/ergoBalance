@@ -6,6 +6,7 @@ import { computed, ref, onMounted, watch } from 'vue'
 import { useIntervalTimer } from '../../stores/intervalStore.ts'
 import { getProgram } from '@/services/getProgram.ts';
 import ProgressBar from 'primevue/progressbar';
+import Checkbox from 'primevue/checkbox';
 
 interface CustomJwtPayload extends JwtPayload {
   username?: string
@@ -14,9 +15,9 @@ interface CustomJwtPayload extends JwtPayload {
 const intervalTimer = useIntervalTimer()
 const program = ref<any>(null)
 const currentExerciseIndex = ref(0);
-
 const token = localStorage.getItem('token')
 const username = ref<string | null>(null)
+  const alarmSound = ref<HTMLAudioElement | null>(null);
 
 const getUsername = () => {
   if(token) {
@@ -48,6 +49,9 @@ const fetchProgram = async () => {
 
 onMounted(() => {
     getUsername();
+    alarmSound.value = new Audio('/beep-125033.mp3');
+    alarmSound.value.volume = 0.5;
+    alarmSound.value.load(); 
 });
 
 watch([username], ([newUsername]) => {
@@ -72,6 +76,7 @@ const currentExercise = computed(() => {
 });
 
 watch(() => intervalTimer.currentPhase, (newPhase) => {
+  playAlarm();
   if (newPhase === "break") {
     currentExerciseIndex.value++; 
   console.log('nuvarande övning:', currentExercise.value)
@@ -84,6 +89,22 @@ function stop() {
 
 function togglePause() {
   intervalTimer.pauseToggle()
+}
+
+function toggleAlarm() {
+ intervalTimer.alarmEnabled = !intervalTimer.alarmEnabled;
+}
+
+const checked = ref(intervalTimer.alarmEnabled);
+watch(checked, (newValue) => {
+  intervalTimer.alarmEnabled = newValue;
+});
+
+function playAlarm() {
+  if (intervalTimer.alarmEnabled && alarmSound.value) {
+    alarmSound.value.currentTime = 0;
+    alarmSound.value.play().catch((err: any) => console.error('Autoplay blockerad:', err));
+  }
 }
 
 </script>
@@ -103,26 +124,16 @@ function togglePause() {
        
         <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Arbete' : 'Paus' }}</p>
         <p class="time-left">{{ formattedRemainingTime }}</p>
-
-        <!-- <h1>Timer</h1>
-        <p> Fas: <strong>{{ intervalTimer.currentPhase }}</strong></p>
-        <p> Tid kvar: <strong>{{ formattedRemainingTime }}</strong></p> -->
-        
-        <!-- <section v-if="intervalTimer.currentPhase === 'work'">
-          <h1>Timer</h1>
-          <p> Tid kvar: <strong>{{ formattedRemainingTime }}</strong></p>
-        </section> -->
         <section v-if="intervalTimer.currentPhase === 'break' && currentExercise">
-          <!-- <h3>Pausövning:</h3> -->
           <h2>{{ currentExercise.name }}</h2>
           <img :src="currentExercise.image" :alt="currentExercise.name" class="exercise-image" />
           <p class="intervalView__desc" >{{ currentExercise.desc }}</p>
-          <!-- <h1>Break Time!</h1>
-          <h2>{{ currentExercise.name }}</h2>
-          <img :src="currentExercise.image" :alt="currentExercise.name" width="50" />
-          <p>{{ currentExercise.desc }}</p> -->
         </section>
-        <Button class="interval__btn" v-if="intervalTimer.isRunning" @click="togglePause">
+        <article class="intervalView__alarmBtn">    
+          <Checkbox v-model="checked" binary class="interval__btn" @change="toggleAlarm" />
+        <span>{{ intervalTimer.alarmEnabled ? 'Alarm: På' : 'Alarm: Av' }}</span>
+      </article>
+      <Button class="interval__btn" v-if="intervalTimer.isRunning" @click="togglePause">
           {{ intervalTimer.isPaused ? 'Fortsätt' : 'Pausa' }}
         </Button>
         <Button class="interval__btn" @click="stop" :disabled="!intervalTimer.isRunning">
