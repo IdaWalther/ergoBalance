@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import type { Ref } from 'vue'
 
 export const useIntervalTimer = defineStore('intervalTimer', () => {
@@ -10,6 +10,7 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
   const overallTime: Ref<number> = ref(240 * 60)
   const overallStartTime: Ref<number | null> = ref(null);
   const elapsedOverallTime: Ref<number> = ref(0);
+  const alarmEnabled = ref(true);
 
   //statusvariabler
   const isRunning: Ref<boolean> = ref(false)
@@ -160,6 +161,7 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
     remainingTime,
     overallStartTime,
     progressPercentage,
+    alarmEnabled,
     start,
     stop,
     pauseToggle,
