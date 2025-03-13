@@ -8,7 +8,6 @@ import { getProgram } from '@/services/getProgram.ts';
 import ProgressBar from 'primevue/progressbar';
 import Checkbox from 'primevue/checkbox';
 import { RouterLink } from 'vue-router';
-import ProgressSpinner from 'primevue/progressspinner';
 
 interface CustomJwtPayload extends JwtPayload {
   username?: string
@@ -119,7 +118,7 @@ function playAlarm() {
         <p class="progress__text">Tid kvar på intervallerna:</p>
         <ProgressBar :value="intervalTimer.progressPercentage" class="intervalView__progressbar" />
        
-        <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Arbete' : 'Paus' }}</p>
+        <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Nästa övning börjar om:' : 'Paus' }}</p>
         <p class="time-left">{{ formattedRemainingTime }}</p>
         </section>
         <section class="two" v-if="intervalTimer.currentPhase === 'break' && currentExercise">
@@ -128,7 +127,6 @@ function playAlarm() {
           <p class="intervalView__desc" >{{ currentExercise.desc }}</p>
         </section>
         <section v-if="intervalTimer.currentPhase === 'work'">
-          <ProgressSpinner class="progressSpinner"/>
         </section>
         <section class="tre">
         <article class="intervalView__alarmBtn">    
@@ -143,9 +141,6 @@ function playAlarm() {
           Stoppa
         </Button>
       </section>
-        <!-- <router-link to="/main">
-          <Button class="interval__btn">Tillbaka</Button>
-        </router-link> -->
       </section>
     </section>
   </section>
