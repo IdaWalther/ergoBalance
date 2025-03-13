@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import type { Ref } from 'vue'
 
 export const useIntervalTimer = defineStore('intervalTimer', () => {
@@ -10,6 +10,7 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
   const overallTime: Ref<number> = ref(240 * 60)
   const overallStartTime: Ref<number | null> = ref(null);
   const elapsedOverallTime: Ref<number> = ref(0);
+  const alarmEnabled = ref(true);
 
   //statusvariabler
   const isRunning: Ref<boolean> = ref(false)
@@ -73,7 +74,6 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
 
   function start(): void {
     if (isRunning.value) return
-
     console.log('start körs!')
     isRunning.value = true
     isPaused.value = false
@@ -81,10 +81,8 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
     startTime = Date.now()
     overallStartTime.value = Date.now();
     currentPhase.value = 'work'
-
     startOverallTimer()
     runCycle()
-
   }
 
   function stop() {
@@ -128,6 +126,15 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
     }
   }
 
+  function skipToNextPhase() {
+    if (!isRunning.value) return;
+
+    if (timeoutId) clearTimeout(timeoutId);
+    if (countdownIntervalId) clearInterval(countdownIntervalId);
+
+    handlePhaseChange();
+  }
+
   function updateProgress() {
     if (!isRunning.value || isPaused.value) return
 
@@ -160,9 +167,11 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
     remainingTime,
     overallStartTime,
     progressPercentage,
+    alarmEnabled,
     start,
     stop,
     pauseToggle,
+    skipToNextPhase,
     updateSettings,
   }
 })

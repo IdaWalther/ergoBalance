@@ -6,6 +6,8 @@ import { computed, ref, onMounted, watch } from 'vue'
 import { useIntervalTimer } from '../../stores/intervalStore.ts'
 import { getProgram } from '@/services/getProgram.ts';
 import ProgressBar from 'primevue/progressbar';
+import Checkbox from 'primevue/checkbox';
+import { RouterLink } from 'vue-router';
 
 interface CustomJwtPayload extends JwtPayload {
   username?: string
@@ -14,9 +16,9 @@ interface CustomJwtPayload extends JwtPayload {
 const intervalTimer = useIntervalTimer()
 const program = ref<any>(null)
 const currentExerciseIndex = ref(0);
-
 const token = localStorage.getItem('token')
 const username = ref<string | null>(null)
+  const alarmSound = ref<HTMLAudioElement | null>(null);
 
 const getUsername = () => {
   if(token) {
@@ -48,6 +50,11 @@ const fetchProgram = async () => {
 
 onMounted(() => {
     getUsername();
+    if (!alarmSound.value) {
+    alarmSound.value = new Audio('/beep-125033.mp3');
+    alarmSound.value.volume = 0.5;
+    alarmSound.value.load();
+  }
 });
 
 watch([username], ([newUsername]) => {
@@ -65,13 +72,11 @@ const formattedRemainingTime = computed(() => {
 })
 
 const currentExercise = computed(() => {
-  if (!program.value || !program.value.exercises) return null;
-  const exercises = program.value.exercises; 
-  if (exercises.length === 0) return null;
-  return exercises[currentExerciseIndex.value % exercises.length]; 
+  return program.value?.exercises?.[currentExerciseIndex.value % program.value.exercises.length] || null;
 });
 
 watch(() => intervalTimer.currentPhase, (newPhase) => {
+  playAlarm();
   if (newPhase === "break") {
     currentExerciseIndex.value++; 
   console.log('nuvarande övning:', currentExercise.value)
@@ -86,42 +91,56 @@ function togglePause() {
   intervalTimer.pauseToggle()
 }
 
+function playAlarm() {
+  if (!intervalTimer.alarmEnabled || !alarmSound.value) return;
+  if (alarmSound.value.readyState >= 2) { 
+    alarmSound.value.currentTime = 0;
+    alarmSound.value.play().catch(err => console.error('Autoplay blockerad:', err));
+  }
+}
+
 </script>
 
 <template>
   <section class="intervalView__wrapper">
     <section class="intervalView__container">
-      <section v-if="!intervalTimer.isRunning">
-        <h1>nu är det slut!</h1>
+      <RouterLink to="/main">
+        <img class="intervalView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
+      </RouterLink>
+      <section v-if="!intervalTimer.isRunning" class="finished-view">
+        <h1>Intervallerna tog slut</h1>
         <router-link to="/main">
-          <Button class="interval__btn">Tillbaka till Main View</Button>
+          <Button class="interval__btn">Tillbaka</Button>
         </router-link>
       </section>
-      <section v-else>
-        <p>Overall time progress:</p>
+      <section v-else class="active-view">
+      <section class="one">
+        <p class="progress__text">Tid kvar på intervallerna:</p>
         <ProgressBar :value="intervalTimer.progressPercentage" class="intervalView__progressbar" />
-        <h1>Timer</h1>
-        <p> Fas: <strong>{{ intervalTimer.currentPhase }}</strong></p>
-        <p> Tid kvar: <strong>{{ formattedRemainingTime }}</strong></p>
-        <section v-if="intervalTimer.currentPhase === 'work'">
-          <h1>Timer</h1>
-          <p> Tid kvar: <strong>{{ formattedRemainingTime }}</strong></p>
+       
+        <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Nästa övning börjar om:' : 'Paus' }}</p>
+        <p class="time-left">{{ formattedRemainingTime }}</p>
         </section>
-        <section v-if="intervalTimer.currentPhase === 'break' && currentExercise">
-          <h1>Break Time!</h1>
+        <section class="two" v-if="intervalTimer.currentPhase === 'break' && currentExercise">
           <h2>{{ currentExercise.name }}</h2>
-          <img :src="currentExercise.image" :alt="currentExercise.name" width="50" />
-          <p>{{ currentExercise.desc }}</p>
+          <img :src="currentExercise.image" :alt="currentExercise.name" class="exercise-image" />
+          <p class="intervalView__desc" >{{ currentExercise.desc }}</p>
         </section>
-        <Button v-if="intervalTimer.isRunning" @click="togglePause">
-          {{ intervalTimer.isPaused ? 'starta intervaller igen' : 'Pausa Intervaller' }}
+        <section v-if="intervalTimer.currentPhase === 'work'">
+        </section>
+        <section class="tre">
+        <article class="intervalView__alarmBtn">    
+          <Checkbox v-model="intervalTimer.alarmEnabled" binary class="interval__btn"/>
+        <span>{{ intervalTimer.alarmEnabled ? 'Alarm: På' : 'Alarm: Av' }}</span>
+      <Button class="interval__btn--phasechange" v-if="intervalTimer.isRunning" @click="intervalTimer.skipToNextPhase">Till nästa fas</Button>
+    </article>
+      <Button class="interval__btn" v-if="intervalTimer.isRunning" @click="togglePause">
+          {{ intervalTimer.isPaused ? 'Fortsätt' : 'Pausa' }}
         </Button>
         <Button class="interval__btn" @click="stop" :disabled="!intervalTimer.isRunning">
-          Stoppa Intervaller
+          Stoppa
         </Button>
-        <router-link to="/main">
-          <Button class="interval__btn">Tillbaka till Main View</Button>
-        </router-link>
+      </section>
       </section>
     </section>
   </section>
