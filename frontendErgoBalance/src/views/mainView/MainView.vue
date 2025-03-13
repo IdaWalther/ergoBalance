@@ -5,14 +5,11 @@ import { RouterLink } from 'vue-router';
 import {ref, onMounted } from 'vue'
 import { jwtDecode } from 'jwt-decode';
 import { useIntervalTimer } from '../../stores/intervalStore'
-import { userAuthenticate } from '../../services/userAuthenticate'
-import { useRouter } from 'vue-router'
-
+import Header from '@/components/Header/Header.vue';
 
 const token = localStorage.getItem('token')
 const username = ref('Gäst')
-const router = useRouter()
-const {logoutUser} = userAuthenticate()
+const intervalTimer = useIntervalTimer()
 
 const getUsername = () => {
   if(token) {
@@ -29,14 +26,6 @@ onMounted(() => {
     getUsername();
 });
 
-const logout = () => {
-  logoutUser()
-  intervalTimer.stop()
-  router.push('/')
-}
-
-const intervalTimer = useIntervalTimer()
-
 function resetAndStart() {
   intervalTimer.stop()
   intervalTimer.start()
@@ -45,8 +34,8 @@ function resetAndStart() {
 
 <template>
   <section class="mainView__wrapper">
+    <Header />
   <section class="mainView__container">
-    <img class="mainView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
     <h1 class="mainView__header">Välkommen {{ username }}</h1>
     <!-- <Button class="mainView__button" type="button" label="Återuppta intervaller" />
     <RouterLink to="/interval">
@@ -71,7 +60,6 @@ function resetAndStart() {
     <RouterLink to="/about">
       <Button class="mainView__button" type="button" label="Om Appen" />
     </RouterLink>
-    <Button @click="logout" class="mainView__button" type="button" label="Logga ut" />
   </section>
 </section>
 </template>

@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import './aboutUsView.scss'
-import { RouterLink } from 'vue-router';
+import Header from '@/components/Header/Header.vue';
 
 </script>
 
 <template>
   <section class="aboutUsView__wrapper">
+    <Header />
     <section class="aboutUsView__container">
-      <RouterLink to="/main">
-        <img class="aboutUsView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
-      </RouterLink>
       <h1 class="aboutUsView__header">Om oss</h1>
       <section class="aboutUsView__section">
       <h3 class="aboutUsView__section-header">Två träningsglada utvecklare och en idé</h3>

@@ -5,9 +5,9 @@ import { Button } from 'primevue';
 import { RouterLink } from 'vue-router'
 import { useIntervalTimer } from '../../stores/intervalStore.ts'
 import InputNumber from 'primevue/inputnumber';
+import Header from '@/components/Header/Header.vue';
 
 const intervalTimer = useIntervalTimer()
-
 const localWorkInterval = ref(intervalTimer.workInterval / 60)
 const localBreakDuration = ref(intervalTimer.breakDuration / 60)
 const saveMessage = ref('')
@@ -43,6 +43,7 @@ function update() {
 
 <template>
   <section class="setupIntervalView__wrapper">
+    <Header />
     <form class="setupIntervalView__container" @submit.prevent="update">
       <article>
         <label>

@@ -8,6 +8,7 @@ import { getProgram } from '@/services/getProgram.ts';
 import ProgressBar from 'primevue/progressbar';
 import Checkbox from 'primevue/checkbox';
 import { RouterLink } from 'vue-router';
+import Header from '@/components/Header/Header.vue';
 
 interface CustomJwtPayload extends JwtPayload {
   username?: string
@@ -103,10 +104,8 @@ function playAlarm() {
 
 <template>
   <section class="intervalView__wrapper">
+    <Header />
     <section class="intervalView__container">
-      <RouterLink to="/main">
-        <img class="intervalView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
-      </RouterLink>
       <section v-if="!intervalTimer.isRunning" class="finished-view">
         <h1>Intervallerna tog slut</h1>
         <router-link to="/main">
