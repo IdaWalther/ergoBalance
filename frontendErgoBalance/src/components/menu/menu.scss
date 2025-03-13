@@ -1,0 +1,24 @@
+@use '../../assets/app.scss' as *;
+.menu__nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.menu__button {
+    @include button-base;
+    padding: #{$spacing-lg} !important;
+    background-color: var(--color-darkBlue) !important;
+    color: var(--color-white);
+}
+
+.menu__button--light {
+    @include button-base;
+    padding: #{$spacing-lg} !important;
+    background-color: #{$colors-neutral-light-blue} !important;
+
+}
