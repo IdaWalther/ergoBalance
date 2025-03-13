@@ -113,3 +113,27 @@
     top: 0;
     right: 1rem;
 }
+.setupExercisesView__loading {
+    @include centering;
+    background-color: rgba(255,255,255,.3);
+    min-width: 90%;
+    color: var(--color-white);
+    border-radius: #{$borders-radius-md};
+    margin: 1rem;
+    min-height: 65vh;
+    max-height: 65vh;
+    align-items: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+}
+
+.loading__image {
+    width: 280px;
+    height: 280px;
+}
+.p-progressspinner-circle {
+    stroke: var(--color-black) !important;
+}
