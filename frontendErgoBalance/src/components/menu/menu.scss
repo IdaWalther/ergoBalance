@@ -1,24 +1,36 @@
 @use '../../assets/app.scss' as *;
 .menu__nav {
+    width: 100%;
     position: absolute;
-    top: 0;
+    bottom: 0;
     right: 0;
-    background-color: beige;
+    border-top: 10px solid black;
+    background-color:  var(--color-white);
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 .menu__button {
     @include button-base;
-    padding: #{$spacing-lg} !important;
-    background-color: var(--color-darkBlue) !important;
+    padding: #{$spacing-sm} !important;
+    background-color: transparent !important;
     color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 50px !important;
+    min-width: 50px !important;
 }
 
 .menu__button--light {
     @include button-base;
     padding: #{$spacing-lg} !important;
     background-color: #{$colors-neutral-light-blue} !important;
+}
 
+.menu__image {
+    width: 50px;
+    height: 50px;
 }
