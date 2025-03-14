@@ -7,6 +7,7 @@ import { getExercises } from '../../services/getExercises';
 import { jwtDecode, type JwtPayload } from 'jwt-decode';
 import { onMounted, ref } from 'vue'
 import ProgressSpinner from 'primevue/progressspinner';
+import Header from '@/components/Header/Header.vue';
 
 const token = localStorage.getItem('token')
 const username = ref('')
@@ -134,11 +135,7 @@ const dontShow = () => {
 
 <template>
   <section class="setupExercisesView__wrapper">
-    <router-link to="/main">
-      <figure>
-        <img class="setupExercisesView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="logo som tar dig tillbaka till startsidan" />
-      </figure>
-      </router-link>
+  <Header />
     <section class="setupExercisesView__header">
       <Button @click="myProgram" class="setupExercisesView__button">Mitt program</Button>
       <Button @click="showAllExercises"  class="setupExercisesView__button">Alla övningar</Button>

@@ -18,8 +18,8 @@
 @mixin wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   height: 100vh;
   width: 100vw;
   background-color: var(--color-white);
