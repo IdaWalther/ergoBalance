@@ -12,10 +12,6 @@ interface CustomJwtPayload extends JwtPayload {
 const token = localStorage.getItem('token')
 const username = ref('Gäst')
 
-interface CustomJwtPayload extends JwtPayload {
-  username?: string
-}
-
 const getUsername = () => {
   if(token) {
     try {
