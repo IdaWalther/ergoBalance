@@ -19,7 +19,7 @@ import { RouterLink } from 'vue-router';
             </RouterLink>
             <RouterLink to="/setupExercises">
             <Button class="menu__button" type="button" label="Val av övningar" > 
-                <img class="menu__image" src="../../assets/images/Squats.png" alt="övning">
+                <img class="menu__image menu__image--larger" src="../../assets/images/Squats.png" alt="övning">
             </Button>
                 </RouterLink>
             <RouterLink to="/about">
