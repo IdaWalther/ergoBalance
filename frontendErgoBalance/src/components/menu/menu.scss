@@ -15,11 +15,7 @@
     @include button-base;
     padding: #{$spacing-sm} !important;
     background-color: transparent !important;
-<<<<<<< HEAD
-    color: var(--color-black);
-=======
     color: var(--color-white);
->>>>>>> 917b1ec (We now have a navigation menu on the bottom)
     display: flex;
     flex-direction: column;
     align-items: center;

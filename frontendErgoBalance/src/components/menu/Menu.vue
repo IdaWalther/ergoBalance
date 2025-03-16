@@ -2,34 +2,11 @@
 import './menu.scss'
 import { Button } from 'primevue';
 import { RouterLink } from 'vue-router';
-<<<<<<< HEAD
-=======
-import { useIntervalTimer } from '../../stores/intervalStore'
-
-const intervalTimer = useIntervalTimer()
-
-function resetAndStart() {
-    intervalTimer.stop()
-    intervalTimer.start()
-}
->>>>>>> 917b1ec (We now have a navigation menu on the bottom)
 </script>
 
 <template>
     <nav class="menu__nav">
-        <!-- <Button class="menu__button" type="button" label="Återuppta intervaller" />
         <RouterLink to="/interval">
-        <Button class="menu__button" type="button" label="Starta nya intervaller" /> -->
-        <!-- <RouterLink v-if="intervalTimer.isRunning" to="/interval">
-            <Button class="menu__button--light">
-            Tillbaka till intervaller
-            </Button>
-        </RouterLink> -->
-        <RouterLink to="/interval">
-        <!-- <Button class="menu__button"
-        @click="resetAndStart">
-            <img src="../../assets/images/hourGlass.png" alt="Timglas"> 
-        </Button> -->
         <Button class="menu__button">
             <img class="menu__image" src="../../assets/images/hourGlass.png" alt="Timglas för start">
         </Button>

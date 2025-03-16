@@ -142,7 +142,7 @@ const dontShow = () => {
       
     </section>
     <section v-if="loadingProgram || loadingExercises" class="setupExercisesView__loading">
-      <img class="loading__image" src="../../assets//images/loading.png" alt="Laddar..." />
+      <img class="loading__image" src="../../assets/images/loading.png" alt="Laddar..." />
       <ProgressSpinner 
         style="width: 40px; height: 40px" 
         strokeWidth="8" 
