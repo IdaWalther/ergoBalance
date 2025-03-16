@@ -8,10 +8,14 @@ import MenuComponent from '@/components/menu/Menu.vue'
 const token = localStorage.getItem('token')
 const username = ref('Gäst')
 
+interface CustomJwtPayload extends JwtPayload {
+  username?: string
+}
+
 const getUsername = () => {
   if(token) {
     try {
-      const decoded = jwtDecode(token)
+      const decoded = jwtDecode<CustomJwtPayload>(token)
       console.log('decoded', decoded)
       username.value = decoded.username || 'Gäst'
     } catch(error) {
