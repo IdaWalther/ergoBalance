@@ -33,7 +33,7 @@ onMounted(() => {
     <Header />
   <section class="mainView__container">
     <MenuComponent />
-    <h1 class="mainView__header">Välkommen {{ username }}</h1>
+    <h1 class="mainView__heading">Välkommen {{ username }}</h1>
   </section>
 </section>
 </template>

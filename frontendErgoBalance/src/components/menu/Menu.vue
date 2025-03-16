@@ -2,6 +2,17 @@
 import './menu.scss'
 import { Button } from 'primevue';
 import { RouterLink } from 'vue-router';
+<<<<<<< HEAD
+=======
+import { useIntervalTimer } from '../../stores/intervalStore'
+
+const intervalTimer = useIntervalTimer()
+
+function resetAndStart() {
+    intervalTimer.stop()
+    intervalTimer.start()
+}
+>>>>>>> 917b1ec (We now have a navigation menu on the bottom)
 </script>
 
 <template>
