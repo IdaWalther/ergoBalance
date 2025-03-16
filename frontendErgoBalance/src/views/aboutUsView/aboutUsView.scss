@@ -17,6 +17,26 @@
   background-color: var(--color-white) !important;
 }
 
+<<<<<<< HEAD
+=======
+.aboutUsView__logo {
+  z-index: 99;
+  height: 3rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.1;
+  }
+
+  &:active {
+    scale: 0.9;
+  }
+}
+
+>>>>>>> origin/74-mainview-design
 .aboutUsView__header {
   text-transform: uppercase;
   font-size: 1.5rem;

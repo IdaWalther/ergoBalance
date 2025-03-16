@@ -8,7 +8,10 @@ import { getProgram } from '@/services/getProgram.ts';
 import ProgressBar from 'primevue/progressbar';
 import Checkbox from 'primevue/checkbox';
 import { RouterLink } from 'vue-router';
+<<<<<<< HEAD
 import Header from '@/components/Header/Header.vue';
+=======
+>>>>>>> origin/74-mainview-design
 
 interface CustomJwtPayload extends JwtPayload {
   username?: string
@@ -51,7 +54,10 @@ const fetchProgram = async () => {
 
 onMounted(() => {
     getUsername();
+<<<<<<< HEAD
     start();
+=======
+>>>>>>> origin/74-mainview-design
     if (!alarmSound.value) {
     alarmSound.value = new Audio('/beep-125033.mp3');
     alarmSound.value.volume = 0.5;
@@ -111,6 +117,12 @@ function playAlarm() {
   <section class="intervalView__wrapper">
     <Header />
     <section class="intervalView__container">
+<<<<<<< HEAD
+=======
+      <RouterLink to="/main">
+        <img class="intervalView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
+      </RouterLink>
+>>>>>>> origin/74-mainview-design
       <section v-if="!intervalTimer.isRunning" class="finished-view">
         <h1>Intervallerna tog slut</h1>
         <router-link to="/main">
