@@ -121,7 +121,6 @@ function playAlarm() {
       <section class="one">
         <p class="progress__text">Tid kvar på intervallerna:</p>
         <ProgressBar :value="intervalTimer.progressPercentage" class="intervalView__progressbar" />
-       
         <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Nästa övning börjar om:' : 'Paus' }}</p>
         <p class="time-left">{{ formattedRemainingTime }}</p>
         </section>
