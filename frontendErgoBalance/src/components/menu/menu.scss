@@ -5,12 +5,12 @@
     position: absolute;
     bottom: 0;
     right: auto;
-    border-top: 5px solid black;
     background-color:  var(--color-green);
 }
 .menu__nav {
     width: 90vw;
     margin: auto;
+    border-top: 5px solid black;
     background-color:  var(--color-white);
     display: flex;
     flex-direction: row;
@@ -26,8 +26,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 50px !important;
-    min-width: 50px !important;
+    max-width: 100px !important;
+    min-width: 100px !important;
 }
 
 .menu__image {
