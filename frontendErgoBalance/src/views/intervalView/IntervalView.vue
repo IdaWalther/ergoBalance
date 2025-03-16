@@ -51,6 +51,7 @@ const fetchProgram = async () => {
 
 onMounted(() => {
     getUsername();
+    start();
     if (!alarmSound.value) {
     alarmSound.value = new Audio('/beep-125033.mp3');
     alarmSound.value.volume = 0.5;
@@ -83,6 +84,10 @@ watch(() => intervalTimer.currentPhase, (newPhase) => {
   console.log('nuvarande övning:', currentExercise.value)
   }
 });
+
+function start() {
+  intervalTimer.start()
+}
 
 function stop() {
   intervalTimer.stop()

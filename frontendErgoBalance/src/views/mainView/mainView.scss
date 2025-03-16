@@ -16,20 +16,6 @@
   background-color: var(--color-white) !important;
 }
 
-.mainView__button {
-  @include button-base;
-  padding: #{$spacing-lg} !important;
-  background-color: var(--color-darkBlue) !important;
-  color: var(--color-white);
-}
-
-.mainView__button--light {
-  @include button-base;
-  padding: #{$spacing-lg} !important;
-  background-color: #{$colors-neutral-light-blue} !important;
-
-}
-
 .mainView__header {
   text-transform: uppercase;
   font-size: 1.5rem;
