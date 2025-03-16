@@ -3,7 +3,7 @@ import './mainView.scss'
 import {ref, onMounted } from 'vue'
 import { jwtDecode } from 'jwt-decode'
 import Header from '@/components/Header/Header.vue';
-import MenuComponent from '@/components/menu/Menu.vue';
+import Menu from '@/components/menu/Menu.vue';
 
 const token = localStorage.getItem('token')
 const username = ref('Gäst')
@@ -32,7 +32,7 @@ onMounted(() => {
   <section class="mainView__wrapper">
     <Header />
   <section class="mainView__container">
-    <MenuComponent />
+    <Menu />
     <h1 class="mainView__heading">Välkommen {{ username }}</h1>
   </section>
 </section>

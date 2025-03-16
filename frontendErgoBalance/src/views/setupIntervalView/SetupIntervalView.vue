@@ -6,6 +6,7 @@ import { RouterLink } from 'vue-router'
 import { useIntervalTimer } from '../../stores/intervalStore.ts'
 import InputNumber from 'primevue/inputnumber';
 import Header from '@/components/Header/Header.vue';
+import Menu from '@/components/menu/Menu.vue';
 
 const intervalTimer = useIntervalTimer()
 const localWorkInterval = ref(intervalTimer.workInterval / 60)
@@ -71,6 +72,6 @@ function update() {
       <Button class="setupInterval__btn">Tillbaka</Button>
     </router-link>
   </form>
-  
+  <Menu />
   </section>
 </template>

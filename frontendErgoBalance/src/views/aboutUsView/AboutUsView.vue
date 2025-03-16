@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import './aboutUsView.scss'
 import Header from '@/components/Header/Header.vue';
-
+import Menu from '@/components/menu/Menu.vue';
 </script>
 
 <template>
@@ -41,5 +41,6 @@ Vi skapade den här appen för att vi själva behövde den – och vi hoppas att
       <img class="aboutUs__img" src="../../assets/images/simpleErgonomics.webp" alt="person at desk stretching">
     </article>
   </section>
+    <Menu />
   </section>
 </template>
