@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import './mainView.scss'
 import {ref, onMounted } from 'vue'
-import { jwtDecode } from 'jwt-decode';
-import MenuComponent from '@/components/menu/Menu.vue'
-
+import { jwtDecode } from 'jwt-decode'
+import Header from '@/components/Header/Header.vue';
+import MenuComponent from '@/components/menu/Menu.vue';
 
 const token = localStorage.getItem('token')
 const username = ref('Gäst')
