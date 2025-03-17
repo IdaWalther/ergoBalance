@@ -54,7 +54,7 @@ onMounted(() => {
     getUsername();
     start();
     if (!alarmSound.value) {
-    alarmSound.value = new Audio('/beep-125033.mp3');
+    alarmSound.value = new Audio('/short-beep-tone-47916.mp3');
     alarmSound.value.volume = 0.5;
     alarmSound.value.load();
   }
@@ -113,7 +113,7 @@ function playAlarm() {
     <Header />
     <section class="intervalView__container">
       <section v-if="!intervalTimer.isRunning" class="finished-view">
-        <h1>Intervallerna tog slut</h1>
+        <h1 class="intervalView__endtext">Slut på intervallerna</h1>
         <router-link to="/main">
           <Button class="interval__btn">Tillbaka</Button>
         </router-link>
