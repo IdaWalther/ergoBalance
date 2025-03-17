@@ -2,8 +2,6 @@
 
 .setupExercisesView__wrapper {
     @include wrapper;
-    background: rgb(162, 208, 193) !important;
-    background: linear-gradient(144deg, rgba(162, 208, 193, 1) 0%, rgba(11, 88, 80, 1) 60%) !important;
 }
 
 .setupExercisesView__title {
@@ -15,10 +13,11 @@
     background-color: rgba(255, 255, 255, .3);
     color: var(--color-white);
     border-radius: #{$borders-radius-md};
-    margin: 1rem;
+    margin: 1rem auto;
     padding: 1rem;
-    min-height: 65vh;
-    max-height: 65vh;
+    min-height: calc(65vh - 80px);
+    max-height: calc(65vh - 80px);
+    width: 90vw;
     overflow: auto;
     align-items: normal;
     justify-content: flex-start;

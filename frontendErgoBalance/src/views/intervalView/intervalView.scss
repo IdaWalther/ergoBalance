@@ -2,8 +2,6 @@
 
 .intervalView__wrapper {
     @include wrapper;
-    background: rgb(162, 208, 193) !important;
-    background: linear-gradient(144deg, rgba(162, 208, 193, 1) 0%, rgba(11, 88, 80, 1) 60%) !important;
 }
 
 .intervalView__container {
@@ -18,7 +16,22 @@
     overflow: scroll;
     position: relative;
 }
+.intervalView__logo {
+    z-index: 10;
+    height: 3rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    cursor: pointer;
 
+    &:hover {
+        scale: 1.1;
+    }
+
+    &:active {
+        scale: 0.9;
+    }
+}
 .active-view {
     display: flex;
     flex-direction: column;

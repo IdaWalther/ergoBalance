@@ -9,6 +9,7 @@ import ProgressBar from 'primevue/progressbar';
 import Checkbox from 'primevue/checkbox';
 import { RouterLink } from 'vue-router';
 import Header from '@/components/Header/Header.vue';
+import Menu from '@/components/menu/Menu.vue';
 
 interface CustomJwtPayload extends JwtPayload {
   username?: string
@@ -51,6 +52,7 @@ const fetchProgram = async () => {
 
 onMounted(() => {
     getUsername();
+    start();
     if (!alarmSound.value) {
     alarmSound.value = new Audio('/beep-125033.mp3');
     alarmSound.value.volume = 0.5;
@@ -84,6 +86,10 @@ watch(() => intervalTimer.currentPhase, (newPhase) => {
   }
 });
 
+function start() {
+  intervalTimer.start()
+}
+
 function stop() {
   intervalTimer.stop()
 }
@@ -116,7 +122,6 @@ function playAlarm() {
       <section class="one">
         <p class="progress__text">Tid kvar på intervallerna:</p>
         <ProgressBar :value="intervalTimer.progressPercentage" class="intervalView__progressbar" />
-       
         <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Nästa övning börjar om:' : 'Paus' }}</p>
         <p class="time-left">{{ formattedRemainingTime }}</p>
         </section>
@@ -142,6 +147,7 @@ function playAlarm() {
       </section>
       </section>
     </section>
+    <Menu />
   </section>
 </template>
 

@@ -2,8 +2,6 @@
 
 .aboutUsView__wrapper {
   @include wrapper;
-  background: rgb(162, 208, 193) !important;
-  background: linear-gradient(144deg, rgba(162, 208, 193, 1) 0%, rgba(11, 88, 80, 1) 60%) !important;
 }
 
 
@@ -15,6 +13,23 @@
   overflow: scroll;
   position: relative;
   background-color: var(--color-white) !important;
+}
+
+.aboutUsView__logo {
+  z-index: 99;
+  height: 3rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.1;
+  }
+
+  &:active {
+    scale: 0.9;
+  }
 }
 
 .aboutUsView__header {

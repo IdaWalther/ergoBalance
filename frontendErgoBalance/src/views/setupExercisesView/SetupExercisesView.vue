@@ -8,6 +8,7 @@ import { jwtDecode, type JwtPayload } from 'jwt-decode';
 import { onMounted, ref } from 'vue'
 import ProgressSpinner from 'primevue/progressspinner';
 import Header from '@/components/Header/Header.vue';
+import Menu from '@/components/menu/Menu.vue';
 
 const token = localStorage.getItem('token')
 const username = ref('')
@@ -142,7 +143,7 @@ const dontShow = () => {
       
     </section>
     <section v-if="loadingProgram || loadingExercises" class="setupExercisesView__loading">
-      <img class="loading__image" src="../../assets//images/loading.png" alt="Laddar..." />
+      <img class="loading__image" src="../../assets/images/loading.png" alt="Laddar..." />
       <ProgressSpinner 
         style="width: 40px; height: 40px" 
         strokeWidth="8" 
@@ -197,5 +198,6 @@ const dontShow = () => {
         <img :src="eximage" class="setupExercisesView__modal-image">
       </section>
     </div>
+    <Menu />
   </section>
 </template>
