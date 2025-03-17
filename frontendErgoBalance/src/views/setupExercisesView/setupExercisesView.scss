@@ -51,7 +51,6 @@
 
 .setupExercisesView__button {
     @include button-base;
-    background-color: var(--color-black)!important;
     margin: 0.5rem;
     min-width: 130px !important;
     max-width: 130px !important;
@@ -60,6 +59,7 @@
 .setupExercisesView__button.setupExercisesView__button--remove,
 .setupExercisesView__button.setupExercisesView__button--add {
     border-color: var(--color-black) !important;
+    background-color: var(--color-black)!important;
     min-width: 30px !important;
     max-width: 30px !important;
     font-size: #{$spacing-md};
