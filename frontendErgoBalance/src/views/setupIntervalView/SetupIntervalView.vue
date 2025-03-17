@@ -48,29 +48,26 @@ function update() {
     <form class="setupIntervalView__container" @submit.prevent="update">
       <article>
         <label>
-          Tid för arbete (i minuter):
-          <InputNumber v-model.number="localWorkInterval" :min="0" :max="100" showButtons buttonLayout="horizontal" fluid />
+          Tid för arbete:
+          <InputNumber class="setupinput" v-model.number="localWorkInterval" :min="0" :max="100" showButtons suffix=" min" buttonLayout="horizontal" fluid />
         </label>
       </article>
       <article>
         <label>
-         Tid för paus (i minuter):
-          <InputNumber v-model.number="localBreakDuration" :min="0" :max="100" showButtons buttonLayout="horizontal" fluid />
+         Tid för paus:
+          <InputNumber class="setupinput" v-model.number="localBreakDuration" :min="0" :max="100" showButtons suffix=" min" buttonLayout="horizontal" fluid />
         </label>
       </article>
       <article>
         <label>
-         Övergripande tid för alla intervaller:
-          <InputNumber v-model.number="overallDurationHours" :min="0" :max="1000" showButtons suffix=" h" buttonLayout="horizontal" fluid />
+         Övergripande tid:
+          <InputNumber class="setupinput" v-model.number="overallDurationHours" :min="0" :max="100" showButtons suffix=" h" buttonLayout="horizontal" fluid />
         </label>
       </article>
       <article>
       </article>
-      <Button class="setupInterval__btn" type="submit">Spara</Button>
       <p v-if="saveMessage" :class="{'fade-out': isFadingOut}" class="save-message">{{ saveMessage }}</p>
-      <router-link to="/main">
-      <Button class="setupInterval__btn">Tillbaka</Button>
-    </router-link>
+      <Button class="setupInterval__btn" type="submit">Spara</Button>
   </form>
   <Menu />
   </section>

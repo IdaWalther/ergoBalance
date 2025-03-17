@@ -7,29 +7,12 @@
 
 .aboutUsView__container {
   @include centering;
-  height: 95vh;
+  height: 80vh;
   width: 90vw;
   justify-content: space-around;
   overflow: scroll;
   position: relative;
   background-color: var(--color-white) !important;
-}
-
-.aboutUsView__logo {
-  z-index: 99;
-  height: 3rem;
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  cursor: pointer;
-
-  &:hover {
-    scale: 1.1;
-  }
-
-  &:active {
-    scale: 0.9;
-  }
 }
 
 .aboutUsView__header {
