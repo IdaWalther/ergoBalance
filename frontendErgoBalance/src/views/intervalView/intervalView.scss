@@ -8,30 +8,17 @@
     @include centering;
     background-color: var(--color-white);
     border-radius: #{$borders-radius-sm};
-    height: 95vh;
+    height: 80vh;
     width: 90vw;
-    padding: 0rem 3rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    // padding: 0rem 3rem;
+    // margin-top: 0.4rem;
+    // margin-bottom: 1rem;
+    // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     overflow: scroll;
-    position: relative;
+    // position: relative;
 }
-.intervalView__logo {
-    z-index: 10;
-    height: 3rem;
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    cursor: pointer;
 
-    &:hover {
-        scale: 1.1;
-    }
-
-    &:active {
-        scale: 0.9;
-    }
-}
 .active-view {
     display: flex;
     flex-direction: column;
@@ -57,7 +44,7 @@
 }
 
 .time-left {
-    font-size: 5rem;
+    font-size: 4.5rem;
     color: #555;
 }
 
