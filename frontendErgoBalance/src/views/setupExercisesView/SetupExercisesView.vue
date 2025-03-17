@@ -136,68 +136,70 @@ const dontShow = () => {
 
 <template>
   <section class="setupExercisesView__wrapper">
-  <Header />
-    <section class="setupExercisesView__header">
-      <Button @click="myProgram" class="setupExercisesView__button">Mitt program</Button>
-      <Button @click="showAllExercises"  class="setupExercisesView__button">Alla övningar</Button>
-      
-    </section>
-    <section v-if="loadingProgram || loadingExercises" class="setupExercisesView__loading">
-      <img class="loading__image" src="../../assets/images/loading.png" alt="Laddar..." />
-      <ProgressSpinner 
-        style="width: 40px; height: 40px" 
-        strokeWidth="8" 
-        fill="transparent"
-        animationDuration=".5s" 
-        aria-label="Loading" 
-      />
-      <h2>Laddar...</h2>
-    </section>
-    <section v-if="showMyProgram && !loadingProgram">
-      <h2 class="setupExercisesView__title">Mina övningar</h2>
-      <p class="setupExercisesView__text">Klicka på knappen bredvid den övning du vill ta bort från ditt program. Klicka för mer information om övningen.</p>
-
+      <Header />
       <section class="setupExercisesView__container">
-      <ul v-for:="item in program.exercises" class="setupExercisesView__ul">
-        <li>
-          <ul class="setupExercisesView__ul setupExercisesView__ul--inner">
-            <li class="setupExercisesView__li--inner" @click="showMoreInfo(item.name, item.desc, item.image)">
-              {{ item.name }}
-            </li>
-            <li>
-              <Button @click="removeExercise(item.pk, item.sk)"  class="setupExercisesView__button setupExercisesView__button--remove">-</Button>
-            </li>
-          </ul>
-        </li>
-      </ul>
+        <section v-if="loadingProgram || loadingExercises" class="setupExercisesView__loading">
+          <img class="loading__image" src="../../assets/images/loading.png" alt="Laddar..." />
+          <ProgressSpinner 
+            style="width: 40px; height: 40px" 
+            strokeWidth="8" 
+            fill="transparent"
+            animationDuration=".5s" 
+            aria-label="Loading" 
+          />
+          <h2>Laddar...</h2>
+        </section>
+        <section v-if="showMyProgram && !loadingProgram">
+          <h2 class="setupExercisesView__title">Mina övningar</h2>
+          <section class="setupExercisesView__articleContainter">
+            <article class="setupExercisesView__article">
+              <ul v-for:="item in program.exercises" class="setupExercisesView__ul">
+                <li>
+                  <ul class="setupExercisesView__ul setupExercisesView__ul--inner">
+                    <li class="setupExercisesView__li--inner" @click="showMoreInfo(item.name, item.desc, item.image)">
+                      {{ item.name }}
+                    </li>
+                    <li>
+                      <Button @click="removeExercise(item.pk, item.sk)"  class="setupExercisesView__button setupExercisesView__button--remove">-</Button>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              </article>
+          </section>
+        </section>
+        <section v-if="showExercises && !loadingExercises">
+          <h2 class="setupExercisesView__title">Alla övningar</h2>
+          <section class="setupExercisesView__articleContainter">
+            <article class="setupExercisesView__article">
+              <ul v-for:="item in allExercises" class="setupExercisesView__ul">
+                <li>
+                  <ul class="setupExercisesView__ul setupExercisesView__ul--inner">
+                    <li class="setupExercisesView__li--inner" @click="showMoreInfo(item.name, item.desc, item.image)">
+                      {{ item.name }}
+                    </li>
+                    <li>
+                      <Button @click="addExercise(item.pk, item.sk, item.name, item.desc, item.image)"  class="setupExercisesView__button setupExercisesView__button--add">+</Button>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </article>
+          </section>
+        </section>
+        <div v-if="showInfo" class="setupExercisesView__modal">
+          <section class="setupExercisesView__modal-section">
+            <Button class="setupExercisesView__modal-button" @click="dontShow">Tillbaka</Button>
+            <h1 class="setupExercisesView__modal-title">{{exname}}</h1>
+            <p class="setupExercisesView__modal-text">{{ exdesc }}</p>
+            <img :src="eximage" class="setupExercisesView__modal-image">
+          </section>
+        </div>
+      <section class="setupExercisesView__buttonContainer">
+        <Button @click="myProgram" class="setupExercisesView__button">Mitt program</Button>
+        <Button @click="showAllExercises"  class="setupExercisesView__button">Alla övningar</Button>
       </section>
     </section>
-    <section v-if="showExercises && !loadingExercises">
-      <h2 class="setupExercisesView__title">Alla övningar</h2>
-      <p class="setupExercisesView__text">Klicka på knappen bredvid den övning du vill lägga till i ditt program. Klicka för mer information om övningen.</p>
-      <section class="setupExercisesView__container">
-        <ul v-for:="item in allExercises" class="setupExercisesView__ul">
-          <li>
-            <ul class="setupExercisesView__ul setupExercisesView__ul--inner">
-              <li class="setupExercisesView__li--inner" @click="showMoreInfo(item.name, item.desc, item.image)">
-                {{ item.name }}
-              </li>
-              <li>
-                <Button @click="addExercise(item.pk, item.sk, item.name, item.desc, item.image)"  class="setupExercisesView__button setupExercisesView__button--add">+</Button>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-    </section>
-    <div v-if="showInfo" class="setupExercisesView__modal">
-      <section class="setupExercisesView__modal-section">
-        <Button class="setupExercisesView__modal-button" @click="dontShow">Tillbaka</Button>
-        <h1 class="setupExercisesView__modal-title">{{exname}}</h1>
-        <p class="setupExercisesView__modal-text">{{ exdesc }}</p>
-        <img :src="eximage" class="setupExercisesView__modal-image">
-      </section>
-    </div>
     <Menu />
   </section>
 </template>

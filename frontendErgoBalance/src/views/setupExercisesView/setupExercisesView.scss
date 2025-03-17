@@ -10,17 +10,27 @@
 
 .setupExercisesView__container {
     @include centering;
-    background-color: rgba(255, 255, 255, .3);
-    color: var(--color-white);
-    border-radius: #{$borders-radius-md};
-    margin: 1rem auto;
-    padding: 1rem;
-    min-height: calc(65vh - 80px);
-    max-height: calc(65vh - 80px);
+    height: 95vh;
     width: 90vw;
+    justify-content: space-around;
+    position: relative;
+    background-color: var(--color-white);
+    border-radius: #{$borders-radius-sm};
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.setupExercisesView__article {
+    font-family: $typography-font-family-primary;
+    font-size: smaller;
+    margin: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #d0cfcf86;
+    border-radius: 5px;
     overflow: auto;
-    align-items: normal;
-    justify-content: flex-start;
+    height: 50vh;
+    background-color: var(--color-green);
+    color: var(--color-white);
 }
 
 .setupExercisesView__ul {
@@ -41,7 +51,10 @@
 
 .setupExercisesView__button {
     @include button-base;
-    margin: 2rem .5rem;
+    background-color: var(--color-black)!important;
+    margin: 0.5rem;
+    min-width: 130px !important;
+    max-width: 130px !important;
 }
 
 .setupExercisesView__button.setupExercisesView__button--remove,
@@ -122,4 +135,12 @@
 
 .p-progressspinner-circle {
     stroke: var(--color-black) !important;
+}
+
+.setupExercisesView__buttonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0.5rem;
 }
