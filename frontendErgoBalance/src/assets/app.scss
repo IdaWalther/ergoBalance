@@ -8,8 +8,10 @@
 
 :root {
   --color-white: #{$colors-neutral-white};
+  --color-light-green:  #{$colors-primary-light};
   --color-green: #{$colors-primary-dark};
   --color-yellow: #{$colors-accent-yellow};
+  --color-red: #{$colors-accent-red};
   --color-black: #{$colors-neutral-black};
   --color-darkBlue: #{$colors-neutral-dark-blue};
   --font-primary: #{$typography-font-family-primary};
@@ -47,12 +49,11 @@
   // margin-bottom: 1rem;
   border: none !important;
   // --p-button-bg: var(--color-green);
-  background-color: var(--color-green) !important;
   --p-button-border: none;
-  --p-button-text-color: var(--color-white);
+  //--p-button-text-color: var(--color-white);
   // --p-button-padding: 10px 20px;
   --p-button-border-radius: #{$borders-radius-md};
-  color: var(--color-white) !important;
+  //color: var(--color-white) !important;
 
   &:hover {
     box-shadow: #{$shadows-md};

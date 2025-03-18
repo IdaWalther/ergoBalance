@@ -149,7 +149,7 @@ function playAlarm() {
       <Button class="interval__btn" v-if="intervalTimer.isRunning" @click="togglePause">
           {{ intervalTimer.isPaused ? 'Fortsätt' : 'Pausa' }}
         </Button>
-        <Button class="interval__btn" @click="stop" :disabled="!intervalTimer.isRunning">
+        <Button class="interval__btn interval__btn-stop" @click="stop" :disabled="!intervalTimer.isRunning">
           Stoppa
         </Button>
       </section>
