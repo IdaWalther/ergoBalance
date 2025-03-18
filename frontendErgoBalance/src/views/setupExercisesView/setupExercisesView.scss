@@ -6,21 +6,31 @@
 
 .setupExercisesView__title {
     text-align: center;
+    margin: 1rem;
 }
 
 .setupExercisesView__container {
     @include centering;
-    background-color: rgba(255, 255, 255, .3);
-    color: var(--color-white);
-    border-radius: #{$borders-radius-md};
-    margin: 1rem auto;
-    padding: 1rem;
-    min-height: calc(65vh - 80px);
-    max-height: calc(65vh - 80px);
+    height: 95vh;
     width: 90vw;
+    justify-content: space-around;
+    position: relative;
+    background-color: var(--color-white);
+    border-radius: #{$borders-radius-sm};
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.setupExercisesView__article {
+    font-family: $typography-font-family-primary;
+    font-size: smaller;
+    margin: 0.5rem;
+    border: 1px solid #d0cfcf86;
+    border-radius: 5px;
     overflow: auto;
-    align-items: normal;
-    justify-content: flex-start;
+    height: 50vh;
+    background-color: var(--color-green);
+    color: var(--color-white);
 }
 
 .setupExercisesView__ul {
@@ -33,6 +43,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 0 1.5rem;
 }
 
 .setupExercisesView__li--inner {
@@ -41,12 +52,15 @@
 
 .setupExercisesView__button {
     @include button-base;
-    margin: 2rem .5rem;
+    margin: 0.5rem;
+    min-width: 130px !important;
+    max-width: 130px !important;
 }
 
 .setupExercisesView__button.setupExercisesView__button--remove,
 .setupExercisesView__button.setupExercisesView__button--add {
     border-color: var(--color-black) !important;
+    background-color: var(--color-black)!important;
     min-width: 30px !important;
     max-width: 30px !important;
     font-size: #{$spacing-md};
@@ -59,22 +73,26 @@
 }
 
 .setupExercisesView__modal {
-    @include centering;
+    @include wrapper;
     position: absolute;
-    width: 100vw;
     height: 100vh;
-    background: var(--color-black);
-    background: linear-gradient(144deg, rgba(162, 208, 193, 1) 0%, rgba(11, 88, 80, 1) 60%) !important;
     padding: #{$spacing-xl};
+    z-index: 100;
 }
 
 .setupExercisesView__modal-section {
-    @include wrapper;
+    @include centering;
     position: relative;
-    height: 100vh;
-    max-width: 400px;
-    color: var(--color-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around !important;
+    height: 95vh;
+    width: 90vw;
+    color: var(--color-white);
+    background: var(--color-black) !important;
     border-radius: #{$borders-radius-md};
+    padding: #{$spacing-xl};
 }
 
 .setupExercisesView__modal-title {
@@ -94,7 +112,7 @@
 .setupExercisesView__modal-button {
     @include button-base;
     position: absolute !important;
-    top: 0;
+    top: 1rem;
     right: 1rem;
 }
 
@@ -122,4 +140,17 @@
 
 .p-progressspinner-circle {
     stroke: var(--color-black) !important;
+}
+
+.setupExercisesView__buttonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0.5rem;
+}
+
+.added {
+    background-color: #7fb1a4;
+    color: var(--color-white)
 }
