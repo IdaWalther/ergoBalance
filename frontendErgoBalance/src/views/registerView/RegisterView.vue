@@ -47,6 +47,9 @@ const onFormSubmit = handleSubmit(async (values: RegisterFormValues) => {
 
 <template>
   <section class="registerView__wrapper">
+    <RouterLink to="/">
+        <img class="loginView__headerlogo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
+    </RouterLink>
     <section>
       <form class="registerView__container" @submit.prevent="onFormSubmit">
         <article>

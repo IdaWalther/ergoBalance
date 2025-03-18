@@ -25,6 +25,7 @@ onMounted(() => {
     <figure>
       <img class="startView__logo" src="../../assets/images/ergoBalanceLogo.png" alt="logo" />
     </figure>
+    <section class="startView__btnContainer">
     <RouterLink to="/login">
       <Button class="startView__button" type="button" label="Logga in" />
     </RouterLink>
@@ -32,5 +33,6 @@ onMounted(() => {
       <Button class="startView__button startView__button--register" type="button"
         label="Inte medlem ännu? Registrera dig här" />
     </RouterLink>
+  </section>
   </section>
 </template>
