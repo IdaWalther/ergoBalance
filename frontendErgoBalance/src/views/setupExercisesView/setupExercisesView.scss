@@ -73,22 +73,26 @@
 }
 
 .setupExercisesView__modal {
-    @include centering;
+    @include wrapper;
     position: absolute;
-    width: 100vw;
     height: 100vh;
-    background: var(--color-black);
-    background: linear-gradient(144deg, rgba(162, 208, 193, 1) 0%, rgba(11, 88, 80, 1) 60%) !important;
     padding: #{$spacing-xl};
+    z-index: 100;
 }
 
 .setupExercisesView__modal-section {
-    @include wrapper;
+    @include centering;
     position: relative;
-    height: 100vh;
-    max-width: 400px;
-    color: var(--color-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around !important;
+    height: 95vh;
+    width: 90vw;
+    color: var(--color-white);
+    background: var(--color-black) !important;
     border-radius: #{$borders-radius-md};
+    padding: #{$spacing-xl};
 }
 
 .setupExercisesView__modal-title {
@@ -108,7 +112,7 @@
 .setupExercisesView__modal-button {
     @include button-base;
     position: absolute !important;
-    top: 0;
+    top: 1rem;
     right: 1rem;
 }
 
