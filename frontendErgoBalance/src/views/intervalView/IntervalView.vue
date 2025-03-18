@@ -20,7 +20,12 @@ const program = ref<any>(null)
 const currentExerciseIndex = ref(0);
 const token = localStorage.getItem('token')
 const username = ref<string | null>(null)
-  const alarmSound = ref<HTMLAudioElement | null>(null);
+const alarmSound = ref<HTMLAudioElement | null>(null);
+const expanded = ref(false);
+
+const toggleDescription = () => {
+  expanded.value = !expanded.value;
+};
 
 const getUsername = () => {
   if(token) {
@@ -119,23 +124,26 @@ function playAlarm() {
         </router-link>
       </section>
       <section v-else class="active-view">
-      <section class="one">
+      <section>
         <p class="progress__text">Tid kvar på intervallerna:</p>
         <ProgressBar :value="intervalTimer.progressPercentage" class="intervalView__progressbar" />
         <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Nästa övning börjar om:' : 'Paus' }}</p>
         <p class="time-left">{{ formattedRemainingTime }}</p>
         </section>
-        <section class="two" v-if="intervalTimer.currentPhase === 'break' && currentExercise">
+        <section v-if="intervalTimer.currentPhase === 'break' && currentExercise">
           <h2>{{ currentExercise.name }}</h2>
           <img :src="currentExercise.image" :alt="currentExercise.name" class="exercise-image" />
-          <p class="intervalView__desc" >{{ currentExercise.desc }}</p>
+        <p class="intervalView__desc" @click="toggleDescription">{{ currentExercise.desc }}</p>
+        <section v-if="expanded" class="description-popup" @click="toggleDescription">
+         <p>{{ currentExercise.desc }}</p>
+        </section>
         </section>
         <section v-if="intervalTimer.currentPhase === 'work'">
         </section>
-        <section class="tre">
-        <article class="intervalView__alarmBtn">    
+        <section>
+        <article class="intervalView__alarmBtnContainer">    
           <Checkbox v-model="intervalTimer.alarmEnabled" binary class="interval__btn"/>
-        <span>{{ intervalTimer.alarmEnabled ? 'Alarm: På' : 'Alarm: Av' }}</span>
+        <p class="intervalView__alarmBtn--text">{{ intervalTimer.alarmEnabled ? 'Alarm: På' : 'Alarm: Av' }}</p>
       <Button class="interval__btn--phasechange" v-if="intervalTimer.isRunning" @click="intervalTimer.skipToNextPhase">Till nästa fas</Button>
     </article>
       <Button class="interval__btn" v-if="intervalTimer.isRunning" @click="togglePause">
