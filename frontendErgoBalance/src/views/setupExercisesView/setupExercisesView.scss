@@ -6,6 +6,7 @@
 
 .setupExercisesView__title {
     text-align: center;
+    margin: 1rem;
 }
 
 .setupExercisesView__container {
@@ -24,7 +25,6 @@
     font-family: $typography-font-family-primary;
     font-size: smaller;
     margin: 0.5rem;
-    padding: 1rem;
     border: 1px solid #d0cfcf86;
     border-radius: 5px;
     overflow: auto;
@@ -43,6 +43,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 0 1.5rem;
 }
 
 .setupExercisesView__li--inner {
@@ -143,4 +144,9 @@
     align-items: center;
     justify-content: space-around;
     margin: 0.5rem;
+}
+
+.added {
+    background-color: #7fb1a4;
+    color: var(--color-white)
 }

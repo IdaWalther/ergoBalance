@@ -2,7 +2,7 @@
 
 .startView__wrapper {
   @include wrapper;
-  background-color: var(--color-white) !important;
+  background: var(--color-white) !important;
 }
 
 .startView__title {

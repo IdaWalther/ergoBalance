@@ -22,6 +22,7 @@ const program = ref()
 const allExercises = ref()
 const loadingProgram = ref(false)
 const loadingExercises = ref(false)
+const selectedExercise = ref<string[]>([])
 
 interface CustomJwtPayload extends JwtPayload {
   username: string
@@ -50,6 +51,10 @@ const myProgram = async () => {
   loadingProgram.value = true
   program.value = await getYourProgram()
   loadingProgram.value = false  
+
+  if(program.value && program.value.exercises) {
+    selectedExercise.value = program.value.exercises.map((exercise: any) => exercise.sk)
+  }
 }
 
 const getYourProgram = async () => {
@@ -93,10 +98,19 @@ const removeExercise = async (pk:string, sk:string) => {
   console.log("sk:", sk)
   try {
     await editProgram('userUrl', username.value, information)
-    myProgram()
+    selectedExercise.value = selectedExercise.value.filter((exercise) => exercise !== sk)
+    updatePage()
   } catch(error) {
     console.log('error:', error)
     throw error
+  }
+}
+
+const updatePage = () => {
+  if(showMyProgram.value) {
+    myProgram()
+  } else {
+    showAllExercises()
   }
 }
 
@@ -114,7 +128,9 @@ const addExercise = async (pk: string, sk:string, name:string, desc: string, ima
   }
   try {
     await editProgram('userUrl', username.value, information)
-    myProgram()
+    if(!selectedExercise.value.includes(sk)) {
+      selectedExercise.value.push(sk)
+    }
   } catch(error) {
     console.log('error:', error)
     throw error
@@ -174,12 +190,16 @@ const dontShow = () => {
             <article class="setupExercisesView__article">
               <ul v-for:="item in allExercises" class="setupExercisesView__ul">
                 <li>
-                  <ul class="setupExercisesView__ul setupExercisesView__ul--inner">
+                  <ul :class="['setupExercisesView__ul setupExercisesView__ul--inner', selectedExercise.includes(item.sk) ? 'added' : '']">
                     <li class="setupExercisesView__li--inner" @click="showMoreInfo(item.name, item.desc, item.image)">
                       {{ item.name }}
                     </li>
                     <li>
-                      <Button @click="addExercise(item.pk, item.sk, item.name, item.desc, item.image)"  class="setupExercisesView__button setupExercisesView__button--add">+</Button>
+                      <Button 
+                        @click="selectedExercise.includes(item.sk) ? removeExercise(item.pk, item.sk) : addExercise(item.pk, item.sk, item.name, item.desc, item.image)"  
+                        :class="['setupExercisesView__button', selectedExercise.includes(item.sk) ?'setupExercisesView__button--remove' : 'setupExercisesView__button--add']">
+                        {{selectedExercise.includes(item.sk) ? '-' : '+'}}
+                      </Button>
                     </li>
                   </ul>
                 </li>
