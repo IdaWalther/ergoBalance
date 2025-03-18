@@ -55,12 +55,16 @@
     margin: 0.5rem;
     min-width: 130px !important;
     max-width: 130px !important;
+    background: var(--color-light-green) !important;
+    color: var(--color-black) !important;
+    border: none !important;
 }
 
 .setupExercisesView__button.setupExercisesView__button--remove,
 .setupExercisesView__button.setupExercisesView__button--add {
-    border-color: var(--color-black) !important;
-    background-color: var(--color-black)!important;
+    background: var(  --color-black) !important;
+    color: var(--color-white) !important;
+    border: none !important;
     min-width: 30px !important;
     max-width: 30px !important;
     font-size: #{$spacing-md};
@@ -89,8 +93,8 @@
     justify-content: space-around !important;
     height: 95vh;
     width: 90vw;
-    color: var(--color-white);
-    background: var(--color-black) !important;
+    color: var(--color-black);
+    background: var(--color-white) !important;
     border-radius: #{$borders-radius-md};
     padding: #{$spacing-xl};
 }
@@ -114,6 +118,9 @@
     position: absolute !important;
     top: 1rem;
     right: 1rem;
+    background: var(--color-light-green) !important;
+    color: var(--color-black) !important;
+    border: none !important;
 }
 
 .setupExercisesView__loading {
