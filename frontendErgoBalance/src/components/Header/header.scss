@@ -34,4 +34,12 @@
     background-color: rgb(47, 47, 47) !important;
     border: none !important;
     color: var(--color-white) !important;
+
+    &:hover {
+        scale: 1.1;
+    }
+
+    &:active {
+        scale: 0.9;
+    }
 }

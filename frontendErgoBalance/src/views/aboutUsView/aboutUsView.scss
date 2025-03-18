@@ -11,14 +11,14 @@
   width: 90vw;
   justify-content: space-around;
   overflow: scroll;
-  position: relative;
   background-color: var(--color-white) !important;
+  margin-bottom: 0.5rem;
 }
 
 .aboutUsView__header {
   text-transform: uppercase;
   font-size: 1.5rem;
-  margin-top: 2rem
+  margin-top: 2rem;
 }
 
 .aboutUsView__section {
@@ -42,8 +42,12 @@
 }
 
 .aboutUs__img-creators {
-  width: 90%;
+  width: 100%;
   margin-top: 3rem;
+}
+
+.aboutUsView__text {
+  padding: 0.5rem;
 }
 
 .aboutUsView__section-imgInfo {
@@ -54,6 +58,7 @@
 
 .aboutUs__img {
   width: 100%;
+  display: block;
 }
 
 @keyframes fade-slide-in {
