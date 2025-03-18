@@ -4,6 +4,7 @@ import Button from 'primevue/button'
 import { useRouter } from 'vue-router'
 import InputText from 'primevue/inputtext'
 import Message from 'primevue/message'
+import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 import { userAuthenticate } from '../../services/userAuthenticate'
 
@@ -46,6 +47,9 @@ const onFormSubmit = async (event : Event) => {
 
 <template>
   <section class="loginView__wrapper">
+    <RouterLink to="/">
+        <img class="loginView__headerlogo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
+    </RouterLink>
     <section>
       <form class="loginView__container" @submit="onFormSubmit">
         <article class="loginView__article">

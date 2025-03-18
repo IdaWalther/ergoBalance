@@ -2,6 +2,7 @@
 
 .startView__wrapper {
   @include wrapper;
+  justify-content: space-around;
   background: var(--color-white) !important;
 }
 
@@ -19,6 +20,10 @@
   border: 2px solid white;
 }
 
+.startView__btnContainer {
+  @include centering;
+}
+
 .startView__button {
   @include button-base;
 }
@@ -26,4 +31,5 @@
 .startView__button--register {
   opacity: 70%;
   margin-top: 1rem !important;
+  margin-bottom: 5rem;
 }

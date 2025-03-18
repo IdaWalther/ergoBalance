@@ -2,6 +2,28 @@
 
 .loginView__wrapper {
     @include wrapper;
+    justify-content: center;
+    position: relative;
+}
+
+.loginView__headerlogo {
+    position: absolute;
+    top: 0.9rem;
+    left: 1.5rem;
+    z-index: 99;
+    height: 3.5rem;
+    background-color: white;
+    padding: 3px;
+    border-radius: 100%;
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.1;
+    }
+
+    &:active {
+        scale: 0.9;
+    }
 }
 
 .loginView__container {
@@ -9,10 +31,6 @@
     background-color: var(--color-white);
     border-radius: #{$borders-radius-sm};
     padding: 3rem;
-}
-
-.loginView__button {
-    @include button-base;
 }
 
 .loginView__input {
@@ -27,5 +45,10 @@
 
 .loginView__error {
     position: absolute;
-    top: 6rem;
+    top: 7rem;
+}
+
+.loginView__button {
+    @include button-base;
+    margin-top: 2rem;
 }

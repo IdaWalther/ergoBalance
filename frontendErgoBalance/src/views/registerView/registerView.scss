@@ -2,7 +2,29 @@
 
 .registerView__wrapper {
     @include wrapper;
+    justify-content: center;
+    position: relative;
 }
+
+// .loginView__headerlogo {
+//     position: absolute;
+//     top: 0.9rem;
+//     left: 1.5rem;
+//     z-index: 99;
+//     height: 3.5rem;
+//     background-color: white;
+//     padding: 3px;
+//     border-radius: 100%;
+//     cursor: pointer;
+
+//     &:hover {
+//         scale: 1.1;
+//     }
+
+//     &:active {
+//         scale: 0.9;
+//     }
+// }
 
 .registerView__container {
     @include centering;
