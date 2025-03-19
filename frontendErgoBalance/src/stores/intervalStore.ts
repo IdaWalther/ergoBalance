@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import type { Ref } from 'vue'
 
 export const useIntervalTimer = defineStore('intervalTimer', () => {
@@ -94,8 +94,8 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
     if (countdownIntervalId) clearInterval(countdownIntervalId)
     if (overallIntervalId) clearInterval(overallIntervalId)
     if (animationFrameId) cancelAnimationFrame(animationFrameId);
-    startTime = 0
 
+    startTime = 0
     progressPercentage.value = 0;
     elapsedOverallTime.value = 0;
     overallStartTime.value = null;

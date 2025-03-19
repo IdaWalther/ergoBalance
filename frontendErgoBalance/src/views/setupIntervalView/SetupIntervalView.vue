@@ -54,7 +54,7 @@ function update() {
       </article>
       <article>
         <label>
-         Tid för paus:
+         Tid för pausrörelse:
           <InputNumber class="setupinput" v-model.number="localBreakDuration" :min="0" :max="100" showButtons suffix=" min" buttonLayout="horizontal" fluid />
         </label>
       </article>

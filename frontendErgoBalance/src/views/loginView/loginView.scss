@@ -40,15 +40,18 @@
 
 .loginView__article {
     position: relative;
-    margin: #{$spacing-xs};
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .loginView__error {
     position: absolute;
-    top: 7rem;
+    top: 6.5rem;
 }
 
 .loginView__button {
     @include button-base;
-    margin-top: 2rem;
+    background: var(--color-green) !important;
+    color: var(--color-white) !important;
+    margin-top: 1.5rem;
 }

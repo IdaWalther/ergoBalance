@@ -26,6 +26,8 @@
 
 .startView__button {
   @include button-base;
+  background: var(--color-green) !important;
+  color: var(--color-white) !important;
 }
 
 .startView__button--register {
