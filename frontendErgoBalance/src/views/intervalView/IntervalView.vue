@@ -127,11 +127,11 @@ function playAlarm() {
       <section>
         <p class="progress__text">Tid kvar på intervallerna:</p>
         <ProgressBar :value="intervalTimer.progressPercentage" class="intervalView__progressbar" />
-        <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Nästa övning börjar om:' : 'Paus' }}</p>
+        <p class="phase-text">{{ intervalTimer.currentPhase === 'work' ? 'Nästa övning börjar om:' : 'Tid för rörelse' }}</p>
         <p class="time-left">{{ formattedRemainingTime }}</p>
         </section>
         <section v-if="intervalTimer.currentPhase === 'break' && currentExercise">
-          <h2>{{ currentExercise.name }}</h2>
+          <h2 class="intervalView__name">{{ currentExercise.name }}</h2>
           <img :src="currentExercise.image" :alt="currentExercise.name" class="exercise-image" />
         <p class="intervalView__desc" @click="toggleDescription">{{ currentExercise.desc }}</p>
         <section v-if="expanded" class="description-popup" @click="toggleDescription">

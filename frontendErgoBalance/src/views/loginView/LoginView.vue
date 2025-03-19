@@ -19,7 +19,7 @@ const {loginUser} = userAuthenticate()
 
 const onFormSubmit = async (event : Event) => {
   event.preventDefault()
-  identifierError.value = identifier.value ? '' : 'Användarnamn eller email är obligatoriskt'
+  identifierError.value = identifier.value ? '' : 'Användarnamn/email är obligatoriskt'
   passwordError.value = password.value ? '' : 'Lösenord är obligatoriskt'
 
   if (!identifierError.value && !passwordError.value) {
@@ -50,7 +50,6 @@ const onFormSubmit = async (event : Event) => {
     <RouterLink to="/">
         <img class="loginView__headerlogo" src="../../assets/images/ergoBalanceLogo.png" alt="ergoBalanceLogo">
     </RouterLink>
-    <section>
       <form class="loginView__container" @submit="onFormSubmit">
         <article class="loginView__article">
           <h4>Användarnamn eller email</h4>
@@ -68,6 +67,5 @@ const onFormSubmit = async (event : Event) => {
         </article>
         <Button class="loginView__button" type="submit" label="Logga in" />
       </form>
-    </section>
   </section>
 </template>

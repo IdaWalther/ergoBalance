@@ -11,7 +11,7 @@
 
 .setupExercisesView__container {
     @include centering;
-    height: 95vh;
+    height: 80vh;
     width: 90vw;
     justify-content: space-around;
     position: relative;
@@ -19,6 +19,7 @@
     border-radius: #{$borders-radius-sm};
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
+    margin-bottom: 0.5rem;
 }
 
 .setupExercisesView__article {
@@ -62,7 +63,7 @@
 
 .setupExercisesView__button.setupExercisesView__button--remove,
 .setupExercisesView__button.setupExercisesView__button--add {
-    background: var(  --color-black) !important;
+    background: var(--color-black) !important;
     color: var(--color-white) !important;
     border: none !important;
     min-width: 30px !important;
@@ -110,7 +111,7 @@
 }
 
 .setupExercisesView__modal-image {
-    width: 60%;
+    width: 100%;
 }
 
 .setupExercisesView__modal-button {
