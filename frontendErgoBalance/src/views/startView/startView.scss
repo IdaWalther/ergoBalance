@@ -7,16 +7,16 @@
 }
 
 .startView__title {
-  font-size: 2rem;
+  font-size: #{$typography-font-size-2xl};
   color: var(--color-green);
-  margin: 1rem;
+  margin: #{$spacing-md};
 }
 
 .startView__logo {
   width: 50vw;
   max-width: 200px;
-  margin: 2rem;
-  border-radius: 100%;
+  margin: #{$spacing-xl};
+  border-radius: #{$borders-radius-full};
   border: 2px solid white;
 }
 
@@ -32,6 +32,6 @@
 
 .startView__button--register {
   opacity: 70%;
-  margin-top: 1rem !important;
+  margin-top: #{$spacing-md} !important;
   margin-bottom: 5rem;
 }
