@@ -30,6 +30,8 @@
 .intervalView__progressbar {
     width: 100%;
     margin: 0.5rem 0;
+    height: 1.5rem !important;
+    --p-progressbar-value-background: var(--color-light-green) !important;
 }
 
 .phase-text {
