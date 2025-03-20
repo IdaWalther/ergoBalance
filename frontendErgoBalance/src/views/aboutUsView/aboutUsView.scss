@@ -12,13 +12,13 @@
   justify-content: space-around;
   overflow: scroll;
   background-color: var(--color-white) !important;
-  margin-bottom: 0.5rem;
+  margin-bottom: #{$spacing-sm};
 }
 
 .aboutUsView__header {
   text-transform: uppercase;
-  font-size: 1.5rem;
-  margin-top: 2rem;
+  font-size: #{$typography-font-size-xl};
+  margin-top: #{$spacing-xl};
 }
 
 .aboutUsView__section {
@@ -26,9 +26,9 @@
   font-family: var(--font-primary);
   font-size: 1.1rem;
   text-align: center;
-  padding: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding: #{$spacing-md};
+  padding-top: #{$spacing-xl};
+  padding-bottom: #{$spacing-xl};
   border-radius: 0;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .aboutUsView__section-header {
-  margin-bottom: 2rem;
+  margin-bottom: #{$spacing-xl};
 }
 
 .aboutUs__img-creators {
@@ -47,13 +47,13 @@
 }
 
 .aboutUsView__text {
-  padding: 0.5rem;
+  padding: #{$spacing-sm};
 }
 
 .aboutUsView__section-imgInfo {
   font-style: italic;
-  margin-top: 0.5rem;
-  font-size: 1rem;
+  margin-top: #{$spacing-sm};
+  font-size: #{$typography-font-size-md};
 }
 
 .aboutUs__img {
