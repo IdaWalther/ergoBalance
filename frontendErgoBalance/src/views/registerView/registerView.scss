@@ -30,4 +30,5 @@ form {
 .registerView__input {
     @include input-base;
     min-width: 15rem !important;
+    color: var(--color-black) !important;
 }
