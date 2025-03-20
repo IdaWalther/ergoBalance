@@ -92,8 +92,7 @@
     transform: translate(-50%, -50%);
     background: #000000c1;
     color: white;
-    padding: #{$spacing-xl};
-    line-height: 1.8rem;
+    padding: #{$spacing-xl};    line-height: #{$typography-line-height-loose};
     z-index: 1000;
     width: 100%;
     height: 100%;
