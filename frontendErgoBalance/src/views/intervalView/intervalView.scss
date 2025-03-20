@@ -12,7 +12,7 @@
     width: 90vw;
     text-align: center;
     overflow: scroll;
-    margin-bottom: 0.5rem;
+    margin-bottom: #{$spacing-sm};
 }
 
 .active-view {
@@ -24,7 +24,7 @@
 }
 
 .progress__text {
-    margin-top: 1rem;
+    margin-top: #{$spacing-md};
 }
 
 .intervalView__progressbar {
@@ -35,9 +35,9 @@
 }
 
 .phase-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 1rem;
+    font-size: #{$typography-font-size-xl};
+    font-weight: #{$typography-font-weight-bold};
+    margin-top: #{$spacing-md};
 }
 
 .time-left {
@@ -57,22 +57,21 @@
 
 .intervalView__desc {
     font-family: $typography-font-family-primary;
-    font-size: 1rem;
+    font-size: #{$typography-font-size-md};
     line-height: 2.5rem;
     background-color: #e2e8f09b;
     margin-bottom: 0.5rem;
-    padding: 1rem;
+    padding: #{$spacing-md};
     border: 1px solid #e5e4e486;
     box-shadow: 5px 3px 3px #adadad;
     border-radius: 5px;
     padding: 0.7rem;
-    margin: 1.5rem;
+    margin: #{$spacing-lg};
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     cursor: pointer;
-    // text-overflow: ellipsis;
     transition: all 0.3s ease;
 
     &:hover {
@@ -93,7 +92,7 @@
     transform: translate(-50%, -50%);
     background: #000000c1;
     color: white;
-    padding: 2rem;
+    padding: #{$spacing-xl};
     line-height: 1.8rem;
     z-index: 1000;
     width: 100%;
@@ -111,12 +110,12 @@
 }
 
 .intervalView__alarmBtn--text {
-    margin-left: 0.5rem;
+    margin-left: #{$spacing-sm};
 }
 
 .interval__btn {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: #{$spacing-sm};
+    margin-bottom: #{$spacing-sm};
     width: 100%;
     background: var(--color-green) !important;
     color: var(--color-white) !important;
@@ -124,7 +123,7 @@
 }
 
 .interval__btn--phasechange {
-    margin-left: 2rem;
+    margin-left:#{$spacing-xl};
     background: var(--color-light-green) !important;
     color: var(--color-black) !important;
     border: none !important;
@@ -136,6 +135,6 @@
 }
 
 .intervalView__endtext {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: #{$typography-font-size-xl};
+    margin-bottom: #{$spacing-xl};
 }
