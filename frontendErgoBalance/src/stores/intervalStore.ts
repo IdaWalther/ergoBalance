@@ -103,7 +103,7 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
 
   function pauseToggle() {
     if (!isRunning.value) return
-    isPaused.value = !isPaused.value
+    isPaused.value = !isPaused.value;
 
     if (isPaused.value) {
       if (timeoutId) clearTimeout(timeoutId)
@@ -128,7 +128,9 @@ export const useIntervalTimer = defineStore('intervalTimer', () => {
 
   function skipToNextPhase() {
     if (!isRunning.value) return;
-
+    if (isPaused.value) {
+      isPaused.value = false;
+    }
     if (timeoutId) clearTimeout(timeoutId);
     if (countdownIntervalId) clearInterval(countdownIntervalId);
 
