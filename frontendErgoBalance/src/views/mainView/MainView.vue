@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import './mainView.scss'
 import {ref, onMounted } from 'vue'
-import { jwtDecode } from 'jwt-decode'
+import { jwtDecode, type JwtPayload } from 'jwt-decode'
 import Header from '@/components/Header/Header.vue';
 import Menu from '@/components/menu/Menu.vue';
 
