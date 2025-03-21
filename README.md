@@ -2,7 +2,7 @@
 Ergobalance är tänkt att fungera på mobiltelefoner och därför är det viktigt att när man testar våran app så görs det ur ett mobilperspektiv, t.ex. genom att inspektera i browsern.
 
 ## Testa ergobalance
-Du kan testa vår application genom att surfa över till [Ergobalance](http://ergobalance.s3-website.eu-north-1.amazonaws.com/setupExercises)
+Du kan testa vår application genom att surfa över till http://ergobalance.s3-website.eu-north-1.amazonaws.com/
 
 Eftersom ni inte får tillgång till vår databas med övningar om ni laddar hem repot, så är det av extra stor vikt att ni testar appen på vår sida.
 
