@@ -28,7 +28,7 @@
 }
 
 .intervalView__progressbar {
-    width: 100%;
+    width: 70vw;
     margin: 0.5rem 0;
     height: 1.5rem !important;
     --p-progressbar-value-background: var(--color-light-green) !important;
@@ -92,7 +92,7 @@
     transform: translate(-50%, -50%);
     background: #000000c1;
     color: white;
-    padding: #{$spacing-xl};    
+    padding: #{$spacing-xl};
     line-height: #{$typography-line-height-loose};
     z-index: 1000;
     width: 100%;
@@ -137,4 +137,27 @@
 .intervalView__endtext {
     font-size: #{$typography-font-size-xl};
     margin-bottom: #{$spacing-xl};
+}
+
+@media (max-width: 400px) {
+    .exercise-image {
+        height: 8rem;
+        width: auto;
+    }
+}
+
+
+@media (max-height: 750px) {
+    .time-left {
+        font-size: 3rem;
+        color: #555;
+    }
+
+    .phase-text {
+        font-size: #{$typography-font-size-lg};
+    }
+
+    .intervalView__name {
+        font-size: #{$typography-font-size-lg};
+    }
 }
