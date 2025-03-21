@@ -14,7 +14,7 @@
     height: 3.5rem;
     background-color: white;
     padding: 3px;
-    border-radius: 100%;
+    border-radius: #{$borders-radius-full};
     cursor: pointer;
 
     &:hover {
@@ -36,12 +36,13 @@
 .loginView__input {
     @include input-base;
     min-width: 15rem !important;
+    color: var(--color-black) !important;
 }
 
 .loginView__article {
     position: relative;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: #{$spacing-md};
+    padding-bottom: #{$spacing-md};
 }
 
 .loginView__error {
@@ -53,5 +54,5 @@
     @include button-base;
     background: var(--color-green) !important;
     color: var(--color-white) !important;
-    margin-top: 1.5rem;
+    margin-top: #{$spacing-lg};
 }

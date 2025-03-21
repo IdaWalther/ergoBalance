@@ -6,7 +6,7 @@
 
 .setupExercisesView__title {
     text-align: center;
-    margin: 1rem;
+    margin: #{$spacing-md};
 }
 
 .setupExercisesView__container {
@@ -19,15 +19,15 @@
     border-radius: #{$borders-radius-sm};
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
-    margin-bottom: 0.5rem;
+    margin-bottom: #{$spacing-sm};
 }
 
 .setupExercisesView__article {
     font-family: $typography-font-family-primary;
     font-size: smaller;
-    margin: 0.5rem;
+    margin: #{$spacing-sm};
     border: 1px solid #d0cfcf86;
-    border-radius: 5px;
+    border-radius: #{$borders-radius-sm};
     overflow: auto;
     height: 50vh;
     background-color: var(--color-green);
@@ -53,7 +53,7 @@
 
 .setupExercisesView__button {
     @include button-base;
-    margin: 0.5rem;
+    margin: #{$spacing-sm};
     min-width: 130px !important;
     max-width: 130px !important;
     background: var(--color-light-green) !important;
@@ -106,7 +106,7 @@
 }
 
 .setupExercisesView__modal-text {
-    font-size: 1rem;
+    font-size: #{$typography-font-size-md};
     padding: #{$spacing-md};
 }
 
@@ -117,8 +117,8 @@
 .setupExercisesView__modal-button {
     @include button-base;
     position: absolute !important;
-    top: 1rem;
-    right: 1rem;
+    top: #{$spacing-md};
+    right: #{$spacing-md};
     background: var(--color-light-green) !important;
     color: var(--color-black) !important;
     border: none !important;
@@ -130,7 +130,7 @@
     min-width: 90%;
     color: var(--color-white);
     border-radius: #{$borders-radius-md};
-    margin: 1rem;
+    margin: #{$spacing-md};
     min-height: 65vh;
     max-height: 65vh;
     align-items: normal;
@@ -138,7 +138,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: #{$spacing-md};
 }
 
 .loading__image {
@@ -155,7 +155,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin: 0.5rem;
+    margin: #{$spacing-sm};
 }
 
 .added {

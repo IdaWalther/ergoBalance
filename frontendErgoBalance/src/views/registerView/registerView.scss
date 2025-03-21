@@ -15,14 +15,14 @@
 
 form {
     article {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: #{$spacing-md};
+        padding-bottom: #{$spacing-md};
     }
 }
 
 .registerView__button {
     @include button-base;
-    margin-top: 1rem;
+    margin-top: #{$spacing-md};
     background: var(--color-green) !important;
     color: var(--color-white) !important;
 }
@@ -30,4 +30,5 @@ form {
 .registerView__input {
     @include input-base;
     min-width: 15rem !important;
+    color: var(--color-black) !important;
 }

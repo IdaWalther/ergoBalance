@@ -53,14 +53,14 @@ const onFormSubmit = async (event : Event) => {
       <form class="loginView__container" @submit="onFormSubmit">
         <article class="loginView__article">
           <h4>Användarnamn eller email</h4>
-          <InputText class="loginView__input" v-model="identifier" type="text" placeholder="Skriv Användarnamn eller email här..." />
+          <InputText class="loginView__input" v-model="identifier" type="text" placeholder="Skriv användarnamn eller email här..." />
           <Message v-if="identifierError" severity="error" size="small" variant="simple" class="loginView__error">
             {{ identifierError }}
           </Message>
         </article>
         <article class="loginView__article">
           <h4>Lösenord</h4>
-          <InputText class="loginView__input" v-model="password" type="password" placeholder="Skriv Lösenord här..." />
+          <InputText class="loginView__input" v-model="password" type="password" placeholder="Skriv lösenord här..." />
           <Message v-if="passwordError" severity="error" size="small" variant="simple" class="loginView__error">
             {{ passwordError }}
           </Message>
