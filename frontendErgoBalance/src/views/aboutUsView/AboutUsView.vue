@@ -10,12 +10,12 @@ import Menu from '@/components/menu/Menu.vue';
     <section class="aboutUsView__container">
       <h1 class="aboutUsView__header">Om oss</h1>
       <section class="aboutUsView__section">
-      <h3 class="aboutUsView__section-header">Två träningsglada utvecklare och en idé</h3>
-      <p class="aboutUsView__text"> Hej! Vi är Ida och Lisa, två klasskamrater som insåg att vi (och nästan alla andra) sitter alldeles för mycket stilla på jobbet/när vi pluggar. Så vi tänkte: Vad händer om vi bygger en app som säger åt folk att röra på sig – och gör det på ett kul sätt?</p>
-       <p class="aboutUsView__text"> Sagt och gjort! Som en del av vårt examensarbete på vår YH-utbildning skapade vi en ergonomiapp som inte låter dig förvandlas till en stel kontorsmumie.</p>
+        <h3 class="aboutUsView__section-header">Två utvecklare, en smartare arbetsdag</h3>
+        <p class="aboutUsView__text"> Hej! Vi är Ida och Lisa, två utvecklare med en passion för både teknik och hälsa. Under vår YH-utbildning insåg vi hur mycket tid vi – och de flesta andra – tillbringar stillasittande, både vid arbete och studier. Det väckte en tanke: Vad om en app kunde påminna oss att röra på oss regelbundet?</p>
+        <p class="aboutUsView__text">Så föddes idén till vår ergonomiapp – ett verktyg som hjälper dig att integrera rörelse i din vardag och motverka de negativa effekterna av långvarigt stillasittande. Som en del av vårt examensarbete utvecklade vi en lösning som gör det enkelt att ta aktiva pauser och hålla kroppen i rörelse, utan att störa arbetsflödet.</p>
+      </section>
       <img class="aboutUs__img-creators" src="../../assets/images/IdaAndLisa.webp" alt="Ida And Lisa - creator of ErgoBalance">
       <p class="aboutUsView__section-imgInfo" v-animateonscroll="{ enterClass: 'fade-slide-in', leaveClass: 'fadeout' }">Ida och Lisa - Skapare av ErgoBalance</p>
-    </section>
     <section class="aboutUsView__section aboutUsView__section-backgroundcolor"  v-animateonscroll="{ enterClass: 'fade-slide-in', leaveClass: 'fadeout' }">
       <h3 class="aboutUsView__section-header" v-animateonscroll="{ enterClass: 'fade-slide-in', leaveClass: 'fadeout' }">
         Vad gör appen?</h3>

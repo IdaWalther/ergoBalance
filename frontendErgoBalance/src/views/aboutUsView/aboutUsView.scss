@@ -25,11 +25,12 @@
   @include centering;
   font-family: var(--font-primary);
   font-size: 1.1rem;
-  text-align: center;
+  text-align: left;
   padding: #{$spacing-md};
   padding-top: #{$spacing-xl};
-  padding-bottom: #{$spacing-xl};
   border-radius: 0;
+  font-family: var(--font-primary);
+  font-size: #{$typography-font-size-md};
 }
 
 .aboutUsView__section-backgroundcolor {
@@ -38,12 +39,13 @@
 }
 
 .aboutUsView__section-header {
-  margin-bottom: #{$spacing-xl};
+  margin-bottom: #{$spacing-md};
 }
 
 .aboutUs__img-creators {
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 1rem;
+  padding: 0 #{$spacing-md};
 }
 
 .aboutUsView__text {
@@ -54,6 +56,7 @@
   font-style: italic;
   margin-top: #{$spacing-sm};
   font-size: #{$typography-font-size-md};
+  padding-bottom: #{$spacing-xl};
 }
 
 .aboutUs__img {
