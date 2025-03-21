@@ -1,0 +1,39 @@
+@use '../../assets/app.scss' as *;
+
+.setupIntervalView__wrapper {
+    @include wrapper;
+}
+
+.setupIntervalView__container {
+    @include centering;
+    background-color: var(--color-white);
+    border-radius: #{$borders-radius-sm};
+    width: 90vw;
+    padding: 0rem 2rem;
+    position: relative;
+}
+
+.setupinput {
+    margin-top: 0.3rem;
+}
+
+.save-message {
+    color: green;
+    position: absolute;
+    bottom: 5.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.setupInterval__btn {
+    margin: #{$spacing-sm};
+    margin-bottom: #{$spacing-xl};
+    background: var(  --color-light-green) !important;
+    color: var(--color-black) !important;
+    border: none !important;
+}

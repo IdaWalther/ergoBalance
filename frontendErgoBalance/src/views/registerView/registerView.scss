@@ -1,0 +1,34 @@
+@use '../../assets/app.scss' as *;
+
+.registerView__wrapper {
+    @include wrapper;
+    justify-content: center;
+    position: relative;
+}
+
+.registerView__container {
+    @include centering;
+    background-color: var(--color-white);
+    border-radius: #{$borders-radius-sm};
+    padding: 3rem;
+}
+
+form {
+    article {
+        padding-top: #{$spacing-md};
+        padding-bottom: #{$spacing-md};
+    }
+}
+
+.registerView__button {
+    @include button-base;
+    margin-top: #{$spacing-md};
+    background: var(--color-green) !important;
+    color: var(--color-white) !important;
+}
+
+.registerView__input {
+    @include input-base;
+    min-width: 15rem !important;
+    color: var(--color-black) !important;
+}

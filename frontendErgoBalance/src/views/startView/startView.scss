@@ -1,0 +1,37 @@
+@use '../../assets/app.scss' as *;
+
+.startView__wrapper {
+  @include wrapper;
+  justify-content: space-around;
+  background: var(--color-white) !important;
+}
+
+.startView__title {
+  font-size: #{$typography-font-size-2xl};
+  color: var(--color-green);
+  margin: #{$spacing-md};
+}
+
+.startView__logo {
+  width: 50vw;
+  max-width: 200px;
+  margin: #{$spacing-xl};
+  border-radius: #{$borders-radius-full};
+  border: 2px solid white;
+}
+
+.startView__btnContainer {
+  @include centering;
+}
+
+.startView__button {
+  @include button-base;
+  background: var(--color-green) !important;
+  color: var(--color-white) !important;
+}
+
+.startView__button--register {
+  opacity: 70%;
+  margin-top: #{$spacing-md} !important;
+  margin-bottom: 5rem;
+}

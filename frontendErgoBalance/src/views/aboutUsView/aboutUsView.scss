@@ -1,0 +1,86 @@
+@use '../../assets/app.scss' as *;
+
+.aboutUsView__wrapper {
+  @include wrapper;
+}
+
+
+.aboutUsView__container {
+  @include centering;
+  height: 80vh;
+  width: 90vw;
+  justify-content: space-around;
+  overflow: scroll;
+  background-color: var(--color-white) !important;
+  margin-bottom: #{$spacing-sm};
+}
+
+.aboutUsView__header {
+  text-transform: uppercase;
+  font-size: #{$typography-font-size-xl};
+  margin-top: #{$spacing-xl};
+}
+
+.aboutUsView__section {
+  @include centering;
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  text-align: left;
+  padding: #{$spacing-md};
+  padding-top: #{$spacing-xl};
+  border-radius: 0;
+  font-family: var(--font-primary);
+  font-size: #{$typography-font-size-md};
+}
+
+.aboutUsView__section-backgroundcolor {
+  background-color: var(--color-green);
+  color: white;
+}
+
+.aboutUsView__section-header {
+  margin-bottom: #{$spacing-md};
+}
+
+.aboutUs__img-creators {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0 #{$spacing-md};
+}
+
+.aboutUsView__text {
+  padding: #{$spacing-sm};
+}
+
+.aboutUsView__section-imgInfo {
+  font-style: italic;
+  margin-top: #{$spacing-sm};
+  font-size: #{$typography-font-size-md};
+  padding-bottom: #{$spacing-xl};
+}
+
+.aboutUs__img {
+  width: 100%;
+  display: block;
+}
+
+@keyframes fade-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-slide-in {
+  animation: fade-slide-in 1s ease-out forwards;
+}
+
+.fadeout {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}

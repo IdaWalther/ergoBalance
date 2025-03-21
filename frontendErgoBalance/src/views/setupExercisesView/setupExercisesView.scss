@@ -1,0 +1,166 @@
+@use '../../assets/app.scss' as *;
+
+.setupExercisesView__wrapper {
+    @include wrapper;
+}
+
+.setupExercisesView__title {
+    text-align: center;
+    margin: #{$spacing-md};
+}
+
+.setupExercisesView__container {
+    @include centering;
+    height: 80vh;
+    width: 90vw;
+    justify-content: space-around;
+    position: relative;
+    background-color: var(--color-white);
+    border-radius: #{$borders-radius-sm};
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-bottom: #{$spacing-sm};
+}
+
+.setupExercisesView__article {
+    font-family: $typography-font-family-primary;
+    font-size: smaller;
+    margin: #{$spacing-sm};
+    border: 1px solid #d0cfcf86;
+    border-radius: #{$borders-radius-sm};
+    overflow: auto;
+    height: 50vh;
+    background-color: var(--color-green);
+    color: var(--color-white);
+}
+
+.setupExercisesView__ul {
+    list-style: none;
+}
+
+.setupExercisesView__ul .setupExercisesView__ul--inner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+}
+
+.setupExercisesView__li--inner {
+    cursor: pointer;
+}
+
+.setupExercisesView__button {
+    @include button-base;
+    margin: #{$spacing-sm};
+    min-width: 130px !important;
+    max-width: 130px !important;
+    background: var(--color-light-green) !important;
+    color: var(--color-black) !important;
+    border: none !important;
+}
+
+.setupExercisesView__button.setupExercisesView__button--remove,
+.setupExercisesView__button.setupExercisesView__button--add {
+    background: var(--color-black) !important;
+    color: var(--color-white) !important;
+    border: none !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
+    font-size: #{$spacing-md};
+    padding: 5px 12px;
+    margin: 16px 0 16px 14px;
+}
+
+.setupExercisesView__text {
+    padding: 0.5rem 2rem;
+}
+
+.setupExercisesView__modal {
+    @include wrapper;
+    position: absolute;
+    height: 100vh;
+    padding: #{$spacing-xl};
+    z-index: 100;
+}
+
+.setupExercisesView__modal-section {
+    @include centering;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around !important;
+    height: 95vh;
+    width: 90vw;
+    color: var(--color-black);
+    background: var(--color-white) !important;
+    border-radius: #{$borders-radius-md};
+    padding: #{$spacing-xl};
+}
+
+.setupExercisesView__modal-title {
+    font-size: #{$sizing-xs};
+    padding: #{$spacing-md};
+    margin-top: #{$spacing-xl};
+}
+
+.setupExercisesView__modal-text {
+    font-size: #{$typography-font-size-md};
+    padding: #{$spacing-md};
+}
+
+.setupExercisesView__modal-image {
+    width: 100%;
+    margin-bottom: #{$spacing-xl}
+}
+
+.setupExercisesView__modal-button {
+    @include button-base;
+    position: absolute !important;
+    top: #{$spacing-md};
+    right: #{$spacing-md};
+    background: var(--color-light-green) !important;
+    color: var(--color-black) !important;
+    border: none !important;
+}
+
+.setupExercisesView__loading {
+    @include centering;
+    background-color: rgba(255, 255, 255, .3);
+    min-width: 90%;
+    color: var(--color-white);
+    border-radius: #{$borders-radius-md};
+    margin: #{$spacing-md};
+    min-height: 65vh;
+    max-height: 65vh;
+    align-items: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: #{$spacing-md};
+}
+
+.loading__image {
+    width: 280px;
+    height: 280px;
+}
+
+.p-progressspinner-circle {
+    stroke: var(--color-black) !important;
+}
+
+.setupExercisesView__buttonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: #{$spacing-sm};
+}
+
+.added {
+    background-color: #7fb1a4;
+    color: var(--color-white)
+}

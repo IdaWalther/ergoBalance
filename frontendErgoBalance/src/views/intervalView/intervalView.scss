@@ -1,0 +1,166 @@
+@use '../../assets/app.scss' as *;
+
+.intervalView__wrapper {
+    @include wrapper;
+}
+
+.intervalView__container {
+    @include centering;
+    background-color: var(--color-white);
+    border-radius: #{$borders-radius-sm};
+    height: 80vh;
+    width: 90vw;
+    text-align: center;
+    overflow: scroll;
+    margin-bottom: #{$spacing-sm};
+}
+
+.active-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.progress__text {
+    margin-top: #{$spacing-md};
+}
+
+.intervalView__progressbar {
+    width: 70vw;
+    margin: 0.5rem 0;
+    height: 1.5rem !important;
+    --p-progressbar-value-background: var(--color-light-green) !important;
+}
+
+.phase-text {
+    font-size: #{$typography-font-size-xl};
+    font-weight: #{$typography-font-weight-bold};
+    margin-top: #{$spacing-md};
+}
+
+.time-left {
+    font-size: 4.5rem;
+    color: #555;
+}
+
+.intervalView__name {
+    padding: 0 1rem;
+}
+
+.exercise-image {
+    height: 12rem;
+    width: auto;
+    margin: 0.5rem 0;
+}
+
+.intervalView__desc {
+    font-family: $typography-font-family-primary;
+    font-size: #{$typography-font-size-md};
+    line-height: 2.5rem;
+    background-color: #e2e8f09b;
+    margin-bottom: 0.5rem;
+    padding: #{$spacing-md};
+    border: 1px solid #e5e4e486;
+    box-shadow: 5px 3px 3px #adadad;
+    border-radius: 5px;
+    padding: 0.7rem;
+    margin: #{$spacing-lg};
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        scale: 1.1;
+    }
+
+    &:active {
+        scale: 0.9;
+    }
+}
+
+.description-popup {
+    font-family: $typography-font-family-primary;
+    letter-spacing: 1px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000000c1;
+    color: white;
+    padding: #{$spacing-xl};
+    line-height: #{$typography-line-height-loose};
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    padding-top: 20rem;
+    text-align: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.intervalView__alarmBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intervalView__alarmBtn--text {
+    margin-left: #{$spacing-sm};
+}
+
+.interval__btn {
+    margin-top: #{$spacing-sm};
+    margin-bottom: #{$spacing-sm};
+    width: 100%;
+    background: var(--color-green) !important;
+    color: var(--color-white) !important;
+    border: none !important;
+    --p-checkbox-background: var(--color-white) !important;
+    --p-checkbox-checked-background: var(--color-light-green)!important;
+    --p-checkbox-checked-border-color: var(--color-light-green) !important;
+}
+
+.interval__btn--phasechange {
+    margin-left:#{$spacing-xl};
+    background: var(--color-light-green) !important;
+    color: var(--color-black) !important;
+    border: none !important;
+}
+
+.interval__btn-stop {
+    background: var(--color-red) !important;
+    color: var(--color-white) !important;
+}
+
+.intervalView__endtext {
+    font-size: #{$typography-font-size-xl};
+    margin-bottom: #{$spacing-xl};
+}
+
+@media (max-width: 400px) {
+    .exercise-image {
+        height: 8rem;
+        width: auto;
+    }
+}
+
+
+@media (max-height: 750px) {
+    .time-left {
+        font-size: 3rem;
+        color: #555;
+    }
+
+    .phase-text {
+        font-size: #{$typography-font-size-lg};
+    }
+
+    .intervalView__name {
+        font-size: #{$typography-font-size-lg};
+    }
+}

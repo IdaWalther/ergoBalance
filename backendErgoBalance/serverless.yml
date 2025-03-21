@@ -1,5 +1,7 @@
+custom:
+  localEnv: ${file(./local.yml)}
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
-org: fekarlstad23
+org: ${self:custom.localEnv.myOrg}
 # "app" enables Serverless Framework Dashboard features and sharing them with other Services.
 app: backend-ergo-balance
 # "service" is the name of this project. This will also be added to your AWS resource names.
@@ -8,11 +10,117 @@ service: backendErgoBalance
 provider:
   name: aws
   runtime: nodejs20.x
+  region: eu-north-1
+  deploymentMethod: direct
+  iam:
+    role: ${self:custom.localEnv.myLambda}
 
 functions:
-  hello:
-    handler: handler.hello
+  GetUsers:
+    handler: functions/GetUsers/index.handler
     events:
       - httpApi:
           path: /
           method: get
+  GetPrograms:
+    handler: functions/GetPrograms/index.handler
+    events:
+      - httpApi:
+          path: /user/program/{pk}
+          method: get
+  GetProgram:
+    handler: functions/GetProgram/index.handler
+    events:
+      - httpApi:
+          path: /user/program/{pk}/{sk}
+          method: get
+  PutProgram:
+    handler: functions/PutProgram/index.handler
+    events:
+      - httpApi:
+          path: /user/program/{pk}/{sk}
+          method: put
+  PostNewUser:
+    handler: functions/PostNewUser/index.handler
+    events:
+      - httpApi:
+          path: /user/register
+          method: post
+  PostLogin:
+    handler: functions/PostLogin/index.handler
+    events:
+      - httpApi:
+          path: /user/login
+          method: post
+  PostExercises:
+    handler: functions/PostExercises/index.handler
+    events:
+      - httpApi:
+          path: /exercises
+          method: post
+  GetExercises:
+    handler: functions/GetExercises/index.handler
+    events:
+      - httpApi:
+          path: /exercises
+          method: get
+  PutExercise:
+    handler: functions/PutExercise/index.handler
+    events:
+      - httpApi:
+          path: /exercises/{pk}/{sk}
+          method: put
+  DeleteExercise:
+    handler: functions/DeleteExercise/index.handler
+    events:
+      - httpApi:
+          path: /exercises/{pk}/{sk}
+          method: delete
+
+resources:
+  Resources:
+    UserTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: 'ergousers-db'
+        AttributeDefinitions:
+          - AttributeName: 'pk'
+            AttributeType: 'S'
+          - AttributeName: 'sk'
+            AttributeType: 'S'
+        KeySchema:
+          - AttributeName: 'pk'
+            KeyType: 'HASH'
+          - AttributeName: 'sk'
+            KeyType: 'RANGE'
+        BillingMode: PAY_PER_REQUEST
+    ExcercisesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: 'ergoexcercises-db'
+        AttributeDefinitions:
+          - AttributeName: 'pk'
+            AttributeType: 'S'
+          - AttributeName: 'sk'
+            AttributeType: 'S'
+        KeySchema:
+          - AttributeName: 'pk'
+            KeyType: 'HASH'
+          - AttributeName: 'sk'
+            KeyType: 'RANGE'
+        BillingMode: PAY_PER_REQUEST
+    ProgramTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: 'ergoprogram-db'
+        AttributeDefinitions:
+          - AttributeName: 'pk'
+            AttributeType: 'S'
+          - AttributeName: 'sk'
+            AttributeType: 'S'
+        KeySchema:
+          - AttributeName: 'pk'
+            KeyType: 'HASH'
+          - AttributeName: 'sk'
+            KeyType: 'RANGE'
+        BillingMode: PAY_PER_REQUEST

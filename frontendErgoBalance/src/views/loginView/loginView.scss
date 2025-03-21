@@ -1,0 +1,58 @@
+@use '../../assets/app.scss' as *;
+
+.loginView__wrapper {
+    @include wrapper;
+    justify-content: center;
+    position: relative;
+}
+
+.loginView__headerlogo {
+    position: absolute;
+    top: 0.9rem;
+    left: 1.5rem;
+    z-index: 99;
+    height: 3.5rem;
+    background-color: white;
+    padding: 3px;
+    border-radius: #{$borders-radius-full};
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.1;
+    }
+
+    &:active {
+        scale: 0.9;
+    }
+}
+
+.loginView__container {
+    @include centering;
+    background-color: var(--color-white);
+    border-radius: #{$borders-radius-sm};
+    padding: 3rem;
+}
+
+.loginView__input {
+    @include input-base;
+    min-width: 15rem !important;
+    color: var(--color-black) !important;
+}
+
+.loginView__article {
+    position: relative;
+    padding-top: #{$spacing-md};
+    padding-bottom: #{$spacing-md};
+}
+
+.loginView__error {
+    position: absolute;
+    top: 6.5rem;
+}
+
+.loginView__button {
+    @include button-base;
+    background: var(--color-green) !important;
+    color: var(--color-white) !important;
+    margin-top: #{$spacing-lg};
+}
