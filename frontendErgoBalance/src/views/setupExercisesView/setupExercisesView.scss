@@ -103,6 +103,7 @@
 .setupExercisesView__modal-title {
     font-size: #{$sizing-xs};
     padding: #{$spacing-md};
+    margin-top: #{$spacing-xl};
 }
 
 .setupExercisesView__modal-text {
@@ -112,6 +113,7 @@
 
 .setupExercisesView__modal-image {
     width: 100%;
+    margin-bottom: #{$spacing-xl}
 }
 
 .setupExercisesView__modal-button {

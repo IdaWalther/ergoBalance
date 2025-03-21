@@ -15,9 +15,6 @@
   --color-black: #{$colors-neutral-black};
   --color-darkBlue: #{$colors-neutral-dark-blue};
   --font-primary: #{$typography-font-family-primary};
-  --p-checkbox-background: #{$colors-primary-dark} !important;
-  --p-checkbox-checked-background:#{$colors-primary-light} !important;
-  --p-checkbox-checked-border-color: #{$colors-primary-light} !important;
 }
 
 @mixin wrapper {

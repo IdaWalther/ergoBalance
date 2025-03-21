@@ -120,6 +120,9 @@
     background: var(--color-green) !important;
     color: var(--color-white) !important;
     border: none !important;
+    --p-checkbox-background: var(--color-white) !important;
+    --p-checkbox-checked-background: var(--color-light-green)!important;
+    --p-checkbox-checked-border-color: var(--color-light-green) !important;
 }
 
 .interval__btn--phasechange {
