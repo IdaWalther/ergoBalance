@@ -23,42 +23,42 @@ const postNewUser = async (event) => {
     const programSk = 'startprogram'
     const program = [
         {
-            "sk": "07b2f5e3-e1ce-4be8-b54e-015ddc6e92d9",
+            "sk": "2939eb1b-5cee-44f2-8c1b-aa12e64c3f9e",
             "pk": "active",
             "name": "Hoppa på ett ben",
             "image": "https://ergobalanceexercises.s3.eu-north-1.amazonaws.com/Hoppa+p%C3%A5+ett+ben.png",
             "desc": "Stå på ett ben med lätt böjd knäled. Tryck ifrån och hoppa rakt upp, landa mjukt på samma ben och upprepa rörelsen.\nFörslag på antal: 10 repetitioner per ben X 2 sets"
         },
         {
-            "sk": "09f8022e-b4e9-4f84-8f81-5e898cade23f",
+            "sk": "f48e0f67-25b4-437b-a740-fda9497f0791",
             "pk": "active",
             "name": "Hakindrag",
             "image": "https://ergobalanceexercises.s3.eu-north-1.amazonaws.com/_Dubbelhaka_.png",
             "desc": "Skapa en \"dubbelhaka\" genom att dra hakan bakåt och aningen nedåt. Håll i ca 5 sekunder. Slappna sedan av.\nFörslag på antal: 10 repetitioner X 2 sets. \n"
         },
         {
-            "sk": "0bdb59b6-eeb1-4ce0-b0eb-2b7cba6d445c",
+            "sk": "28d2fd4c-d046-4805-b536-98d10cc0fe56",
             "pk": "active",
-            "name": "Tåhävningar med stöd",
+            "name": "Tåhävningar",
             "image": "https://ergobalanceexercises.s3.eu-north-1.amazonaws.com/T%C3%A5h%C3%A4vningar.png",
             "desc": "Lyft långsamt hälarna från marken så att du står på tårna, håll positionen i några sekunder och sänk sedan långsamt tillbaka till startpositionen. För extra utmaning kan du göra övningen på ett trappsteg eller en upphöjd yta.\nFörslag på antal: 20 repetitioner X 3 sets."
         },
         {
-            "sk": "1de271c7-95bd-4d9b-b0e3-db936aee36b5",
+            "sk": "db444f14-1327-40ab-ac72-39d9730ec8f0",
             "pk": "active",
             "name": "Skulderstabilitet med gummiband",
             "image": "https://ergobalanceexercises.s3.eu-north-1.amazonaws.com/Skulderstabilitet+med+gummiband.png",
             "desc": "Håll ett gummiband sträckt ovanför huvudet. Dra isär bandet med båda armarna, håll spänningen i några sekunder innan du långsamt återgår till startpositionen. \nFörslag på antal: 10 repetitioner X 3 sets."
         },
         {
-            "sk": "25c4f942-c9c4-47c2-ad83-7937d3646023",
+            "sk": "857416b5-d792-4106-8d27-f4919b76c9ef",
             "pk": "active",
             "name": "Pil och båge med gummiband",
             "image": "https://ergobalanceexercises.s3.eu-north-1.amazonaws.com/Pil+och+b%C3%A5ge+med+gummiband.png",
             "desc": "Håll gummibandet med raka armar framför dig. Dra ena armen går bakåt som om du sträcker ut en pilbåge medan den andra armen hålls kvar stadigt framför dig. Återgå långsamt till startpositionen och upprepa, byt sedan sida.\nFörslag på antal: 10 repetitioner per arm X 2 sets."
         },
         {
-            "sk": "2dca55b7-bbcf-42e3-ae4d-3bcd8ad5c097",
+            "sk": "e8ae49e8-0de8-4d75-bcb0-f1c61e3fb640",
             "pk": "active",
             "name": "Sittande axelrullningar",
             "image": "https://ergobalanceexercises.s3.eu-north-1.amazonaws.com/Sittande+axelrullningar.png",
