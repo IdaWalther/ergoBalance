@@ -17,7 +17,13 @@ När du är inne på appen, kan du göra 4 olika saker.
 4. Läsa mer om oss
 
 ## Figma skiss
-https://www.figma.com/files/team/1278336124463807931/project/314609884/Ergo-Balance?fuid=1278336119644439279 
+Inspiration: https://www.figma.com/board/QmpnuMP2pi0kqe1tNhmRUT/Inspiration?t=8XdjCWHs7THRLTWL-1
+Design: https://www.figma.com/design/lMdlFURGt4oAlY81agKjUW/Skiss?node-id=0-1&t=8XdjCWHs7THRLTWL-1
+Flöde: https://www.figma.com/board/ynp4NUI3DvpkWGpSyEQ3k7/Fl%C3%B6de?t=8XdjCWHs7THRLTWL-1
+Databas: https://www.figma.com/board/5yjXgRZbCvXwRLmXWA2ULZ/Databas?t=8XdjCWHs7THRLTWL-1
+
+
+
 
 
 ![ergoBalanceLogo](https://github.com/user-attachments/assets/9bf518b1-6f3b-48e6-9c7a-c9054c6fb270)
