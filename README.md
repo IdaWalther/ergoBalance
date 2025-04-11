@@ -16,6 +16,8 @@ När du är inne på appen, kan du göra 4 olika saker.
 3. Se förinställda övningar i ditt program och ändra övningar utifrån dina preferenser
 4. Läsa mer om oss
 
+## Figma skiss
+https://www.figma.com/files/team/1278336124463807931/project/314609884/Ergo-Balance?fuid=1278336119644439279 
 
 
 ![ergoBalanceLogo](https://github.com/user-attachments/assets/9bf518b1-6f3b-48e6-9c7a-c9054c6fb270)
